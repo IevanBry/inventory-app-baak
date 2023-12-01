@@ -1,4 +1,12 @@
 ###################
+System inventaris baak
+###################
+
+Project Semester 3 bengkel pemgrograman framework, kelompok 1
+
+
+
+###################
 What is CodeIgniter
 ###################
 
