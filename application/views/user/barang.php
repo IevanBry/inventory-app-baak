@@ -5,7 +5,7 @@
     <div class="ml-2">
         <div class="flex items-center justify-between mb-3 bg-white shadow-md p-3 rounded border">
 
-            <input type="text"
+            <input type="text" 
                 class="bg-white shadow-md rounded px-3 py-1 focus:ring-sky-400 focus:border-sky-400 border-gray-300 w-72 "
                 placeholder="Cari barang...">
 
@@ -13,7 +13,7 @@
 
                 <?php foreach ($kategori as $k): ?>
 
-                    <button class=" px-3 py-1 text-sm ounded-lg hover:text-sky-400">
+                    <button class=" px-3 py-1 text-sm rounded border hover:bg-sky-400 hover:text-white border-sky-400">
                         <?= $k ?>
                     </button>
                 <?php endforeach; ?>
@@ -33,14 +33,13 @@
 
                             <div class="flex items-center justify-evenly text-xs gap-2 mt-2 font-medium ">
                                 <p class="">Tersedia<span class="text-green-500"> 20</span></p>
-                                <button class="px-3 py-1 shadow-md rounded bg-white border">Detail</button>
-                                <button class="px-3 py-1 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white"
+                                <button class="px-3 py-2 shadow-md rounded bg-white border hover:bg-gray-100">Detail</button>
+                                <button class="px-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white"
                                     data-modal-target="select-modal" data-modal-toggle="select-modal">Request</button>
                             </div>
                         </div>
 
                     </div>
-
                 </div>
 
 
@@ -67,9 +66,7 @@
                 </a>
                 <a href="#"
                     class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium  rounded-lg bg-white shadow-md border hover:bg-gray-100  text-gray-700">
-                    Next
-
-                </a>
+                    Next</a>
             </div>
         </div>
 

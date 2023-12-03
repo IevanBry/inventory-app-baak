@@ -4,7 +4,7 @@
             <div class="w-full mb-1">
                 <div class="items-center justify-between block sm:flex ">
                     <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="post">
+                        <form class="sm:pr-3" action="#" method="post" autocomplete="off">
                             <label for="products-search" class="sr-only">Search</label>
                             <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
                                 <input type="text" name="email" id="products-search"
@@ -12,10 +12,9 @@
                                     placeholder="Cari User..">
                             </div>
                         </form>
-
                     </div>
                     <div class="flex gap-2">
-                       
+
                         <button id="exportDataUser" type="button"
                             class="bg-sky-400 text-white hover:bg-sky-500 flex items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bxs-file-export text-md'></i>
@@ -104,9 +103,6 @@
                     </div>
                 </div>
 
-
-
-
                 <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
                     <div class="flex items-center mb-4 sm:mb-0">
                         <a href="#" class="inline-flex justify-center p-1  rounded cursor-pointer">
@@ -133,8 +129,6 @@
             </div>
         </div>
 
-
-        <!-- modal content -->
 
         <!-- modal update user-->
         <div id="updateUserModal" tabindex="-1" aria-hidden="true"
@@ -164,43 +158,40 @@
                             <div class="col-span-2">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                                 <input type="text" name="name" id="name"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="Nama user" required="" value="Ridho Hidayat">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="Nama user" required="" value="Ridho Hidayat">
                             </div>
                             <div class="col-span-2">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                                 <input type="text" name="name" id="name"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="Nama user" required="" value="Ridho Hidayat">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="Nama user" required="" value="Ridho Hidayat">
                             </div>
 
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900">email</label>
                                 <input type="text" name="email" id="email"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="Email" required="">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="Email" required="">
                             </div>
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900">email</label>
                                 <input type="text" name="email" id="email"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="Email" required="">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="Email" required="">
                             </div>
                             <div class="col-span-2">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
                                 <input type="text" name="name" id="name"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="Nama user" required="" value="Ridho Hidayat">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="Nama user" required="" value="Ridho Hidayat">
                             </div>
-                        
-
-                           
 
                         </div>
                         <div class="text-end">
                             <button type="submit"
                                 class="text-white inline-flex items-center bg-amber-400 hover:bg-amber-500 shadow-md font-medium rounded text-sm px-5 py-2.5 text-center ">
-                               Update data user
+                                Update data user
                             </button>
                         </div>
                     </form>
@@ -237,23 +228,21 @@
                             <div class="">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Name</label>
                                 <input type="text" name="name" id="name"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="barang" required="">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="barang" required="">
                             </div>
                             <div class="">
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                                 <input type="text" name="email" id="email"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="email" required="">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="email" required="">
                             </div>
                             <div class="">
                                 <label for="email" class="block mb-2 text-sm font-medium text-gray-900">Password</label>
                                 <input type="text" name="password" id="password"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="barang" required="">
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="barang" required="">
                             </div>
-
-
                         </div>
 
                         <div class="text-end">
@@ -275,24 +264,21 @@
             <div class="relative p-4 w-full max-w-md max-h-full">
                 <div class="relative bg-white rounded shadow">
                     <div class="p-4 md:p-5 text-center">
-                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                    </svg>
+                        <svg class="mx-auto mb-4 text-gray-400 w-10 h-10 " aria-hidden="true"
+                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>
                         <h3 class="mb-5 text-lg font-normal text-gray-500">
                             Yakin untuk menghapus user ini ?</h3>
                         <button data-modal-hide="modalHapusUser" type="button"
-                            class="text-white bg-amber-400  font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                            class="text-white bg-amber-300 hover:bg-amber-400  font-medium rounded text-sm inline-flex items-center px-3 py-2 text-center me-2">
                             Ya, Lanjutkan
                         </button>
                         <button data-modal-hide="modalHapusUser" type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100  rounded border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 ">Tidak,
+                            class="text-gray-500 bg-white hover:bg-gray-100  rounded border border-gray-200 text-sm font-medium px-3 py-2 hover:text-gray-900 focus:z-10 ">Tidak,
                             batal</button>
                     </div>
                 </div>
             </div>
         </div>
-
-
-        <!-- user hapus modal alert -->

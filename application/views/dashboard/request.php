@@ -33,7 +33,7 @@
 
                 <div class="items-center justify-between block sm:flex">
                     <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="post">
+                        <form class="sm:pr-3" action="#" method="post" autocomplete="off">
                             <label for="products-search" class="sr-only">Search</label>
                             <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
                                 <input type="text" name="email" id="products-search"
@@ -99,8 +99,7 @@
                                         <td class="p-2 text-sm font-medium text-gray-900">
 
                                             <?php if ($i % 2 == 0) { ?>
-                                                <span
-                                                    class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">Proses</span>
+                                                <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">Proses</span>
                                             <?php } else { ?>
                                                 <span
                                                     class="bg-green-400 text-white shadow-md p-1 px-3 rounded">Disetujui</span>
@@ -152,7 +151,6 @@
 
 
 
-    <!-- Delete Product Modal -->
 
     <div id="tolak-verifikasi" tabindex="-1"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
@@ -187,7 +185,6 @@
         </div>
     </div>
 
-    <!-- update barang modal -->
     <div id="verifikasi" tabindex="-1" aria-hidden="true"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-2xl max-h-full">
@@ -246,8 +243,8 @@
                     </div>
                 </form>
                 <div class="grid grid-cols-2 gap-4 border-t p-4">
-                    <button class="px-3 py-1  border bg-white shadow-md rounded"
-                        data-modal-toggle="tolak-verifikasi" data-modal-target="tolak-verifikasi" data-modal-hide="verifikasi">Tolak</button>
+                    <button class="px-3 py-1  border bg-white shadow-md rounded" data-modal-toggle="tolak-verifikasi"
+                        data-modal-target="tolak-verifikasi" data-modal-hide="verifikasi">Tolak</button>
                     <button class="px-3 py-1 text-white  bg-amber-300 shadow-md rounded"
                         data-modal-toggle="verifikasi">Terima</button>
                 </div>

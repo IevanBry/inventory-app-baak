@@ -1,44 +1,44 @@
 <div class="p-3 ml-12 md:ml-3 w-full">
     <div class="mb-3">
-            <div class=" rounded grid grid-cols-4 gap-4">
-                <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
+        <div class=" rounded grid grid-cols-2 xl:grid-cols-4 gap-4">
+            <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bx-line-chart text-3xl bg-sky-200 w-12 text-sky-500 p-2 rounded'></i>
-                    <div>
-                        <p class="text-gray-500 text-sm sm:text-base">Barang masuk</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">50</h1>
-                    </div>
+                <div>
+                    <p class="text-gray-500 text-sm sm:text-base">Barang masuk</p>
+                    <h1 class="text-sm xl:text-2xl font-semibold">50</h1>
                 </div>
-                <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
-                <i class='bx bx-line-chart-down text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded'></i>
-                    <div>
-                        <p class="text-gray-500 text-sm sm:text-base">Barang Keluar</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">30</h1>
-                    </div>
-                </div>
-                <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
-                    <i class='bx bx-checkbox-checked text-3xl w-12 bg-green-100 text-green-500 p-2 rounded'></i>
-                    <div>
-                        <p class="text-gray-500 text-sm sm:text-base">Total Barang</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">190</h1>
-                    </div>
-                </div>
-                <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
-                    <i class='bx bxs-hourglass-bottom text-3xl w-12 bg-red-100 text-red-500 p-2 rounded'></i>
-                    <div >
-                        <p class="text-gray-500 text-sm sm:text-base">Stock Sedikit</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
-                    </div>
-                </div>
-
             </div>
+            <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
+                <i class='bx bx-line-chart-down text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded'></i>
+                <div>
+                    <p class="text-gray-500 text-sm sm:text-base">Barang Keluar</p>
+                    <h1 class="text-sm xl:text-2xl font-semibold">30</h1>
+                </div>
+            </div>
+            <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
+                <i class='bx bx-package text-3xl w-12 bg-green-100 text-green-500 p-2 rounded'></i>
+                <div>
+                    <p class="text-gray-500 text-sm sm:text-base">Total Barang</p>
+                    <h1 class="text-sm xl:text-2xl font-semibold">190</h1>
+                </div>
+            </div>
+            <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
+                <i class='bx bxs-hourglass-bottom text-3xl w-12 bg-red-100 text-red-500 p-2 rounded'></i>
+                <div>
+                    <p class="text-gray-500 text-sm sm:text-base">Stock Sedikit</p>
+                    <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
+                </div>
+            </div>
+
         </div>
+    </div>
 
     <div class="bg-white rounded border shadow-lg">
         <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
             <div class="w-full mb-1">
                 <div class="items-center justify-between block sm:flex ">
                     <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="post">
+                        <form class="sm:pr-3" action="#" method="post" autocomplete="off">
                             <label for="products-search" class="sr-only">Search</label>
                             <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
                                 <input type="text" name="email" id="products-search"
@@ -133,8 +133,8 @@
                                                 update
                                             </button>
 
-                                            <button type="button" id="deleteProductButton" data-modal-target="popup-modal"
-                                                data-modal-toggle="popup-modal"
+                                            <button type="button" id="deleteProductButton" data-modal-target="hapusBarangModal"
+                                                data-modal-toggle="hapusBarangModal"
                                                 aria-controls="drawer-delete-product-default"
                                                 class="inline-flex items-center px-3 py-1 text-sm font-medium  rounded shadow-md bg-white border hover:bg-gray-100">
                                                 <i class="bx bx-trash"></i>
@@ -182,18 +182,18 @@
 
     <!-- hapus barang -->
 
-    <div id="popup-modal" tabindex="-1"
+    <div id="hapusBarangModal" tabindex="-1"
         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
         <div class="relative p-4 w-full max-w-md max-h-full">
             <div class="relative bg-white rounded shadow ">
                 <button type="button"
                     class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                    data-modal-hide="popup-modal">
+                    data-modal-hide="hapusBarangModal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
                     <span class="sr-only">Close modal</span>
                 </button>
                 <div class="p-4 md:p-5 text-center">
@@ -204,11 +204,11 @@
                     </svg>
                     <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Yakin ingin menghapus barang
                         ini ?</h3>
-                    <button data-modal-hide="popup-modal" type="button"
+                    <button data-modal-hide="hapusBarangModal" type="button"
                         class="bg-amber-400 text-white shadow-md  focus:outline-none  font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                         Ya, lanjutkan
                     </button>
-                    <button data-modal-hide="popup-modal" type="button"
+                    <button data-modal-hide="hapusBarangModal" type="button"
                         class="text-gray-500 bg-white hover:bg-gray-100 rounded border shadow-md text-sm font-medium px-5 py-2.5 ">Tidak,
                         batal</button>
                 </div>
@@ -252,15 +252,13 @@
                                 placeholder="barang" required="">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="price"
-                                class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
+                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
                             <input type="number" name="price" id="price"
                                 class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="0" required="">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                             <select id="category"
                                 class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 ">
                                 <option selected="">Pilih Kategori Barang</option>
@@ -270,15 +268,13 @@
                             </select>
                         </div>
                         <div class="col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 ">Harga</label>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Harga</label>
                             <input type="number" name="price" id="price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                 placeholder="Rp." required="">
                         </div>
                         <div class="col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
                             <select id="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
                                 <option selected="">Pilih satuan Barang</option>
@@ -317,7 +313,7 @@
 
                     </div>
                     <div class="text-end">
-                    <button type="button"
+                        <button type="button"
                             class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
                             Batal
                         </button>
@@ -364,15 +360,13 @@
                                 placeholder="" required="" value="Spidol">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="price"
-                                class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah</label>
+                            <label for="price" class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah</label>
                             <input type="number" name="price" id="price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                 placeholder="0" required="" value="20">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                             <select id="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500  block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
                                 <option value="">Pilih Kategori Barang</option>
@@ -382,15 +376,13 @@
                             </select>
                         </div>
                         <div class="col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-90">Harga</label>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-90">Harga</label>
                             <input type="number" name="price" id="price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                 placeholder="Rp." required="" value="8.000">
                         </div>
                         <div class="col-span-1">
-                            <label for="category"
-                                class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
+                            <label for="category" class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
                             <select id="category"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
                                 <option selected="">Pilih satuan Barang</option>
@@ -405,12 +397,13 @@
                                 Description</label>
                             <textarea id="description" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
-                                placeholder="Write product description here" value="">Spidol Hitam untuk papan tulis</textarea>
+                                placeholder="Write product description here"
+                                value="">Spidol Hitam untuk papan tulis</textarea>
                         </div>
 
                         <div class="col-span-2">
                             <div class="flex items-center justify-center w-full">
-                            <label for="dropzone-file"
+                                <label for="dropzone-file"
                                     class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
                                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
                                         <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true"
@@ -425,9 +418,7 @@
                                     <input id="dropzone-file" type="file" class="hidden" />
                                 </label>
                             </div>
-
                         </div>
-
                     </div>
                     <div class="text-end">
                         <button type="button"
