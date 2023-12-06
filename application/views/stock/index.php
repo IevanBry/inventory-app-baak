@@ -1,7 +1,7 @@
 <div class="p-3 ml-12 md:ml-3 w-full">
     <div class="mb-3">
         <div class=" rounded grid grid-cols-2 xl:grid-cols-4 gap-4">
-            <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
+            <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border">
                 <i class='bx bx-line-chart text-3xl bg-sky-200 w-12 text-sky-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Barang masuk</p>
@@ -29,7 +29,6 @@
                     <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
                 </div>
             </div>
-
         </div>
     </div>
 
