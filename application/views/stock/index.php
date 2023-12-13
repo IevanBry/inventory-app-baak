@@ -32,7 +32,7 @@
         </div>
     </div>
 
-    <div class="bg-white rounded border shadow-lg">
+    <div class="bg-white rounded border shadow-md">
         <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
             <div class="w-full mb-1">
                 <div class="items-center justify-between block sm:flex ">
@@ -75,7 +75,7 @@
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 ">
+                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
@@ -111,7 +111,7 @@
                                         <td class="w-4 p-4">
                                             <div class="flex items-center">
                                                 <input id="" aria-describedby="checkbox-1" type="checkbox"
-                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50">
+                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                                 <label for="" class="sr-only">checkbox</label>
                                             </div>
                                         </td>

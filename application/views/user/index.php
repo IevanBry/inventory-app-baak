@@ -38,7 +38,7 @@
         </div>
 
         <div class=" col-span-2">
-            <div class="grid grid-cols-1 gap-4 p-2">
+            <div class="grid grid-cols-1 gap-4">
                 <?php for ($i = 0; $i < 4; $i++) { ?>
                     <div class="notif-card bg-white shadow-md p-2 rounded border">
 
@@ -61,7 +61,7 @@
 
         <?php $progres = ['Pengajuan ke baak', 'Menunggu Verifikasi dari BAAK', 'Permintaan diterima'] ?>
 
-        <div class="mt-2 col-span-1">
+        <div class="col-span-1">
             <div class="bg-white shadow-md p-2 border rounded pb-6">
                 <div>
                     <h1 class="font-medium text-center mb-3">Aktivitas Terbaru</h1>

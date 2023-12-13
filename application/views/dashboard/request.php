@@ -37,7 +37,7 @@
                             <label for="products-search" class="sr-only">Search</label>
                             <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
                                 <input type="text" name="email" id="products-search"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded shadow-md  block w-full p-2.5 "
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 sm:text-sm  rounded shadow-md  block w-full p-2.5 "
                                     placeholder="Request...">
                             </div>
                         </form>
@@ -57,7 +57,7 @@
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 ">
+                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
@@ -88,7 +88,7 @@
                                         <td class="w-4 p-4">
                                             <div class="flex items-center">
                                                 <input id="" aria-describedby="checkbox-1" type="checkbox"
-                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50">
+                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50v checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                                 <label for="" class="sr-only">checkbox</label>
                                             </div>
                                         </td>

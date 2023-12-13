@@ -36,7 +36,7 @@
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 ">
+                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
@@ -59,9 +59,8 @@
                                     <tr class="hover:bg-gray-100 borde">
                                         <td class="w-4 p-4">
                                             <div class="flex items-center">
-                                                <input id="" aria-describedby="checkbox-1" type="checkbox"
-                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50">
-                                                <label for="" class="sr-only">checkbox</label>
+                                                <input id="" aria-describedby="checkbox-1" type="checkbox" 
+                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                             </div>
                                         </td>
 
@@ -149,7 +148,7 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                     stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                             </svg>
-                            <span class="sr-only">Close modal</span>
+                            <span lass="sr-only">Close modal</span>
                         </button>
                     </div>
                     <!-- Modal body -->
@@ -162,30 +161,25 @@
                                     placeholder="Nama user" required="" value="Ridho Hidayat">
                             </div>
                             <div class="col-span-2">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Jabatan</label>
                                 <input type="text" name="name" id="name"
                                     class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                    placeholder="Nama user" required="" value="Ridho Hidayat">
+                                    placeholder="Nama user" required="" value="Staff">
                             </div>
 
                             <div class="col-span-2 sm:col-span-1">
-                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900">email</label>
+                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Email</label>
                                 <input type="text" name="email" id="email"
                                     class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                    placeholder="Email" required="">
+                                    placeholder="Email" required="" value="ridho@gmail.com">
                             </div>
                             <div class="col-span-2 sm:col-span-1">
-                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900">email</label>
+                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900">Phone</label>
                                 <input type="text" name="email" id="email"
                                     class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                    placeholder="Email" required="">
+                                    placeholder="Email" required="" value="082287498239">
                             </div>
-                            <div class="col-span-2">
-                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                                <input type="text" name="name" id="name"
-                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                    placeholder="Nama user" required="" value="Ridho Hidayat">
-                            </div>
+                            
 
                         </div>
                         <div class="text-end">
