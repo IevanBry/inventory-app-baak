@@ -19,6 +19,8 @@ class Stock extends CI_Controller
         $data['title'] = 'Stock';
         $data['icon'] = 'bx bx-package';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['barang'] = $this->Stock_model->get();
+        $data['kategori'] = $this->kategori_model->get();
         $this->load->view('layout/header', $data);
         $this->load->view('stock//index', $data);
         $this->load->view('layout/footer');

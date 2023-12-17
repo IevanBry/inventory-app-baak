@@ -11,6 +11,7 @@ class BaseController extends CI_Controller
             redirect('auth');
         }
         $this->load->model('Stock_model');
+        $this->load->model('Kategori_model');
     }
 
     function index()
@@ -70,8 +71,9 @@ class BaseController extends CI_Controller
         $data['icon'] = 'bx bx-package';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->Stock_model->get();
+        $data['kategori'] = $this->Kategori_model->get();
         $this->load->view('layout/header',$data);
-        $this->load->view('stock/index');
+        $this->load->view('stock/index', $data);
         $this->load->view('layout/footer');
     }
 

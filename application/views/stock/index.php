@@ -309,10 +309,11 @@
                             <select name="category" id="category"
                                 class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 ">
                                 <option selected="">Pilih Kategori Barang</option>
-                                
-                                <!-- <option value="1">Alat Tulis</option>
-                                <option value="2">Elektronik</option>
-                                <option value="3">Makanan</option> -->
+                                <?php foreach ($kategori as $k): ?>
+                                    <option value="<?= $k['id_kategori']; ?>">
+                                        <?= $k['nama_kategori']; ?>
+                                    </option>
+                                <?php endforeach; ?>
                             </select>
                         </div>
                         <div class="col-span-1">
