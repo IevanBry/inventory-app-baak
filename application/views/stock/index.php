@@ -80,7 +80,7 @@
                                         </div>
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
-                                        Barang
+                                        barang
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
                                         Gambar
@@ -105,7 +105,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white " id="tableBody">
+                            <!-- <tbody class="bg-white " id="tableBody">
                                 <?php for ($i = 0; $i < 5; $i++) { ?>
                                     <tr class="hover:bg-gray-50">
                                         <td class="w-4 p-4">
@@ -132,8 +132,8 @@
                                                 update
                                             </button>
 
-                                            <button type="button" id="deleteProductButton" data-modal-target="hapusBarangModal"
-                                                data-modal-toggle="hapusBarangModal"
+                                            <button type="button" id="deleteProductButton"
+                                                data-modal-target="hapusBarangModal" data-modal-toggle="hapusBarangModal"
                                                 aria-controls="drawer-delete-product-default"
                                                 class="inline-flex items-center px-3 py-1 text-sm font-medium  rounded shadow-md bg-white border hover:bg-gray-100">
                                                 <i class="bx bx-trash"></i>
@@ -141,8 +141,55 @@
                                             </button>
                                         </td>
                                     </tr>
-                                <?php } ?>
+                                <?php } ?> -->
+                            <?php foreach ($barang as $item): ?>
+                                <tr class="hover:bg-gray-50">
+                                    <td class="w-4 p-4">
+                                        <div class="flex items-center">
+                                            <input id="" aria-describedby="checkbox-1" type="checkbox"
+                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                            <label for="" class="sr-only">checkbox</label>
+                                        </div>
+                                    </td>
+                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                        <?= $item['nama_barang'] ?>
+                                    </td>
+                                    <td class="p-2 text-sm font-medium text-gray-900"><img
+                                            src="<?= base_url('dist/') . $item['gambar'] ?>" alt="" width="80"></td>
+                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                        <?= $item['deskripsi'] ?>
+                                    </td>
+                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                        <?= $item['stok'] ?>
+                                    </td>
+                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                        <?= $item['satuan'] ?>
+                                    </td>
+                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                        <?= $item['id_kategori'] ?>
+                                    </td>
+                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                        <?= $item['harga'] ?>
+                                    </td>
 
+                                    <td scope="" class="p-4 space-x-2 text-center">
+                                        <button id="updateBarangButton" type="button" data-modal-target="updateBarangModal"
+                                            data-modal-toggle="updateBarangModal"
+                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
+                                            <i class="bx bx-edit"></i>
+                                            update
+                                        </button>
+
+                                        <button type="button" id="deleteProductButton" data-modal-target="hapusBarangModal"
+                                            data-modal-toggle="hapusBarangModal"
+                                            aria-controls="drawer-delete-product-default"
+                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
+                                            <i class="bx bx-trash"></i>
+                                            delete
+                                        </button>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>
@@ -241,7 +288,8 @@
                     </button>
                 </div>
                 <!-- Modal body -->
-                <form action="#" class="p-4 md:p-5">
+                <form action="<?= base_url('Stock/insertStock'); ?>" method="post" enctype="multipart/form-data"
+                    class="p-4 md:p-5">
                     <div class="grid gap-4 mb-4 grid-cols-2">
                         <div class="col-span-2">
                             <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
@@ -252,46 +300,49 @@
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
-                            <input type="number" name="price" id="price"
+                            <input type="number" name="amount" id="amount"
                                 class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                 placeholder="0" required="">
                         </div>
                         <div class="col-span-2 sm:col-span-1">
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
-                            <select id="category"
+                            <select name="category" id="category"
                                 class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 ">
                                 <option selected="">Pilih Kategori Barang</option>
-                                <option value="">Alat Tulis</option>
-                                <option value="">Elektronik</option>
-                                <option value="">Makanan</option>
+                                
+                                <!-- <option value="1">Alat Tulis</option>
+                                <option value="2">Elektronik</option>
+                                <option value="3">Makanan</option> -->
                             </select>
                         </div>
                         <div class="col-span-1">
-                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Harga</label>
+                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Harga</label>
                             <input type="number" name="price" id="price"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                 placeholder="Rp." required="">
                         </div>
                         <div class="col-span-1">
-                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
-                            <select id="category"
+                            <label for="satuan" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
+                            <select name="satuan" id="satuan"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
                                 <option selected="">Pilih satuan Barang</option>
-                                <option value="">Buah</option>
-                                <option value="">Lembar</option>
-                                <option value="">kg</option>
+                                <option value="buah">Buah</option>
+                                <option value="lembar">Lembar</option>
+                                <option value="kg">kg</option>
                             </select>
                         </div>
 
                         <div class="col-span-2">
                             <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Product
                                 Description</label>
-                            <textarea id="description" rows="4"
+                            <textarea name="description" id="description" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
                                 placeholder="Tulis Deskripsi dari barang"></textarea>
                         </div>
 
                         <div class="col-span-2">
+                            <label for="dropzone-file" class="block mb-2 text-sm font-medium text-gray-900 ">Upload
+                                Gambar Barang</label>
                             <div class="flex items-center justify-center w-full">
                                 <label for="dropzone-file"
                                     class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
@@ -302,14 +353,12 @@
                                                 stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg>
-                                        <p class="mb-2 text-sm text-gray-500">
-                                            upload gambar barang</p>
+                                        <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p>
+                                        <input name="gambar" id="dropzone-file" type="file" />
                                     </div>
-                                    <input id="dropzone-file" type="file" class="hidden" />
                                 </label>
                             </div>
                         </div>
-
                     </div>
                     <div class="text-end">
                         <button type="button"
@@ -413,8 +462,8 @@
                                         </svg>
                                         <p class="mb-2 text-sm text-gray-500">
                                             upload gambar barang</p>
+                                        <input id="dropzone-file" type="file" class="hidden" />
                                     </div>
-                                    <input id="dropzone-file" type="file" class="hidden" />
                                 </label>
                             </div>
                         </div>

@@ -10,12 +10,14 @@ class BaseController extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
+        $this->load->model('Stock_model');
     }
 
     function index()
     {
         $data['title'] = 'Dashboard';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['barang'] = $this->Stock_model->get();
         $data['icon'] = 'bx bx-home';
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/index');
@@ -67,6 +69,7 @@ class BaseController extends CI_Controller
         $data['title'] = 'Stock';
         $data['icon'] = 'bx bx-package';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['barang'] = $this->Stock_model->get();
         $this->load->view('layout/header',$data);
         $this->load->view('stock/index');
         $this->load->view('layout/footer');
