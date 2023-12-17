@@ -97,4 +97,7 @@ class Auth extends CI_Controller
                 redirect('auth');
         }
     }
+    public function blabal() {
+        echo " BABABABA";
+    }
 }
