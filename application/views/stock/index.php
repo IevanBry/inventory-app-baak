@@ -105,43 +105,6 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <!-- <tbody class="bg-white " id="tableBody">
-                                <?php for ($i = 0; $i < 5; $i++) { ?>
-                                    <tr class="hover:bg-gray-50">
-                                        <td class="w-4 p-4">
-                                            <div class="flex items-center">
-                                                <input id="" aria-describedby="checkbox-1" type="checkbox"
-                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
-                                                <label for="" class="sr-only">checkbox</label>
-                                            </div>
-                                        </td>
-                                        <td class="p-2 text-sm font-medium text-gray-900">Spidol</td>
-                                        <td class="p-2 text-sm font-medium text-gray-900"><img
-                                                src="<?= base_url('dist/1.png') ?>" alt="" width="80"></td>
-                                        <td class="p-2 text-sm font-medium text-gray-900">Spidol hitam papan tulis </td>
-                                        <td class="p-2 text-sm font-medium text-gray-900">20</td>
-                                        <td class="p-2 text-sm font-medium text-gray-900">buah</td>
-                                        <td class="p-2 text-sm font-medium text-gray-900">Alat tulis</td>
-                                        <td class="p-2 text-sm font-medium text-gray-900">Rp. 8.000</td>
-
-                                        <td scope="" class="p-4 space-x-2 text-center">
-                                            <button id="updateBarangButton" type="button"
-                                                data-modal-target="updateBarangModal" data-modal-toggle="updateBarangModal"
-                                                class="inline-flex items-center px-3 py-1 text-sm font-medium  rounded shadow-md bg-white border hover:bg-gray-100">
-                                                <i class="bx bx-edit"></i>
-                                                update
-                                            </button>
-
-                                            <button type="button" id="deleteProductButton"
-                                                data-modal-target="hapusBarangModal" data-modal-toggle="hapusBarangModal"
-                                                aria-controls="drawer-delete-product-default"
-                                                class="inline-flex items-center px-3 py-1 text-sm font-medium  rounded shadow-md bg-white border hover:bg-gray-100">
-                                                <i class="bx bx-trash"></i>
-                                                delete
-                                            </button>
-                                        </td>
-                                    </tr>
-                                <?php } ?> -->
                             <?php foreach ($barang as $item): ?>
                                 <tr class="hover:bg-gray-50">
                                     <td class="w-4 p-4">
@@ -166,7 +129,7 @@
                                         <?= $item['satuan'] ?>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-gray-900">
-                                        <?= $item['id_kategori'] ?>
+                                        <?= $item['nama_kategori'] ?>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-gray-900">
                                         <?= $item['harga'] ?>

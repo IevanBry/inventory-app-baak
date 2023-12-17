@@ -7,12 +7,17 @@ class Stock_model extends CI_Model
     {
         parent::__construct();
     }
-    public function get()
+    // Stock_model.php
+
+    function get()
     {
-        $this->db->from($this->table);
+        $this->db->select('barang.*, kategori.nama_kategori');
+        $this->db->from('barang');
+        $this->db->join('kategori', 'barang.id_kategori = kategori.id_kategori', 'left');
         $query = $this->db->get();
         return $query->result_array();
     }
+
     public function getBy()
     {
         $this->db->from($this->table);
