@@ -47,7 +47,7 @@ class Stock extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        $defaultImage = 'dist1.png';
+        $defaultImage = '1.png';
         $gambar = $defaultImage;
 
         if ($this->upload->do_upload('gambar')) {
@@ -72,9 +72,10 @@ class Stock extends CI_Controller
         redirect('Stock');
     }
 
-    function deleteStock()
+    function deleteStock($id)
     {
-
+        $this->Stock_model->delete($id);
+        redirect('Stock');
     }
 
 }
