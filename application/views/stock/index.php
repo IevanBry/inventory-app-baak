@@ -80,6 +80,9 @@
                                         </div>
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
+                                        No
+                                    </th>
+                                    <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
                                         Barang
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
