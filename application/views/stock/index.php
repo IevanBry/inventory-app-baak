@@ -49,8 +49,8 @@
                     </div>
                     <div class="flex gap-2">
                         <button id="deleteAll" type="button"
-                            class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
-                            <i class='bx bxs-file-export text-md'></i>
+                            class="bg-red-400 text-white hover:bg-red-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
+                            <i class='bx bx-trash'></i>
                             <span>Hapus Semua</span>
                         </button>
                         <button type="button" id="tambahBarang" data-modal-target="tambahBarangModal"
