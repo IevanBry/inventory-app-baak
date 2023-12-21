@@ -19,14 +19,14 @@
                 <i class='bx bx-package text-3xl w-12 bg-green-100 text-green-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Total Barang</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">190</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $total; ?></h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bxs-hourglass-bottom text-3xl w-12 bg-red-100 text-red-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Stock Sedikit</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $stok_rendah; ?></h1>
                 </div>
             </div>
         </div>

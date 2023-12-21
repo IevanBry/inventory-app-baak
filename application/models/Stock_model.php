@@ -40,4 +40,18 @@ class Stock_model extends CI_Model
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
+    public function getJumlahBarangTerendah()
+    {
+        $this->db->select('nama_barang, MIN(stok) as min_stok');
+        $this->db->from('barang');
+        $query = $this->db->get();
+        return $query->row()->min_stok;
+    }
+    public function getTotalBarang()
+    {
+        $this->db->select('COUNT(*) as total_barang');
+        $this->db->from('barang');
+        $query = $this->db->get();
+        return $query->row()->total_barang;
+    }
 }
