@@ -48,17 +48,20 @@
 
                     </div>
                     <div class="flex gap-2">
+                        <button id="deleteAll" type="button"
+                            class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
+                            <i class='bx bxs-file-export text-md'></i>
+                            <span>Hapus Semua</span>
+                        </button>
                         <button type="button" id="tambahBarang" data-modal-target="tambahBarangModal"
                             data-modal-toggle="tambahBarangModal"
                             class="bg-amber-400 text-white hover:bg-amber-500 flex items-center shadow-md font-medium rounded text-sm px-3 py-1 ">
                             <i class='bx bx-plus'></i>
                             <span> Tambah Barang Baru</span>
-
                         </button>
                         <button id="exportDataUser" type="button"
                             class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bxs-file-export text-md'></i>
-
                             <span>Export</span>
                         </button>
                     </div>
