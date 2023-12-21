@@ -72,10 +72,15 @@ class Stock extends CI_Controller
         redirect('Stock');
     }
 
-    function deleteStock($id)
+    public function deleteStock()
     {
-        $this->Stock_model->delete($id);
+        $id_barang = $this->input->post('id_barang');
+    
+        if (!empty($id_barang)) {
+            $this->Stock_model->delete($id_barang);
+        }
         redirect('Stock');
     }
+    
 
 }

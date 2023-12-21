@@ -108,7 +108,7 @@
                                     </th>
                                 </tr>
                             </thead>
-                            <?php $rowNumber = 1; ?>
+                            <?php $no = 1; ?>
                             <?php foreach ($barang as $item): ?>
                                 <tr class="hover:bg-gray-50">
                                     <td class="w-4 p-4">
@@ -119,7 +119,7 @@
                                         </div>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-gray-900">
-                                        <?= $rowNumber ?>
+                                        <?= $no ?>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-gray-900">
                                         <?= $item['nama_barang'] ?>
@@ -150,8 +150,9 @@
                                             Update
                                         </button>
 
-                                        <button type="button" id="deleteProductButton" data-modal-target="hapusBarangModal"
-                                            data-modal-toggle="hapusBarangModal"
+                                        <button type="button" id="deleteProductButton"
+                                            data-modal-target="hapusBarangModal<?= $no ?>"
+                                            data-modal-toggle="hapusBarangModal<?= $no ?>"
                                             aria-controls="drawer-delete-product-default"
                                             class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
                                             <i class="bx bx-trash"></i>
@@ -160,7 +161,7 @@
                                     </td>
                                 </tr>
                                 <!-- hapus barang -->
-                                <div id="hapusBarangModal" tabindex="-1"
+                                <div id="hapusBarangModal<?= $no ?>" tabindex="-1"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-md max-h-full">
                                         <div class="relative bg-white rounded shadow ">
@@ -184,20 +185,24 @@
                                                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
                                                 <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Yakin
-                                                    ingin menghapus barang
-                                                    ini ?</h3>
-                                                <button data-modal-hide="hapusBarangModal" type="button"
-                                                    class="bg-amber-400 text-white shadow-md  focus:outline-none  font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                                                    Ya, lanjutkan
-                                                </button>
-                                                <button data-modal-hide="hapusBarangModal" type="button"
-                                                    class="text-gray-500 bg-white hover:bg-gray-100 rounded border shadow-md text-sm font-medium px-5 py-2.5 ">Tidak,
-                                                    batal</button>
+                                                    ingin menghapus barang -
+                                                    <span class="text-red-500">
+                                                        <?= $item['nama_barang'] ?>
+                                                    </span>?
+                                                </h3>
+                                                <form action="<?= base_url('Stock/deleteStock'); ?>" method="post">
+                                                    <input type="hidden" name="id_barang" value="<?= $item['id_barang'] ?>">
+                                                    <button type="submit" class="bg-amber-400 text-white shadow-md  focus:outline-none  font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                                        Ya, lanjutkan
+                                                    </button>
+                                                    <button data-modal-hide="hapusBarangModal<?= $no ?>" type="button" class="text-gray-500 bg-white hover:bg-gray-100 rounded border shadow-md text-sm font-medium px-5 py-2.5 ">Tidak,
+                                                        batal</button>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <?php $rowNumber++; ?>
+                                <?php $no++; ?>
                             <?php endforeach; ?>
                             </tbody>
                         </table>
@@ -325,7 +330,7 @@
                                         </svg>
                                         <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p>
                                     </div>
-                                     <input name="gambar" id="dropzone-file" type="file" class="hidden"/>
+                                    <input name="gambar" id="dropzone-file" type="file" class="hidden" />
                                 </label>
                             </div>
                         </div>
