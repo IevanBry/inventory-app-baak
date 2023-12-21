@@ -38,7 +38,7 @@ class Stock extends CI_Controller
 
     function editStock()
     {
-
+        
     }
     public function insertStock()
     {
@@ -75,12 +75,19 @@ class Stock extends CI_Controller
     public function deleteStock()
     {
         $id_barang = $this->input->post('id_barang');
-    
+
+        // $image_path = FCPATH . 'path/to/images/' . $filename;
+
+        // if (file_exists($image_path)) {
+        //     unlink($image_path);
+        // }
+
         if (!empty($id_barang)) {
             $this->Stock_model->delete($id_barang);
         }
+
         redirect('Stock');
     }
-    
+
 
 }
