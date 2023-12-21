@@ -143,11 +143,11 @@
                                     </td>
 
                                     <td scope="" class="p-4 space-x-2 text-center">
-                                        <button id="updateBarangButton" type="button" 
-                                        data-modal-target="updateBarangModal<?= $no ?>"
-                                        data-modal-toggle="updateBarangModal<?= $no ?>"
-                                        class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
-                                        <i class="bx bx-edit"></i>
+                                        <button id="updateBarangButton" type="button"
+                                            data-modal-target="updateBarangModal<?= $no ?>"
+                                            data-modal-toggle="updateBarangModal<?= $no ?>"
+                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
+                                            <i class="bx bx-edit"></i>
                                             Update
                                         </button>
 
@@ -162,11 +162,11 @@
                                     </td>
                                 </tr>
                                 <!-- update barang modal -->
-                                <div id="updateBarangModal<?=$no ?>" tabindex="-1" aria-hidden="true"
+                                <div id="updateBarangModal<?= $no ?>" tabindex="-1" aria-hidden="true"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-2xl max-h-full">
                                         <!-- Modal content -->
-                                        <div class="relative bg-white rounded shadow">
+                                        <div class="relative bg-white rounded shadow pb-1">
                                             <!-- Modal header -->
                                             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
                                                 <h3 class="text-lg font-semibold text-gray-90">
@@ -174,7 +174,7 @@
                                                 </h3>
                                                 <button type="button"
                                                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                    data-modal-toggle="updateBarangModal">
+                                                    data-modal-toggle="updateBarangModal<?= $no ?>">
                                                     <svg class="w-3 h-3" aria-hidden="true"
                                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
                                                         <path stroke="currentColor" stroke-linecap="round"
@@ -193,24 +193,26 @@
                                                             barang</label>
                                                         <input type="text" name="name" id="name"
                                                             class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded  block w-full p-2.5 "
-                                                            placeholder="" required="" value="Spidol">
+                                                            placeholder="" required="" value="<?= $item['nama_barang'] ?>">
                                                     </div>
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="price"
                                                             class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah</label>
                                                         <input type="number" name="price" id="price"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
-                                                            placeholder="0" required="" value="20">
+                                                            placeholder="0" required="" value="<?= $item['stok'] ?>">
                                                     </div>
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                                                         <select id="category"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500  block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
-                                                            <option value="">Pilih Kategori Barang</option>
-                                                            <option selected="">Alat Tulis</option>
-                                                            <option value="">Elektronik</option>
-                                                            <option value="">Makanan</option>
+                                                            <option selected="<?= $item['nama_kategori'] ?>">Pilih Kategori Barang</option>
+                                                            <?php foreach ($kategori as $k): ?>
+                                                                <option value="<?= $k['id_kategori']; ?>">
+                                                                    <?= $k['nama_kategori']; ?>
+                                                                </option>
+                                                            <?php endforeach; ?>
                                                         </select>
                                                     </div>
                                                     <div class="col-span-1">
@@ -218,17 +220,17 @@
                                                             class="block mb-2 text-sm font-medium text-gray-90">Harga</label>
                                                         <input type="number" name="price" id="price"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
-                                                            placeholder="Rp." required="" value="8.000">
+                                                            placeholder="Rp." required="" value="<?= $item['harga'] ?>">
                                                     </div>
                                                     <div class="col-span-1">
                                                         <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
                                                         <select id="category"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
-                                                            <option selected="">Pilih satuan Barang</option>
-                                                            <option value="">Buah</option>
-                                                            <option value="">Lembar</option>
-                                                            <option value="">kg</option>
+                                                            <option selected="<?= $item['satuan'] ?>">Pilih satuan Barang</option>
+                                                            <option value="Buah">Buah</option>
+                                                            <option value="Lembar">Lembar</option>
+                                                            <option value="Kg">kg</option>
                                                         </select>
                                                     </div>
 
@@ -239,7 +241,7 @@
                                                         <textarea id="description" rows="4"
                                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
                                                             placeholder="Write product description here"
-                                                            value="">Spidol Hitam untuk papan tulis</textarea>
+                                                            value="<?= $item['deskripsi'] ?>">Spidol Hitam untuk papan tulis</textarea>
                                                     </div>
 
                                                     <div class="col-span-2">
@@ -258,18 +260,18 @@
                                                                     </svg>
                                                                     <p class="mb-2 text-sm text-gray-500">
                                                                         upload gambar barang</p>
-                                                                    <input id="dropzone-file" type="file" class="hidden" />
+                                                                    <input id="dropzone-file" type="file" class="hidden" value="<?= $item['gambar'] ?>"/>
                                                                 </div>
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="text-end">
+                                                <div class="text-end me-4 mb-4">
                                                     <button type="button" data-modal-hide="updateBarangModal<?= $no ?>"
                                                         class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
                                                         Batal
                                                     </button>
-                                                    <button type="submit" 
+                                                    <button type="submit"
                                                         class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
                                                         Update Barang
                                                     </button>
@@ -288,7 +290,7 @@
                                         <div class="relative bg-white rounded shadow ">
                                             <button type="button"
                                                 class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                data-modal-hide="hapusBarangModal">
+                                                data-modal-hide="hapusBarangModal<?= $no ?>">
                                                 <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                                     fill="none" viewBox="0 0 14 14">
                                                     <path stroke="currentColor" stroke-linecap="round"
@@ -460,7 +462,7 @@
                         </div>
                     </div>
                     <div class="text-end">
-                        <button type="button"
+                        <button data-modal-hide="tambahBarangModal" type="button"
                             class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
                             Batal
                         </button>
