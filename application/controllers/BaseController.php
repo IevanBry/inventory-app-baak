@@ -72,6 +72,8 @@ class BaseController extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->Stock_model->get();
         $data['kategori'] = $this->Kategori_model->get();
+        $data['stok_rendah'] = $this->Stock_model->getJumlahBarangTerendah();
+        $data['total'] = $this->Stock_model->getTotalBarang();
         $this->load->view('layout/header',$data);
         $this->load->view('stock/index', $data);
         $this->load->view('layout/footer');

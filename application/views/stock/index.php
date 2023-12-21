@@ -19,14 +19,14 @@
                 <i class='bx bx-package text-3xl w-12 bg-green-100 text-green-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Total Barang</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">190</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $total; ?></h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bxs-hourglass-bottom text-3xl w-12 bg-red-100 text-red-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Stock Sedikit</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $stok_rendah; ?></h1>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
                                         <button id="updateBarangButton" type="button"
                                             data-modal-target="updateBarangModal<?= $no ?>"
                                             data-modal-toggle="updateBarangModal<?= $no ?>"
-                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
+                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-sky-400 text-white border hover:bg-sky-500">
                                             <i class="bx bx-edit"></i>
                                             Update
                                         </button>
@@ -158,9 +158,9 @@
                                             data-modal-target="hapusBarangModal<?= $no ?>"
                                             data-modal-toggle="hapusBarangModal<?= $no ?>"
                                             aria-controls="drawer-delete-product-default"
-                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
+                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-red-400 text-white border hover:bg-red-500">
                                             <i class="bx bx-trash"></i>
-                                            Delete
+                                             Delete
                                         </button>
                                     </td>
                                 </tr>
@@ -211,8 +211,9 @@
                                                             class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                                                         <select id="category"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500  block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
-                                                            <option selected="<?= $item['nama_kategori'] ?>">Pilih Kategori Barang</option>
-                                                            <?php foreach ($kategori as $k): ?>
+                                                            <option selected="<?= $item['nama_kategori'] ?>">Pilih Kategori
+                                                                Barang
+                                                                <?php foreach ($kategori as $k): ?>
                                                                 <option value="<?= $k['id_kategori']; ?>">
                                                                     <?= $k['nama_kategori']; ?>
                                                                 </option>
@@ -231,7 +232,8 @@
                                                             class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
                                                         <select id="category"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
-                                                            <option selected="<?= $item['satuan'] ?>">Pilih satuan Barang</option>
+                                                            <option selected="<?= $item['satuan'] ?>">Pilih satuan Barang
+                                                            </option>
                                                             <option value="Buah">Buah</option>
                                                             <option value="Lembar">Lembar</option>
                                                             <option value="Kg">kg</option>
@@ -245,7 +247,7 @@
                                                         <textarea id="description" rows="4"
                                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
                                                             placeholder="Write product description here"
-                                                            value="<?= $item['deskripsi'] ?>">Spidol Hitam untuk papan tulis</textarea>
+                                                            value="<?= $item['deskripsi'] ?>"><?= $item['deskripsi'] ?></textarea>
                                                     </div>
 
                                                     <div class="col-span-2">
@@ -264,7 +266,8 @@
                                                                     </svg>
                                                                     <p class="mb-2 text-sm text-gray-500">
                                                                         upload gambar barang</p>
-                                                                    <input id="dropzone-file" type="file" class="hidden" value="<?= $item['gambar'] ?>"/>
+                                                                    <input id="dropzone-file" type="file" class="hidden"
+                                                                        value="<?= $item['gambar'] ?>" />
                                                                 </div>
                                                             </label>
                                                         </div>
