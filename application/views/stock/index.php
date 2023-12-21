@@ -48,17 +48,20 @@
 
                     </div>
                     <div class="flex gap-2">
+                        <button id="deleteAll" type="button"
+                            class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
+                            <i class='bx bxs-file-export text-md'></i>
+                            <span>Hapus Semua</span>
+                        </button>
                         <button type="button" id="tambahBarang" data-modal-target="tambahBarangModal"
                             data-modal-toggle="tambahBarangModal"
                             class="bg-amber-400 text-white hover:bg-amber-500 flex items-center shadow-md font-medium rounded text-sm px-3 py-1 ">
                             <i class='bx bx-plus'></i>
                             <span> Tambah Barang Baru</span>
-
                         </button>
                         <button id="exportDataUser" type="button"
                             class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bxs-file-export text-md'></i>
-
                             <span>Export</span>
                         </button>
                     </div>
@@ -143,11 +146,11 @@
                                     </td>
 
                                     <td scope="" class="p-4 space-x-2 text-center">
-                                        <button id="updateBarangButton" type="button" 
-                                        data-modal-target="updateBarangModal<?= $no ?>"
-                                        data-modal-toggle="updateBarangModal<?= $no ?>"
-                                        class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
-                                        <i class="bx bx-edit"></i>
+                                        <button id="updateBarangButton" type="button"
+                                            data-modal-target="updateBarangModal<?= $no ?>"
+                                            data-modal-toggle="updateBarangModal<?= $no ?>"
+                                            class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-white border hover:bg-gray-100">
+                                            <i class="bx bx-edit"></i>
                                             Update
                                         </button>
 
@@ -162,7 +165,7 @@
                                     </td>
                                 </tr>
                                 <!-- update barang modal -->
-                                <div id="updateBarangModal<?=$no ?>" tabindex="-1" aria-hidden="true"
+                                <div id="updateBarangModal<?= $no ?>" tabindex="-1" aria-hidden="true"
                                     class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                     <div class="relative p-4 w-full max-w-2xl max-h-full">
                                         <!-- Modal content -->
@@ -269,7 +272,7 @@
                                                         class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
                                                         Batal
                                                     </button>
-                                                    <button type="submit" 
+                                                    <button type="submit"
                                                         class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
                                                         Update Barang
                                                     </button>
