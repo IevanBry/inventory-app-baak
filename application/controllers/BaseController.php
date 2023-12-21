@@ -17,6 +17,7 @@ class BaseController extends CI_Controller
     function index()
     {
         $data['title'] = 'Dashboard';
+        $data['active'] = 'text-amber-400';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->Stock_model->get();
         $data['icon'] = 'bx bx-home';

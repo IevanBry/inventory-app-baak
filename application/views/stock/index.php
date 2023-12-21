@@ -19,14 +19,18 @@
                 <i class='bx bx-package text-3xl w-12 bg-green-100 text-green-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Total Barang</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $total; ?></h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold">
+                        <?= $total; ?>
+                    </h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bxs-hourglass-bottom text-3xl w-12 bg-red-100 text-red-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Stock Sedikit</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $stok_rendah; ?></h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold">
+                        <?= $stok_rendah; ?>
+                    </h1>
                 </div>
             </div>
         </div>
@@ -82,7 +86,7 @@
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
+                                    <th scope="col" class="p-4 text-xs font-medium text-center  uppercase">
                                         No
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
@@ -121,7 +125,7 @@
                                             <label for="" class="sr-only">checkbox</label>
                                         </div>
                                     </td>
-                                    <td class="p-2 text-sm font-medium text-gray-900">
+                                    <td class="p-2 text-sm font-medium text-center text-gray-900">
                                         <?= $no ?>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-gray-900">
@@ -160,7 +164,7 @@
                                             aria-controls="drawer-delete-product-default"
                                             class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-red-400 text-white border hover:bg-red-500">
                                             <i class="bx bx-trash"></i>
-                                             Delete
+                                            Delete
                                         </button>
                                     </td>
                                 </tr>
@@ -177,7 +181,6 @@
                                                 </h3>
                                                 <button type="button"
                                                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                
                                                     data-modal-toggle="updateBarangModal<?= $no ?>">
                                                     <svg class="w-3 h-3" aria-hidden="true"
                                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">

@@ -20,7 +20,7 @@
         tailwind.config = {
             theme: {
                 extend: {
-             
+
                     fontFamily: {
                         poppins: ['Poppins', 'sans-serif'],
                     },
@@ -34,7 +34,7 @@
 
 <body class="font-poppins bg-gray-50">
 
-    <nav class="fixed top-0 z-40 w-full bg-white shadow-sm ">
+    <nav class="fixed top-0 z-30 w-full bg-white shadow-sm ">
         <div class="px-3 py-2">
             <div class="flex">
                 <div class="flex items-center justify-start rtl:justify-end">
@@ -44,13 +44,6 @@
                         <span class="hidden underline decoration-amber-400 md:inline-block whitespace-nowrap">PCR</span>
                     </a>
                 </div>
-
-                <!-- <a href="" class="flex items-center text-4xl text-amber-400 font-semibold">
-                    <i class='bx bxl-bootstrap text-5xl  text-sky-400 '></i>
-                    <span class="self-center hidden   md:inline-block whitespace-nowrap text-sky-400 ">Basis
-                    </span>
-                   
-                </a> -->
 
                 <div class="ml-3 flex items-center justify-between w-full">
                     <div class="flex items-center gap-2">
@@ -62,7 +55,17 @@
 
 
                     <div class="flex gap-4 items-center mr-6">
-                        <i class='bx bx-bell hidden sm:inline-block'></i>
+
+                        <?php if ($user['role'] == 'User' && $title == 'Barang') { ?>
+                            <div class="text-center">
+                                <button class="font-medium" type="button"
+                                    data-drawer-target="keranjang" data-drawer-show="keranjang"
+                                    data-drawer-placement="right" aria-controls="keranjang">
+                                    <i class='bx bx-cart text-[30px]'></i>
+                                </button>
+                            </div>
+                        <?php } ?>
+
                         <div class="avatar online">
                             <button type="button" id="dropdownDefaultButton" data-dropdown-toggle="dropdown"
                                 aria-hidden="true">
@@ -83,15 +86,12 @@
 
                         <div id="dropdown"
                             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 ">
-                            <ul class="py-2 text-sm text-gray-700"
-                                aria-labelledby="dropdownDefaultButton">
+                            <ul class="py-2 text-sm text-gray-700" aria-labelledby="dropdownDefaultButton">
                                 <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100">Settings</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Settings</a>
                                 </li>
                                 <li>
-                                    <a href="#"
-                                        class="block px-4 py-2 hover:bg-gray-100">Profile</a>
+                                    <a href="#" class="block px-4 py-2 hover:bg-gray-100">Profile</a>
                                 </li>
                                 <li>
                                     <a href="<?= base_url('auth/logout') ?>"
@@ -108,24 +108,22 @@
     </nav>
 
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-30 md:w-64 w-[70px] h-screen pt-20 transition-transform  bg-white  shadow-md">
+        class="fixed top-0 left-0 z-10 md:w-64 w-[70px] h-screen pt-20 transition-transform  bg-white  shadow-md">
         <div class="h-full px-3 pb-4 flex flex-col justify-between">
             <?php if ($user['role'] == 'User') { ?>
-
-
                 <!-- user sidebar start -->
                 <ul class="space-y-2  " id="list-menu">
 
                     <li class="active:text-gray-900 focus:text-gray-900">
                         <a href="<?= base_url('user') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400 ">
+                            class="dashboard flex items-center p-2 text-amber-400  group hover:text-amber-300 ">
                             <i class="bx bx-home text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Home</span>
                         </a>
                     </li>
                     <li class="active:text-gray-900 focus:text-gray-900">
                         <a href="<?= base_url('user/barang') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400 ">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300 ">
                             <i class="bx bx-store text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Barang</span>
                         </a>
@@ -133,14 +131,14 @@
 
                     <li>
                         <a href="<?= base_url('user/request') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400 ">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300 ">
                             <i class="bx bx-chat text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Pengajuan</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('user/history') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
                             <i class="bx bx-bell text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">History</span>
                         </a>
@@ -150,7 +148,7 @@
                 <ul class="font-medium pb-3">
                     <li>
                         <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                            class="flex items-center p-2 text-gray-500 hover:text-amber-400 group">
+                            class="flex items-center p-2 text-gray-500 hover:text-amber-300 group">
                             <i class="bx bx-log-out text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Logout</span>
                         </button>
@@ -164,42 +162,43 @@
 
                 <ul class="space-y-2  " id="list-menu">
                     <li>
-                        <a href="<?= base_url() ?>" class="flex items-center p-2 text-gray-500 group hover:text-amber-400">
+                        <a href="<?= base_url('') ?>"
+                            class="dashboard flex items-center p-2 text-amber-400 group hover:text-amber-300">
                             <i class="bx bx-home text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/stock') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400">
+                            class="flex items-center p-2 text-gray-500  group hover:text-amber-300">
                             <i class="bx bx-package text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Stock</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/user') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
                             <i class="bx bx-user text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">User</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/report') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
                             <i class="bx bx-file-find text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Report</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/request') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400 ">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300 ">
                             <i class="bx bx-chat text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Request</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/notif') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-400">
+                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
                             <i class="bx bx-bell text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Notification</span>
                         </a>
@@ -209,7 +208,7 @@
                 <ul class="font-medium pb-3">
                     <li>
                         <button type="button" data-modal-target="popup-modal" data-modal-toggle="popup-modal"
-                            class="flex items-center p-2 text-gray-500 hover:text-amber-400 group">
+                            class="flex items-center p-2 text-gray-500 hover:text-amber-300 group">
                             <i class="bx bx-log-out text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Logout</span>
                         </button>
