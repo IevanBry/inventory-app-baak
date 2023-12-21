@@ -189,7 +189,7 @@
                                             </div>
                                             <!-- Modal body -->
                                             <form action="#" class="p-4 md:p-5">
-                                                <div class="grid gap-4 mb-4 grid-cols-2">
+                                                <div class="grid gap-4 mb-4 ms-4 me-4 grid-cols-2">
                                                     <div class="col-span-2">
                                                         <label for="name"
                                                             class="block mb-2 text-sm font-medium text-gray-90">Nama
