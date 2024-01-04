@@ -40,6 +40,10 @@ class Stock_model extends CI_Model
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
+    public function deleteSelected($chcked_id){
+        $this->db->where_in($this->id, $chcked_id);
+        return $this->db->delete($this->table);
+    }
     public function getJumlahBarangTerendah()
     {
         $this->db->select('nama_barang, MIN(stok) as min_stok');

@@ -91,4 +91,23 @@ class Stock extends CI_Controller
         redirect('Stock');
     }
 
+    public function deleteAll()
+    {
+        if(!empty($this->input->post('checkbox_value')))
+        {
+            $checkedBarang = $this->input->post('checkbox_value');
+            $checked_id = [];
+            foreach ($checkedBarang as $row) {
+                array_push($checked_id, $row);
+            }
+            $this->Stock_model->deleteSelected($checked_id);
+            $this->session->set_flashdata('status','Barang Selected Data Deleted');
+            redirect('stock');
+
+        } else {
+            $this->session->set_flashdata('status','Select atleast any ID');
+            redirect('stock');
+        }
+    }
+
 }
