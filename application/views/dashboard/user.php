@@ -59,7 +59,7 @@
                                     <tr class="hover:bg-gray-100 borde">
                                         <td class="w-4 p-4">
                                             <div class="flex items-center">
-                                                <input id="" aria-describedby="checkbox-1" type="checkbox" 
+                                                <input id="" aria-describedby="checkbox-1" type="checkbox"
                                                     class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
                                             </div>
                                         </td>
@@ -179,7 +179,7 @@
                                     class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
                                     placeholder="Email" required="" value="082287498239">
                             </div>
-                            
+
 
                         </div>
                         <div class="text-end">
