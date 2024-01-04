@@ -38,9 +38,31 @@ class Stock extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    function editStock()
+    public function editStock()
     {
+        // Periksa apakah metode yang digunakan adalah POST
+        if ($this->input->server('REQUEST_METHOD') === 'POST') {
 
+            // Ambil data dari formulir
+            $itemId = $this->input->post('item_id');
+            $name = $this->input->post('name');
+            $price = $this->input->post('price');
+            $category = $this->input->post('category');
+            $harga = $this->input->post('harga');
+            $satuan = $this->input->post('satuan');
+            $description = $this->input->post('description');
+            $gambar = $this->input->post('gambar');
+
+            // Lakukan operasi penyuntingan data, misalnya dengan model
+            $this->load->model('Stock_model');
+            $this->Stock_model->editItem($itemId, $name, $price, $category, $harga, $satuan, $description, $gambar);
+
+            // Redirect atau lakukan operasi lain setelah penyuntingan
+            redirect('stock/index');
+        } else {
+            // Handle jika bukan metode POST
+            show_404();
+        }
     }
     public function insertStock()
     {
@@ -78,12 +100,6 @@ class Stock extends CI_Controller
     {
         $id_barang = $this->input->post('id_barang');
 
-        // $image_path = FCPATH . 'path/to/images/' . $filename;
-
-        // if (file_exists($image_path)) {
-        //     unlink($image_path);
-        // }
-
         if (!empty($id_barang)) {
             $this->Stock_model->delete($id_barang);
         }
@@ -93,19 +109,18 @@ class Stock extends CI_Controller
 
     public function deleteAll()
     {
-        if(!empty($this->input->post('checkbox_value')))
-        {
+        if (!empty($this->input->post('checkbox_value'))) {
             $checkedBarang = $this->input->post('checkbox_value');
             $checked_id = [];
             foreach ($checkedBarang as $row) {
                 array_push($checked_id, $row);
             }
             $this->Stock_model->deleteSelected($checked_id);
-            $this->session->set_flashdata('status','Barang Selected Data Deleted');
+            $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
             redirect('stock');
 
         } else {
-            $this->session->set_flashdata('status','Select atleast any ID');
+            $this->session->set_flashdata('status', 'Select atleast any ID');
             redirect('stock');
         }
     }
