@@ -504,7 +504,7 @@
                                     </div>
                                  
                                 </label>
-                                 <input name="gambar" id="dropzone-file" type="file"  />
+                               
                             </div>
                         </div>
                     </div>

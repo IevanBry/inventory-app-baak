@@ -57,22 +57,26 @@
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
+                                    <th scope="col" class="p-4 text-xs font-medium  uppercase">
+                                        No
+                                    </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
                                         User
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
-                                        Role
+                                        Account
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
-                                        Status
+                                        Role
                                     </th>
+                            
                                     <th scope="col" class="p-4 text-xs font-medium text-center  uppercase">
                                         Actions
                                     </th>
                                 </tr>
                             </thead>
                             <?php $no = 1; ?>
-                            <?php foreach ($data as $item): ?>
+                            <?php foreach ($user_list as $item): ?>
                                 <tr class="hover:bg-gray-50">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
@@ -97,9 +101,7 @@
                                     <td class="p-2 text-sm font-medium text-gray-900">
                                         <?= $item['role'] ?>
                                     </td>
-                                    <td class="p-2 text-sm font-medium text-gray-900">
-                                        <?= $item['password'] ?>
-                                    </td>
+                
 
                                     <td scope="" class="p-4 space-x-2 text-center">
                                         <button id="updateUserButton" type="button"

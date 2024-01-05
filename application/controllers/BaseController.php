@@ -32,10 +32,7 @@ class BaseController extends CI_Controller
         $data['title'] = 'User';
         $data['icon'] = 'bx bx-user';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['nama'] = $this->User_model->get();
-        $data['email'] = $this->User_model->get();
-        $data['role'] = $this->User_model->get();
-        $data['password'] = $this->User_model->get();
+        $data['user_list'] = $this->User_model->get();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/user', $data);
         $this->load->view('layout/footer');

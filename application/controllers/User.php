@@ -9,6 +9,8 @@ class User extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
+
+        $this->load->model('Stock_model');
     }
 
     public function index()
@@ -25,6 +27,7 @@ class User extends CI_Controller
         $data['title'] = 'Barang';
         $data['icon'] = 'bx bx-store';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['barang'] = $this->Stock_model->get();
         $this->load->view("layout/header", $data);
         $this->load->view("User/barang");
         $this->load->view("layout/footer");

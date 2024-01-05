@@ -22,17 +22,16 @@
         </div>
 
         <div class="grid grid-cols-3 gap-2">
-            <?php for ($i = 0; $i < 12; $i++) { ?>
+            <?php foreach($barang as $item) :  ?>
                 <div class="bg-white shadow-md rounded border">
                     <div class="p-2 flex items-center">
-                        <img src="<?= base_url('dist/1.png') ?>" alt="" class="w-32 h-32 rounded-lg  p-1">
+                        <img src="<?= base_url('dist/') . $item['gambar'] ?>" alt="" class="w-32 h-32 rounded-lg  p-1">
                         <div class="p-3">
-                            <h1 class=" font-semibold">Spidol Papan Tulis</h1>
-                            <p class="text-gray-500 text-sm ">Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                            </p>
+                            <h1 class=" font-semibold"><?= $item['nama_barang'] ?></h1>
+                            <p class="text-gray-500 text-sm "><?= $item['deskripsi'] ?></p>
 
                             <div class="text-xs  mt-2 font-medium ">
-                                <p class="mb-3">Tersedia<span class="text-green-500 "> 20</span></p>
+                                <p class="mb-3">Tersedia <span class="text-green-500 "><?= $item['stok']  ?></span></p>
                                 <button
                                     class="px-3 py-2 mb-3 shadow-md rounded w-full bg-white border hover:bg-gray-100">Detail
                                     barang</button>
@@ -46,7 +45,7 @@
                 </div>
 
 
-            <?php } ?>
+            <?php endforeach ?>
 
 
 
