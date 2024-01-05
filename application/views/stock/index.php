@@ -84,7 +84,7 @@
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                        <table id="example" class="ui celled table" style="width:100%" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th scope="col" class="p-4">

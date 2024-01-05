@@ -14,8 +14,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.1.1/flowbite.min.css" rel="stylesheet" />
     <script src="<?= base_url('Chart/Chart.js') ?>"></script>
     <link rel="stylesheet" href="<?= base_url('dist/style.css') ?>">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.semanticui.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.9.2/semantic.min.css">
     <script src="https://cdn.tailwindcss.com"></script>
-
     <script>
         tailwind.config = {
             theme: {
@@ -58,9 +59,8 @@
 
                         <?php if ($user['role'] == 'User' && $title == 'Barang') { ?>
                             <div class="text-center">
-                                <button class="font-medium" type="button"
-                                    data-drawer-target="keranjang" data-drawer-show="keranjang"
-                                    data-drawer-placement="right" aria-controls="keranjang">
+                                <button class="font-medium" type="button" data-drawer-target="keranjang"
+                                    data-drawer-show="keranjang" data-drawer-placement="right" aria-controls="keranjang">
                                     <i class='bx bx-cart text-[30px]'></i>
                                 </button>
                             </div>
@@ -214,7 +214,7 @@
                         </button>
                     </li>
                 </ul>
-     
+
                 <!-- admin sidebar end -->
 
             <?php } ?>
