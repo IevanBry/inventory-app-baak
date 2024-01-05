@@ -52,10 +52,17 @@
 
                     </div>
                     <div class="flex gap-2">
-                        <button id="deleteAll" type="button"
+                        <button id="deleteAlll" type="button" onclick="confirmDeleteAll()"
                             class="bg-red-400 text-white hover:bg-red-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bx-trash'></i>
                             <span>Hapus Semua</span>
+                            <script>
+                                function confirmDeleteAll() {
+                                    if (confirm("Apakah Anda yakin ingin menghapus semua data?")) {
+                                        document.getElementById('deleteAllForm').submit();
+                                    }
+                                }
+                            </script>
                         </button>
                         <button type="button" id="tambahBarang" data-modal-target="tambahBarangModal"
                             data-modal-toggle="tambahBarangModal"
@@ -70,6 +77,14 @@
                         </button>
                     </div>
                 </div>
+                <?php if ($this->session->flashdata('status')): ?>
+                    <div class="flex h-16 items-center">
+                        <div class="p-2 mt-4 w-full flex items-center gap-2 text-sm font-medium text-green-800 rounded-lg bg-green-100"
+                            role="alert"><i class="bx bx-check-circle text-xl"></i>
+                            <?= $this->session->flashdata('status'); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
         <div class="flex flex-col">
@@ -82,7 +97,19 @@
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
+                                                onchange="checkAll()"
                                                 class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                            <script>
+                                                function checkAll() {
+                                                    var checkboxAll = document.getElementById('checkbox-all');
+                                                    var checkboxes = document.querySelectorAll('[name="checkbox_value[]"]');
+
+                                                    for (var i = 0; i < checkboxes.length; i++) {
+                                                        checkboxes[i].checked = checkboxAll.checked;
+                                                    }
+                                                }
+                                            </script>
+
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
@@ -115,14 +142,19 @@
                                     </th>
                                 </tr>
                             </thead>
+
                             <?php $no = 1; ?>
                             <?php foreach ($barang as $item): ?>
                                 <tr class="hover:bg-gray-50">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
-                                            <input id="" aria-describedby="checkbox-1" type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
-                                            <label for="" class="sr-only">checkbox</label>
+                                            <form id="deleteAllForm" action="<?= base_url('Stock/deleteAll'); ?>"
+                                                method="POST">
+                                                <input name="checkbox_value[]" value="<?= $item['id_barang'] ?>"
+                                                    aria-describedby="checkbox-1" type="checkbox"
+                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                                <label for="" class="sr-only">checkbox</label>
+                                            </form>
                                         </div>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-center text-gray-900">
@@ -192,7 +224,9 @@
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-                                            <form action="#" class="p-4 md:p-5">
+                                            <form action="<?= base_url('Stock/editStock'); ?>" method="POST"
+                                                class="p-4 md:p-5" enctype="multipart/form-data">
+                                                <input type="hidden" name="id" value="<?= $item['id_barang']; ?>">
                                                 <div class="grid gap-4 mb-4 ms-4 me-4 grid-cols-2">
                                                     <div class="col-span-2">
                                                         <label for="name"
@@ -205,19 +239,18 @@
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="price"
                                                             class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah</label>
-                                                        <input type="number" name="price" id="price"
+                                                        <input type="number" name="amount" id="amount"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                                             placeholder="0" required="" value="<?= $item['stok'] ?>">
                                                     </div>
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
-                                                        <select id="category"
+                                                        <select id="category" name="category"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500  block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
-                                                            <option selected="<?= $item['nama_kategori'] ?>">Pilih Kategori
-                                                                Barang
-                                                                <?php foreach ($kategori as $k): ?>
-                                                                <option value="<?= $k['id_kategori']; ?>">
+                                                            <?php foreach ($kategori as $k): ?>
+                                                                <option value="<?= $k['id_kategori']; ?>"
+                                                                    <?= ($k['id_kategori'] == $item['id_kategori']) ? 'selected' : ''; ?>>
                                                                     <?= $k['nama_kategori']; ?>
                                                                 </option>
                                                             <?php endforeach; ?>
@@ -233,13 +266,15 @@
                                                     <div class="col-span-1">
                                                         <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
-                                                        <select id="category"
+                                                        <select name="satuan" id="satuan"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
-                                                            <option selected="<?= $item['satuan'] ?>">Pilih satuan Barang
-                                                            </option>
+                                                            <option selected="<?= $item['satuan'] ?>">
+                                                                <?= $item['satuan'] ?>
                                                             <option value="Buah">Buah</option>
                                                             <option value="Lembar">Lembar</option>
                                                             <option value="Kg">kg</option>
+                                                            </option>
+
                                                         </select>
                                                     </div>
 
@@ -247,7 +282,7 @@
                                                         <label for="description"
                                                             class="block mb-2 text-sm font-medium text-gray-900 ">Product
                                                             Description</label>
-                                                        <textarea id="description" rows="4"
+                                                        <textarea name="description" id="description" rows="4"
                                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
                                                             placeholder="Write product description here"
                                                             value="<?= $item['deskripsi'] ?>"><?= $item['deskripsi'] ?></textarea>
@@ -259,7 +294,7 @@
                                                                 class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
                                                                 <div
                                                                     class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                                    <svg class="w-8 h-8 mb-4 text-gray-500"
+                                                                    <!-- <svg class="w-8 h-8 mb-4 text-gray-500"
                                                                         aria-hidden="true"
                                                                         xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                         viewBox="0 0 20 16">
@@ -268,8 +303,8 @@
                                                                             d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                                                     </svg>
                                                                     <p class="mb-2 text-sm text-gray-500">
-                                                                        upload gambar barang</p>
-                                                                    <input id="dropzone-file" type="file" class="hidden"
+                                                                        upload gambar barang</p> -->
+                                                                    <input type="file" class="" name="gambar"
                                                                         value="<?= $item['gambar'] ?>" />
                                                                 </div>
                                                             </label>
@@ -317,7 +352,8 @@
                                                         stroke-linejoin="round" stroke-width="2"
                                                         d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                                                 </svg>
-                                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Yakin
+                                                <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
+                                                    Yakin
                                                     ingin menghapus barang -
                                                     <span class="text-red-500">
                                                         <?= $item['nama_barang'] ?>
@@ -340,14 +376,11 @@
                                 <!-- Penutup Hapus Barang -->
                                 <?php $no++; ?>
                             <?php endforeach; ?>
-                            </tbody>
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-
-
 
         <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
             <div class="flex items-center mb-4 sm:mb-0">
@@ -417,8 +450,9 @@
                         <div class="col-span-2 sm:col-span-1">
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                             <select name="category" id="category"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 ">
-                                <option selected="">Pilih Kategori Barang</option>
+                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 "
+                                required>
+                                <option value="" selected hidden>Pilih Kategori Barang</option>
                                 <?php foreach ($kategori as $k): ?>
                                     <option value="<?= $k['id_kategori']; ?>">
                                         <?= $k['nama_kategori']; ?>
@@ -435,8 +469,9 @@
                         <div class="col-span-1">
                             <label for="satuan" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
                             <select name="satuan" id="satuan"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
-                                <option selected="">Pilih satuan Barang</option>
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5"
+                                required>
+                                <option value="" disabled selected hidden>Pilih satuan Barang</option>
                                 <option value="buah">Buah</option>
                                 <option value="lembar">Lembar</option>
                                 <option value="kg">kg</option>
@@ -457,16 +492,17 @@
                             <div class="flex items-center justify-center w-full">
                                 <label for="dropzone-file"
                                     class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                    <input name="gambar" id="dropzone-file" type="file" class="absolute">
                                     <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true"
+                                        <!-- <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
-                                        </svg>
-                                        <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p>
+                                        </svg> -->
+                                        <!-- <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p> -->
                                     </div>
-                                   
+                                 
                                 </label>
                                  <input name="gambar" id="dropzone-file" type="file"  />
                             </div>
