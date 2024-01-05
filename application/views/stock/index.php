@@ -502,9 +502,9 @@
                                         </svg> -->
                                         <!-- <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p> -->
                                     </div>
-                                 
+                                
                                 </label>
-                               
+                            
                             </div>
                         </div>
                     </div>
