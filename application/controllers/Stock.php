@@ -44,15 +44,12 @@ class Stock extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        $defaultImage = '1.png';
-        $gambar = $defaultImage;
-
         if ($this->upload->do_upload('gambar')) {
             $upload_data = $this->upload->data();
             $gambar = $upload_data['file_name'];
         } else {
-            $error = array('error' => $this->upload->display_errors());
-            print_r($error);
+            $id = $this->input->post('id');
+            $gambar = $this->Stock_model->get_image_by_id($id);
         }
 
         $data = [
@@ -66,8 +63,10 @@ class Stock extends CI_Controller
         ];
         $id = $this->input->post('id');
         $this->Stock_model->update(['id_barang' => $id], $data);
-        redirect('Stock');
+        $this->session->set_flashdata('status', 'Update barang berhasil');
+        redirect('stock');
     }
+    
     public function insertStock()
     {
         $config['upload_path'] = './dist/';
@@ -97,7 +96,8 @@ class Stock extends CI_Controller
         ];
 
         $this->Stock_model->insert($barang);
-        redirect('Stock');
+        $this->session->set_flashdata('status', 'Insert barang berhasil');
+        redirect('stock');
     }
 
     public function deleteStock()
@@ -108,7 +108,8 @@ class Stock extends CI_Controller
             $this->Stock_model->delete($id_barang);
         }
 
-        redirect('Stock');
+        $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
+        redirect('stock');
     }
 
     public function deleteAll()

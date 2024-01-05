@@ -202,31 +202,30 @@
                                 </tr>
                                 <!-- update barang modal -->
                                 <div id="updateBarangModal<?= $no ?>" tabindex="-1" aria-hidden="true"
-                                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                                        <div class="relative p-4 w-full max-w-2xl max-h-full">
-                                            <!-- Modal content -->
-                                            <div class="relative bg-white rounded shadow pb-1">
-                                                <!-- Modal header -->
-                                                <div
-                                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                                                    <h3 class="text-lg font-semibold text-gray-90">
-                                                        Update Barang
-                                                    </h3>
-                                                    <button type="button"
-                                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                                                        data-modal-toggle="updateBarangModal<?= $no ?>">
-                                                        <svg class="w-3 h-3" aria-hidden="true"
-                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                            viewBox="0 0 14 14">
-                                                            <path stroke="currentColor" stroke-linecap="round"
-                                                                stroke-linejoin="round" stroke-width="2"
-                                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                                                        </svg>
-                                                        <span class="sr-only">Close modal</span>
-                                                    </button>
-                                                </div>
-                                                <!-- Modal body -->
-                                                <form action="<?= base_url('Stock/editStock'); ?>" method="POST" class="p-4 md:p-5">
+                                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                        <!-- Modal content -->
+                                        <div class="relative bg-white rounded shadow pb-1">
+                                            <!-- Modal header -->
+                                            <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                                                <h3 class="text-lg font-semibold text-gray-90">
+                                                    Update Barang
+                                                </h3>
+                                                <button type="button"
+                                                    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                    data-modal-toggle="updateBarangModal<?= $no ?>">
+                                                    <svg class="w-3 h-3" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                            </div>
+                                            <!-- Modal body -->
+                                            <form action="<?= base_url('Stock/editStock'); ?>" method="POST"
+                                                class="p-4 md:p-5" enctype="multipart/form-data">
                                                 <input type="hidden" name="id" value="<?= $item['id_barang']; ?>">
                                                 <div class="grid gap-4 mb-4 ms-4 me-4 grid-cols-2">
                                                     <div class="col-span-2">
@@ -250,8 +249,9 @@
                                                         <select id="category" name="category"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500  block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
                                                             <?php foreach ($kategori as $k): ?>
-                                                                <option value="<?= $k['id_kategori']; ?>" <?= ($k['id_kategori'] == $item['id_kategori']) ? 'selected' : ''; ?>>
-                                                                    <?= $k['nama_kategori']; ?> 
+                                                                <option value="<?= $k['id_kategori']; ?>"
+                                                                    <?= ($k['id_kategori'] == $item['id_kategori']) ? 'selected' : ''; ?>>
+                                                                    <?= $k['nama_kategori']; ?>
                                                                 </option>
                                                             <?php endforeach; ?>
                                                         </select>
@@ -268,12 +268,13 @@
                                                             class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
                                                         <select name="satuan" id="satuan"
                                                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
-                                                            <option selected="<?= $item['satuan'] ?>"><?= $item['satuan'] ?>
+                                                            <option selected="<?= $item['satuan'] ?>">
+                                                                <?= $item['satuan'] ?>
                                                             <option value="Buah">Buah</option>
                                                             <option value="Lembar">Lembar</option>
                                                             <option value="Kg">kg</option>
                                                             </option>
-                                                            
+
                                                         </select>
                                                     </div>
 
@@ -293,7 +294,7 @@
                                                                 class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
                                                                 <div
                                                                     class="flex flex-col items-center justify-center pt-5 pb-6">
-                                                                    <svg class="w-8 h-8 mb-4 text-gray-500"
+                                                                    <!-- <svg class="w-8 h-8 mb-4 text-gray-500"
                                                                         aria-hidden="true"
                                                                         xmlns="http://www.w3.org/2000/svg" fill="none"
                                                                         viewBox="0 0 20 16">
@@ -302,11 +303,10 @@
                                                                             d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                                                     </svg>
                                                                     <p class="mb-2 text-sm text-gray-500">
-                                                                        upload gambar barang</p>
-                                                                    
+                                                                        upload gambar barang</p> -->
+                                                                    <input type="file" class="" name="gambar"
+                                                                        value="<?= $item['gambar'] ?>" />
                                                                 </div>
-                                                                <input id="dropzone-file" type="file" class="hidden"
-                                                                            value="<?= $item['gambar'] ?>" />
                                                             </label>
                                                         </div>
                                                     </div>
@@ -323,10 +323,10 @@
                                                 </div>
 
                                             </form>
-                                            </div>
                                         </div>
                                     </div>
-                                    <!-- Penutup Update Barang  -->
+                                </div>
+                                <!-- Penutup Update Barang  -->
 
                                 <!-- hapus barang -->
                                 <div id="hapusBarangModal<?= $no ?>" tabindex="-1"
@@ -450,8 +450,9 @@
                         <div class="col-span-2 sm:col-span-1">
                             <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                             <select name="category" id="category"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 ">
-                                <option selected="">Pilih Kategori Barang</option>
+                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 "
+                                required>
+                                <option value="" selected hidden>Pilih Kategori Barang</option>
                                 <?php foreach ($kategori as $k): ?>
                                     <option value="<?= $k['id_kategori']; ?>">
                                         <?= $k['nama_kategori']; ?>
@@ -468,8 +469,9 @@
                         <div class="col-span-1">
                             <label for="satuan" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
                             <select name="satuan" id="satuan"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
-                                <option selected="">Pilih satuan Barang</option>
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5"
+                                required>
+                                <option value="" disabled selected hidden>Pilih satuan Barang</option>
                                 <option value="buah">Buah</option>
                                 <option value="lembar">Lembar</option>
                                 <option value="kg">kg</option>

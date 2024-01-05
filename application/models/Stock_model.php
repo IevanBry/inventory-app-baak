@@ -40,6 +40,15 @@ class Stock_model extends CI_Model
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
+    public function get_image_by_id($id)
+    {
+        $this->db->select('gambar');
+        $this->db->from($this->table);
+        $this->db->where($this->id, $id);
+        $query = $this->db->get();
+
+        return $query->row()->gambar;
+    }
     public function deleteSelected($chcked_id){
         $this->db->where_in($this->id, $chcked_id);
         return $this->db->delete($this->table);
