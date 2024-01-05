@@ -201,9 +201,7 @@
                                     </td>
                                 </tr>
                                 <!-- update barang modal -->
-                                <form action="<?= base_url('Stock/editStock'); ?>" method="POST" class="p-4 md:p-5"
-                                    enctype="multipart/form-data">
-                                    <div id="updateBarangModal<?= $no ?>" tabindex="-1" aria-hidden="true"
+                                <div id="updateBarangModal<?= $no ?>" tabindex="-1" aria-hidden="true"
                                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
                                         <div class="relative p-4 w-full max-w-2xl max-h-full">
                                             <!-- Modal content -->
@@ -228,35 +226,32 @@
                                                     </button>
                                                 </div>
                                                 <!-- Modal body -->
-
-                                                <!-- Hidden input for item ID -->
-                                                <input type="hidden" name="item_id" value="<?= $item['id_barang'] ?>">
+                                                <form action="<?= base_url('Stock/editStock'); ?>" method="POST" class="p-4 md:p-5">
+                                                <input type="hidden" name="id" value="<?= $item['id_barang']; ?>">
                                                 <div class="grid gap-4 mb-4 ms-4 me-4 grid-cols-2">
                                                     <div class="col-span-2">
                                                         <label for="name"
                                                             class="block mb-2 text-sm font-medium text-gray-90">Nama
                                                             barang</label>
                                                         <input type="text" name="name" id="name"
-                                                            class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5"
+                                                            class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded  block w-full p-2.5 "
                                                             placeholder="" required="" value="<?= $item['nama_barang'] ?>">
                                                     </div>
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="price"
-                                                            class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
-                                                        <input type="number" name="price" id="price"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5"
+                                                            class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah</label>
+                                                        <input type="number" name="amount" id="amount"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                                             placeholder="0" required="" value="<?= $item['stok'] ?>">
                                                     </div>
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
                                                         <select id="category" name="category"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500 block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
-                                                            <option selected="<?= $item['nama_kategori'] ?>">Pilih
-                                                                Kategori Barang
-                                                                <?php foreach ($kategori as $k): ?>
-                                                                <option value="<?= $k['id_kategori']; ?>">
-                                                                    <?= $k['nama_kategori']; ?>
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-primary-500  block w-full p-2.5 focus:ring-sky-400 focus:border-sky-400">
+                                                            <?php foreach ($kategori as $k): ?>
+                                                                <option value="<?= $k['id_kategori']; ?>" <?= ($k['id_kategori'] == $item['id_kategori']) ? 'selected' : ''; ?>>
+                                                                    <?= $k['nama_kategori']; ?> 
                                                                 </option>
                                                             <?php endforeach; ?>
                                                         </select>
@@ -264,21 +259,21 @@
                                                     <div class="col-span-1">
                                                         <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-90">Harga</label>
-                                                        <input type="number" name="harga" id="harga"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5"
+                                                        <input type="number" name="price" id="price"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                                             placeholder="Rp." required="" value="<?= $item['harga'] ?>">
                                                     </div>
                                                     <div class="col-span-1">
-                                                        <label for="satuan"
+                                                        <label for="category"
                                                             class="block mb-2 text-sm font-medium text-gray-90">Satuan</label>
-                                                        <select id="satuan" name="satuan"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5">
-                                                            <option selected="<?= $item['satuan'] ?>">Pilih satuan
-                                                                Barang
-                                                            </option>
+                                                        <select name="satuan" id="satuan"
+                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400  block w-full p-2.5 ">
+                                                            <option selected="<?= $item['satuan'] ?>"><?= $item['satuan'] ?>
                                                             <option value="Buah">Buah</option>
                                                             <option value="Lembar">Lembar</option>
                                                             <option value="Kg">kg</option>
+                                                            </option>
+                                                            
                                                         </select>
                                                     </div>
 
@@ -286,9 +281,10 @@
                                                         <label for="description"
                                                             class="block mb-2 text-sm font-medium text-gray-900 ">Product
                                                             Description</label>
-                                                        <textarea id="description" name="description" rows="4"
+                                                        <textarea name="description" id="description" rows="4"
                                                             class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
-                                                            placeholder="Write product description here"><?= $item['deskripsi'] ?></textarea>
+                                                            placeholder="Write product description here"
+                                                            value="<?= $item['deskripsi'] ?>"><?= $item['deskripsi'] ?></textarea>
                                                     </div>
 
                                                     <div class="col-span-2">
@@ -305,16 +301,16 @@
                                                                             stroke-linejoin="round" stroke-width="2"
                                                                             d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                                                     </svg>
-                                                                    <p class="mb-2 text-sm text-gray-500">upload gambar
-                                                                        barang</p>
-                                                                    <input id="dropzone-file" name="gambar" type="file"
-                                                                        class="hidden" value="<?= $item['gambar'] ?>" />
+                                                                    <p class="mb-2 text-sm text-gray-500">
+                                                                        upload gambar barang</p>
+                                                                    
                                                                 </div>
+                                                                <input id="dropzone-file" type="file" class="hidden"
+                                                                            value="<?= $item['gambar'] ?>" />
                                                             </label>
                                                         </div>
                                                     </div>
                                                 </div>
-
                                                 <div class="text-end me-4 mb-4">
                                                     <button type="button" data-modal-hide="updateBarangModal<?= $no ?>"
                                                         class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
@@ -325,11 +321,12 @@
                                                         Update Barang
                                                     </button>
                                                 </div>
+
+                                            </form>
                                             </div>
                                         </div>
                                     </div>
-                                </form>
-                                <!-- Penutup Update Barang  -->
+                                    <!-- Penutup Update Barang  -->
 
                                 <!-- hapus barang -->
                                 <div id="hapusBarangModal<?= $no ?>" tabindex="-1"

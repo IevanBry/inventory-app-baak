@@ -12,6 +12,7 @@ class BaseController extends CI_Controller
         }
         $this->load->model('Stock_model');
         $this->load->model('Kategori_model');
+        $this->load->model('User_model');
     }
 
     function index()
@@ -29,10 +30,14 @@ class BaseController extends CI_Controller
     function user()
     {
         $data['title'] = 'User';
-        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['icon'] = 'bx bx-user';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['nama'] = $this->User_model->get();
+        $data['email'] = $this->User_model->get();
+        $data['role'] = $this->User_model->get();
+        $data['password'] = $this->User_model->get();
         $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/user');
+        $this->load->view('dashboard/user', $data);
         $this->load->view('layout/footer');
     }
 

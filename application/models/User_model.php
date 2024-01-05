@@ -1,18 +1,18 @@
 <?php
 class User_model extends CI_Model {
     public $table = 'user';
-    public $id = 'user.id';
+    public $id = 'id_user';
     public function __construct() {
         parent::__construct();
     }
     public function get() {
-        $this->db->from($this->table);
+        $this->db->select('user.*');
+        $this->db->from('user');
         $query = $this->db->get();
         return $query->result_array();
     }
     public function getBy() {
         $this->db->from($this->table);
-        $this->db->where('email', $this->session->userdata('email'));
         $query = $this->db->get();
         return $query->row_array();
     }
@@ -28,5 +28,9 @@ class User_model extends CI_Model {
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
         return $this->db->affected_rows();
+    }
+    public function deleteSelected($chcked_id){
+        $this->db->where_in($this->id, $chcked_id);
+        return $this->db->delete($this->table);
     }
 }

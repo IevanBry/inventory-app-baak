@@ -1,6 +1,4 @@
 <?php
-
-
 class Stock extends CI_Controller
 {
     public function __construct()
@@ -29,40 +27,46 @@ class Stock extends CI_Controller
     }
 
 
-    function edit()
+    function edit($id)
     {
         $data['title'] = 'Stock';
         $data['icon'] = 'bx bx-package';
+        $data['Stock'] = $this->Stock_model->getById($id);
         $this->load->view('layout/header', $data);
         $this->load->view('stock/edit');
         $this->load->view('layout/footer');
     }
 
-    public function editStock()
+    function editStock()
     {
-        // Periksa apakah metode yang digunakan adalah POST
-        if ($this->input->server('REQUEST_METHOD') === 'POST') {
+        $config['upload_path'] = './dist/';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
 
-            // Ambil data dari formulir
-            $itemId = $this->input->post('item_id');
-            $name = $this->input->post('name');
-            $price = $this->input->post('price');
-            $category = $this->input->post('category');
-            $harga = $this->input->post('harga');
-            $satuan = $this->input->post('satuan');
-            $description = $this->input->post('description');
-            $gambar = $this->input->post('gambar');
+        $this->load->library('upload', $config);
 
-            // Lakukan operasi penyuntingan data, misalnya dengan model
-            $this->load->model('Stock_model');
-            $this->Stock_model->editItem($itemId, $name, $price, $category, $harga, $satuan, $description, $gambar);
+        $defaultImage = '1.png';
+        $gambar = $defaultImage;
 
-            // Redirect atau lakukan operasi lain setelah penyuntingan
-            redirect('stock/index');
+        if ($this->upload->do_upload('gambar')) {
+            $upload_data = $this->upload->data();
+            $gambar = $upload_data['file_name'];
         } else {
-            // Handle jika bukan metode POST
-            show_404();
+            $error = array('error' => $this->upload->display_errors());
+            print_r($error);
         }
+
+        $data = [
+            'nama_barang' => $this->input->post('name'),
+            'gambar' => $gambar,
+            'deskripsi' => $this->input->post('description'),
+            'stok' => $this->input->post('amount'),
+            'satuan' => $this->input->post('satuan'),
+            'harga' => $this->input->post('price'),
+            'id_kategori' => $this->input->post('category')
+        ];
+        $id = $this->input->post('id');
+        $this->Stock_model->update(['id_barang' => $id], $data);
+        redirect('Stock');
     }
     public function insertStock()
     {
