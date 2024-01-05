@@ -66,7 +66,7 @@ class Stock extends CI_Controller
         $this->session->set_flashdata('status', 'Update barang berhasil');
         redirect('stock');
     }
-    
+
     public function insertStock()
     {
         $config['upload_path'] = './dist/';
@@ -129,5 +129,4 @@ class Stock extends CI_Controller
             redirect('stock');
         }
     }
-
 }

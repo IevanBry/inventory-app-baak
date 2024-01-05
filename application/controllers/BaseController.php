@@ -21,6 +21,7 @@ class BaseController extends CI_Controller
         $data['active'] = 'text-amber-400';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->Stock_model->get();
+        $data['stok_barang'] = $this->Stock_model->getTotalBarang();
         $data['icon'] = 'bx bx-home';
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/index');

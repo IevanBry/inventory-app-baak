@@ -49,8 +49,8 @@ class Stock_model extends CI_Model
 
         return $query->row()->gambar;
     }
-    public function deleteSelected($chcked_id){
-        $this->db->where_in($this->id, $chcked_id);
+    public function deleteSelected($checked_id){
+        $this->db->where_in($this->id, $checked_id);
         return $this->db->delete($this->table);
     }
     public function getJumlahBarangTerendah()
@@ -60,6 +60,7 @@ class Stock_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->min_stok;
     }
+    
     public function getTotalBarang()
     {
         $this->db->select('COUNT(*) as total_barang');

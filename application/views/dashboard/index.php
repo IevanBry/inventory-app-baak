@@ -31,7 +31,7 @@
                     <i class='bx bx-package text-3xl w-12 bg-green-100 text-green-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Jumlah Barang</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">19</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold"><?= $stok_barang; ?></h1>
                     </div>
                 </div>
             </div>
