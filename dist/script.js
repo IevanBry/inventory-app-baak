@@ -14,5 +14,6 @@ sidebarLinks.forEach((link) => {
 		dashboardMenu.classList.remove("text-amber-400");
 		dashboardMenu.classList.add("text-gray-500");
 	}
-
 });
+
+

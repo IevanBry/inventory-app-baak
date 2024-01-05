@@ -36,10 +36,9 @@
                                 <button
                                     class="px-3 py-2 mb-3 shadow-md rounded w-full bg-white border hover:bg-gray-100">Detail
                                     barang</button>
-                                <button
-                                    class="px-3 w-full mb-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white"
-                                    data-modal-target="select-modal" data-modal-toggle="select-modal">Tambah ke
-                                    keranjang</button>
+                                <button 
+                                    class="tambah-barang px-3 w-full mb-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white"
+                                   >Tambah ke keranjang</button>
                             </div>
                         </div>
 
@@ -81,8 +80,7 @@
 
 
 <!-- pop up keranjang barang -->
-<div id="keranjang"
-    class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-[500px] "
+<div id="keranjang" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-[500px] duration-500"
     tabindex="-1" aria-labelledby="keranjang-label">
 
     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
@@ -103,17 +101,7 @@
         <div class="h-[600px] px-3 pb-4 flex flex-col justify-between">
             <div class="text-sm ">
                 <table class="w-full">
-                    <?php for($i = 0 ; $i < 5 ; $i++) :  ?>
-                    <tr class="border-b">
-                        <td class="px-2 py-4"><button class="hover:bg-gray-200 w-8 h-8 rounded"><i class='bx bx-x text-2xl text-gray-500'></i></button></td>
-                        <td class="px-6 py-4"><img src="<?= base_url('dist/1.png') ?>" alt="" class="w-36"></td>
-                        <td class="px-4 py-4">Nama barang</td>
-                        <td>
-                            <input type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400" value="0">
-                        </td>
-                        <td class="px-3 py-4">Rp.5000</td>
-                    </tr>
-                    <?php endfor; ?>
+                   
                 </table>
             </div>
 
