@@ -56,13 +56,6 @@
                             class="bg-red-400 text-white hover:bg-red-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bx-trash'></i>
                             <span>Hapus Semua</span>
-                            <script>
-                                function confirmDeleteAll() {
-                                    if (confirm("Apakah Anda yakin ingin menghapus semua data?")) {
-                                        document.getElementById('deleteAllForm').submit();
-                                    }
-                                }
-                            </script>
                         </button>
                         <button type="button" id="tambahBarang" data-modal-target="tambahBarangModal"
                             data-modal-toggle="tambahBarangModal"
@@ -148,13 +141,32 @@
                                 <tr class="hover:bg-gray-50">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
-                                            <form id="deleteAllForm" action="<?= base_url('Stock/deleteAll'); ?>"
-                                                method="POST">
-                                                <input name="checkbox_value[]" value="<?= $item['id_barang'] ?>"
-                                                    aria-describedby="checkbox-1" type="checkbox"
-                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
-                                                <label for="" class="sr-only">checkbox</label>
-                                            </form>
+                                            <input id="checkbox-<?= $item['id_barang'] ?>" name="checkbox_value[]"
+                                                value="<?= $item['id_barang'] ?>" type="checkbox"
+                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                            <script>
+                                                function confirmDeleteAll() {
+                                                    var checkboxes = document.getElementsByName('checkbox_value[]');
+                                                    var checked_ids = [];
+
+                                                    for (var i = 0; i < checkboxes.length; i++) {
+                                                        if (checkboxes[i].checked) {
+                                                            checked_ids.push(checkboxes[i].value);
+                                                        }
+                                                    }
+
+                                                    var deleteButton = document.getElementById('deleteAlll');
+
+                                                    if (checked_ids.length > 0 && confirm('Apakah Anda yakin ingin menghapus semua?')) {
+                                                        window.location.href = '<?= base_url('Stock/deleteAll'); ?>?ids=' + checked_ids.join(',');
+                                                    } else {
+                                                        for (var i = 0; i < checkboxes.length; i++) {
+                                                            checkboxes[i].checked = false;
+                                                        }
+                                                    }
+                                                }
+                                            </script>
+                                            <label for="" class="sr-only">checkbox</label>
                                         </div>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-center text-gray-900">
@@ -502,9 +514,9 @@
                                         </svg> -->
                                         <!-- <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p> -->
                                     </div>
-                                 
+
                                 </label>
-                               
+
                             </div>
                         </div>
                     </div>

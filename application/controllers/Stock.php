@@ -114,19 +114,16 @@ class Stock extends CI_Controller
 
     public function deleteAll()
     {
-        if (!empty($this->input->post('checkbox_value'))) {
-            $checkedBarang = $this->input->post('checkbox_value');
-            $checked_id = [];
-            foreach ($checkedBarang as $row) {
-                array_push($checked_id, $row);
-            }
-            $this->Stock_model->deleteSelected($checked_id);
-            $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
-            redirect('stock');
+        $checked_ids = $this->input->get('ids');
 
+        if (!empty($checked_ids)) {
+            $checked_id_array = explode(',', $checked_ids);
+            $this->Stock_model->deleteSelected($checked_id_array);
+            $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
         } else {
-            $this->session->set_flashdata('status', 'Select atleast any ID');
-            redirect('stock');
+            $this->session->set_flashdata('status', 'Select at least any ID');
         }
+
+        redirect('stock');
     }
 }
