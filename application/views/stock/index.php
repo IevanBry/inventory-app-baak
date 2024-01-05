@@ -36,21 +36,10 @@
         </div>
     </div>
 
-    <div class="bg-white rounded border shadow-md">
+    <div class="bg-white rounded  shadow-md">
         <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
             <div class="w-full mb-1">
                 <div class="items-center justify-between block sm:flex ">
-                    <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="post" autocomplete="off">
-                            <label for="products-search" class="sr-only">Search</label>
-                            <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
-                                <input type="text" name="email" id="products-search"
-                                    class="bg-gray-50 border  text-gray-900 sm:text-sm rounded shadow-md  block w-full p-2.5 border-gray-300 focus:ring-sky-500 focus:border-sky-500"
-                                    placeholder="Cari Barang..">
-                            </div>
-                        </form>
-
-                    </div>
                     <div class="flex gap-2">
                         <button id="deleteAlll" type="button" onclick="confirmDeleteAll()"
                             class="bg-red-400 text-white hover:bg-red-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
@@ -82,16 +71,14 @@
         </div>
         <div class="flex flex-col">
             <div class="overflow-x-auto">
-                <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden shadow">
-                        <table id="example" class="ui celled table" style="width:100%" class="min-w-full divide-y divide-gray-200 table-fixed">
-                            <thead class="bg-gray-100">
+                <div class="inline-block min-w-full ">
+                    <div class="overflow-hidden  p-4">
+                        <table id="example" class="ui table ">
+                            <thead>
                                 <tr>
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
-                                            <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
-                                                onchange="checkAll()"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                           
                                             <script>
                                                 function checkAll() {
                                                     var checkboxAll = document.getElementById('checkbox-all');
@@ -392,30 +379,6 @@
             </div>
         </div>
 
-        <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
-            <div class="flex items-center mb-4 sm:mb-0">
-                <a href="#" class="inline-flex justify-center p-1  rounded cursor-pointer">
-
-                </a>
-                <a href="#" class="inline-flex justify-center p-1 mr-2  rounded cursor-pointer">
-
-                </a>
-                <span class="text-sm font-normal ">Showing <span class="font-semibold text-gray">1-5</span> of <span
-                        class="font-semibold text-gray">100</span></span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-ce rounded bg-white border shadow-md hover:bg-gray-100  text-gray-700">
-                    Previous
-                </a>
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium text-ce rounded bg-white border shadow-md hover:bg-gray-100  text-gray-700">
-                    Next
-
-                </a>
-            </div>
-        </div>
-    </div>
 
     <!-- tambah barang modal -->
     <div id="tambahBarangModal" tabindex="-1" aria-hidden="true"
