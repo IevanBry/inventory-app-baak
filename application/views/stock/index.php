@@ -160,9 +160,7 @@
                                                     if (checked_ids.length > 0 && confirm('Apakah Anda yakin ingin menghapus semua?')) {
                                                         window.location.href = '<?= base_url('Stock/deleteAll'); ?>?ids=' + checked_ids.join(',');
                                                     } else {
-                                                        for (var i = 0; i < checkboxes.length; i++) {
-                                                            checkboxes[i].checked = false;
-                                                        }
+                                                        window.location.href = '<?= base_url('Stock/deleteAll'); ?>'
                                                     }
                                                 }
                                             </script>
