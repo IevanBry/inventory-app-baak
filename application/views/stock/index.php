@@ -78,7 +78,6 @@
                                 <tr>
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
-                                           
                                             <script>
                                                 function checkAll() {
                                                     var checkboxAll = document.getElementById('checkbox-all');
@@ -89,7 +88,6 @@
                                                     }
                                                 }
                                             </script>
-
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
@@ -380,118 +378,119 @@
         </div>
 
 
-    <!-- tambah barang modal -->
-    <div id="tambahBarangModal" tabindex="-1" aria-hidden="true"
-        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-        <div class="relative p-4 w-full max-w-2xl max-h-full">
-            <!-- Modal content -->
-            <div class="relative bg-white rounded shadow">
+        <!-- tambah barang modal -->
+        <div id="tambahBarangModal" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded shadow">
 
-                <!-- Modal header -->
-                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                    <h3 class="text-lg font-semibold text-gray-900 ">
-                        Tambah Barang Baru
-                    </h3>
-                    <button type="button"
-                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                        data-modal-toggle="tambahBarangModal">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                <!-- Modal body -->
-                <form action="<?= base_url('Stock/insertStock'); ?>" method="post" enctype="multipart/form-data"
-                    class="p-4 md:p-5">
-                    <div class="grid gap-4 mb-4 grid-cols-2">
-                        <div class="col-span-2">
-                            <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
-                                barang</label>
-                            <input type="text" name="name" id="name"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
-                                placeholder="barang" required="">
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
-                            <input type="number" name="amount" id="amount"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
-                                placeholder="0" required="">
-                        </div>
-                        <div class="col-span-2 sm:col-span-1">
-                            <label for="category" class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
-                            <select name="category" id="category"
-                                class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 "
-                                required>
-                                <option value="" selected hidden>Pilih Kategori Barang</option>
-                                <?php foreach ($kategori as $k): ?>
-                                    <option value="<?= $k['id_kategori']; ?>">
-                                        <?= $k['nama_kategori']; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <div class="col-span-1">
-                            <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Harga</label>
-                            <input type="number" name="price" id="price"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
-                                placeholder="Rp." required="">
-                        </div>
-                        <div class="col-span-1">
-                            <label for="satuan" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
-                            <select name="satuan" id="satuan"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5"
-                                required>
-                                <option value="" disabled selected hidden>Pilih satuan Barang</option>
-                                <option value="buah">Buah</option>
-                                <option value="lembar">Lembar</option>
-                                <option value="kg">kg</option>
-                            </select>
-                        </div>
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                        <h3 class="text-lg font-semibold text-gray-900 ">
+                            Tambah Barang Baru
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                            data-modal-toggle="tambahBarangModal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <form action="<?= base_url('Stock/insertStock'); ?>" method="post" enctype="multipart/form-data"
+                        class="p-4 md:p-5">
+                        <div class="grid gap-4 mb-4 grid-cols-2">
+                            <div class="col-span-2">
+                                <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
+                                    barang</label>
+                                <input type="text" name="name" id="name"
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900  text-sm rounded  block w-full p-2.5 "
+                                    placeholder="barang" required="">
+                            </div>
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
+                                <input type="number" name="amount" id="amount"
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                    placeholder="0" required="">
+                            </div>
+                            <div class="col-span-2 sm:col-span-1">
+                                <label for="category"
+                                    class="block mb-2 text-sm font-medium text-gray-900 ">Kategori</label>
+                                <select name="category" id="category"
+                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded block w-full p-2.5 "
+                                    required>
+                                    <option value="" selected hidden>Pilih Kategori Barang</option>
+                                    <?php foreach ($kategori as $k): ?>
+                                        <option value="<?= $k['id_kategori']; ?>">
+                                            <?= $k['nama_kategori']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                            <div class="col-span-1">
+                                <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Harga</label>
+                                <input type="number" name="price" id="price"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
+                                    placeholder="Rp." required="">
+                            </div>
+                            <div class="col-span-1">
+                                <label for="satuan" class="block mb-2 text-sm font-medium text-gray-900 ">Satuan</label>
+                                <select name="satuan" id="satuan"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5"
+                                    required>
+                                    <option value="" disabled selected hidden>Pilih satuan Barang</option>
+                                    <option value="buah">Buah</option>
+                                    <option value="lembar">Lembar</option>
+                                    <option value="kg">kg</option>
+                                </select>
+                            </div>
 
-                        <div class="col-span-2">
-                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Product
-                                Description</label>
-                            <textarea name="description" id="description" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
-                                placeholder="Tulis Deskripsi dari barang"></textarea>
-                        </div>
+                            <div class="col-span-2">
+                                <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Product
+                                    Description</label>
+                                <textarea name="description" id="description" rows="4"
+                                    class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
+                                    placeholder="Tulis Deskripsi dari barang"></textarea>
+                            </div>
 
-                        <div class="col-span-2">
-                            <label for="dropzone-file" class="block mb-2 text-sm font-medium text-gray-900 ">Upload
-                                Gambar Barang</label>
-                            <div class="flex items-center justify-center w-full">
-                                <label for="dropzone-file"
-                                    class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
-                                    <input name="gambar" id="dropzone-file" type="file" class="absolute">
-                                    <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                        <!-- <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true"
+                            <div class="col-span-2">
+                                <label for="dropzone-file" class="block mb-2 text-sm font-medium text-gray-900 ">Upload
+                                    Gambar Barang</label>
+                                <div class="flex items-center justify-center w-full">
+                                    <label for="dropzone-file"
+                                        class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded cursor-pointer bg-gray-50 hover:bg-gray-100">
+                                        <input name="gambar" id="dropzone-file" type="file" class="absolute">
+                                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                            <!-- <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true"
                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                                 stroke-width="2"
                                                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                                         </svg> -->
-                                        <!-- <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p> -->
-                                    </div>
+                                            <!-- <p class="mb-2 text-sm text-gray-500">Upload Gambar Barang</p> -->
+                                        </div>
 
-                                </label>
+                                    </label>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="text-end">
-                        <button data-modal-hide="tambahBarangModal" type="button"
-                            class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
-                            Batal
-                        </button>
-                        <button type="submit"
-                            class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
-                            Tambah Barang
-                        </button>
-                    </div>
-                </form>
+                        <div class="text-end">
+                            <button data-modal-hide="tambahBarangModal" type="button"
+                                class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
+                                Batal
+                            </button>
+                            <button type="submit"
+                                class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
+                                Tambah Barang
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
