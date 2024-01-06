@@ -7,11 +7,15 @@ class Request_model extends CI_Model
     {
         parent::__construct();
     }
-    // Stock_model.php
 
-    function get()
+    function getForUser($id_user)
     {
+        $this->db->select('request.*, barang.nama_barang');
+        $this->db->from('request');
+        $this->db->join('barang', 'barang.id_barang = request.id_barang AND request.id_user = ' . $id_user, 'inner');
+        $query = $this->db->get();
 
+        return $query->result_array();
     }
 
     public function getBy()
@@ -35,5 +39,41 @@ class Request_model extends CI_Model
         $this->db->where($this->id, $id);
         $this->db->delete($this->table);
         return $this->db->affected_rows();
+    }
+    public function countProsesRequests($id)
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('id_user', $id);
+        $this->db->where('status', 'Proses');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countSetuju($id)
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('id_user', $id);
+        $this->db->where('status', 'Diterima');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countTolak($id)
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('id_user', $id);
+        $this->db->where('status', 'Ditolak');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
     }
 }

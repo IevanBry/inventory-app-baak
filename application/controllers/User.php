@@ -10,6 +10,7 @@ class User extends CI_Controller
             redirect('auth');
         }
         $this->load->model('Stock_model');
+        $this->load->model('Request_model');
     }
 
     public function index()
@@ -36,9 +37,15 @@ class User extends CI_Controller
         $data['title'] = 'Pengajuan';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view("layout/header", $data);
-        $this->load->view("User/request");
-        $this->load->view("layout/footer");
+        $data['barang'] = $this->Stock_model->get();
+        $user_id = $data['user']['id_user'];
+        $data['request'] = $this->Request_model->getForUser($user_id);
+        $data['proses'] = $this->Request_model->countProsesRequests($user_id);
+        $data['setuju'] = $this->Request_model->countSetuju($user_id);
+        $data['tolak'] = $this->Request_model->countTolak($user_id);
+        $this->load->view('layout/header', $data);
+        $this->load->view('user/request', $data);
+        $this->load->view('layout/footer');
     }
     public function history()
     {

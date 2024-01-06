@@ -33,11 +33,15 @@ class Keranjang extends CI_Controller
     {
         print_r($this->session->userdata());
         $this->cart->remove($rowid);
-        redirect('user/barang',);
+        redirect('user/barang', );
     }
     public function deleteAll()
     {
-        $this->cart->destroy();
-        redirect('user/barang');
+        if ($this->cart->total_items() > 0) {
+            $this->cart->destroy();
+            redirect('user/barang');
+        } else {
+            redirect('user/barang');
+        }
     }
 }

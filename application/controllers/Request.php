@@ -15,11 +15,17 @@ class Request extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'Request';
+        $data['title'] = 'Pengajuan';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['barang'] = $this->Stock_model->get();
+        $user_id = $data['user']['id_user'];
+        $data['request'] = $this->Request_model->getForUser($user_id);
+        $data['proses'] = $this->Request_model->countProsesRequests($user_id);
+        $data['setuju'] = $this->Request_model->countSetuju($user_id);
+        $data['tolak'] = $this->Request_model->countTolak($user_id);
         $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/request');
+        $this->load->view('user/request', $data);
         $this->load->view('layout/footer');
     }
 
@@ -39,5 +45,16 @@ class Request extends CI_Controller
         }
         $this->cart->destroy();
         redirect('User/Barang');
+    }
+    public function deleteRequest()
+    {
+        $id_request = $this->input->post('id_request');
+
+        if (!empty($id_request)) {
+            $this->Request_model->delete($id_request);
+        }
+
+        $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
+        redirect('User/Request');
     }
 }
