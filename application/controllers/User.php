@@ -9,7 +9,6 @@ class User extends CI_Controller
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
-
         $this->load->model('Stock_model');
     }
 

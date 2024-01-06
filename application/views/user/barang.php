@@ -22,33 +22,43 @@
         </div>
 
         <div class="grid grid-cols-3 gap-2">
-            <?php foreach($barang as $item) :  ?>
+            <?php foreach ($barang as $item): ?>
                 <div class="bg-white shadow-md rounded border">
+                    <?php
+                    echo form_open('Cart/add');
+                    echo form_hidden('id', $item['id_barang']);
+                    echo form_hidden('qty', 1);
+                    echo form_hidden('harga', $item['stok']);
+                    echo form_hidden('name', $item['nama_barang']);
+                    echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
+                    ?>
                     <div class="p-2 flex items-center">
                         <img src="<?= base_url('dist/') . $item['gambar'] ?>" alt="" class="w-32 h-32 rounded-lg  p-1">
                         <div class="p-3">
-                            <h1 class=" font-semibold"><?= $item['nama_barang'] ?></h1>
-                            <p class="text-gray-500 text-sm "><?= $item['deskripsi'] ?></p>
+                            <h1 class=" font-semibold">
+                                <?= $item['nama_barang'] ?>
+                            </h1>
+                            <p class="text-gray-500 text-sm ">
+                                <?= $item['deskripsi'] ?>
+                            </p>
 
                             <div class="text-xs  mt-2 font-medium ">
-                                <p class="mb-3">Tersedia <span class="text-green-500 "><?= $item['stok']  ?></span></p>
+                                <p class="mb-3">Tersedia <span class="text-green-500 ">
+                                        <?= $item['stok'] ?>
+                                    </span></p>
                                 <button
                                     class="px-3 py-2 mb-3 shadow-md rounded w-full bg-white border hover:bg-gray-100">Detail
                                     barang</button>
-                                <button 
-                                    class="tambah-barang px-3 w-full mb-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white"
-                                   >Tambah ke keranjang</button>
+                                <button type="submit"
+                                    class="tambah-barang px-3 w-full mb-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white">Tambah
+                                    ke keranjang</button>
                             </div>
                         </div>
 
                     </div>
+                    <?php echo form_close(); ?>
                 </div>
-
-
             <?php endforeach ?>
-
-
-
         </div>
         <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
             <div class="flex items-center mb-4 sm:mb-0">
@@ -79,12 +89,15 @@
 
 
 <!-- pop up keranjang barang -->
-<div id="keranjang" class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-[500px] duration-500"
+<?php $jml_item = 0; ?>
+<div id="keranjang"
+    class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-[500px] duration-500"
     tabindex="-1" aria-labelledby="keranjang-label">
 
     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
         <h3 class="text-lg font-semibold text-gray-90">
             Keranjang
+            <?= $jml_item ?>
         </h3>
         <button type="button" data-drawer-hide="keranjang"
             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
@@ -100,7 +113,26 @@
         <div class="h-[600px] px-3 pb-4 flex flex-col justify-between">
             <div class="text-sm ">
                 <table class="w-full">
-                   
+                    <?php $keranjang = $this->cart->contents();
+                    foreach ($keranjang as $key => $value) {
+                        $jml_item = $jml_item + $value['qty'];
+                    }
+                    ?>
+                    <tbody>
+                        <?php foreach ($keranjang as $key => $value) { ?>
+                            <tr class="border-b product">
+                                <td class="delete-button px-2 py-4"><span class=" w-8 h-8 rounded"><i
+                                            class="bx bx-x text-2xl text-gray-500"></i></span></td>
+                                <td class="px-6 py-4"><img alt="" class="w-36"></td>
+                                <td class="px-4 py-4">
+                                    <?= $value['name'] ?>
+                                </td>
+                                <td><input type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400"
+                                        value="0"></td>
+                                <td class="px-3 py-4">Rp.5000</td>
+                            </tr>
+                        <?php } ?>
+                    </tbody>
                 </table>
             </div>
 
