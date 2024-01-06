@@ -25,7 +25,7 @@
             <?php foreach ($barang as $item): ?>
                 <div class="bg-white shadow-md rounded border">
                     <?php
-                    echo form_open('Cart/add');
+                    echo form_open('Keranjang/add');
                     echo form_hidden('id', $item['id_barang']);
                     echo form_hidden('qty', 1);
                     echo form_hidden('harga', $item['stok']);
@@ -129,7 +129,7 @@
                                 </td>
                                 <td><input type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400"
                                         value="0"></td>
-                                <td class="px-3 py-4">Rp.5000</td>
+                                <td class="px-3 py-4"><?= $value['price'] ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
