@@ -28,7 +28,7 @@ class Report_model extends CI_Model
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
-    public function getPemasukan()
+    public function getTotalPemasukan()
     {
         $this->db->select('sum(jumlah) as total_pemasukan');
         $this->db->from('transaksi');
@@ -36,7 +36,7 @@ class Report_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->total_pemasukan;
     }
-    public function getPengeluaran()
+    public function getTotalPengeluaran()
     {
         $this->db->select('sum(jumlah) as total_pengeluaran');
         $this->db->from('transaksi');
@@ -44,4 +44,22 @@ class Report_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->total_pengeluaran;
     }
+    public function getHistoryPemasukan()
+    {
+        $this->db->select('jumlah, tanggal');
+        $this->db->from('transaksi');
+        $this->db->where('jenis', 'pemasukan');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
+    public function getHistoryPengeluaran()
+    {
+        $this->db->select('jumlah, tanggal');
+        $this->db->from('transaksi');
+        $this->db->where('jenis', 'pengeluaran');
+        $query = $this->db->get();
+        return $query->result_array();
+    }
+
 }

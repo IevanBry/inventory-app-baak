@@ -93,12 +93,12 @@
                                 </tr>
                             </thead>
                             <?php $no = 1; ?>
-                            <?php foreach ($report as $item): ?>
+                            <?php foreach ($history_pemasukan as $item): ?>
                                 <tr class="hover:bg-gray-100 ">
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
-                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= number_format($item['jumlah']) ?></td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp <?= number_format($item['jumlah']) ?></td>
                                     <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= $item['tanggal'] ?></td>
                                 </tr>
                                 <?php $no++; ?>
@@ -139,17 +139,17 @@
                                         Tanggal</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php for ($i = 1; $i < 6; $i++) { ?>
-                                    <tr class="hover:bg-gray-100 ">
-                                        <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
-                                            <?= $i ?>
-                                        </td>
-                                        <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp. 500.000</td>
-                                        <td scope="col" class="p-4 text-sm font-medium text-gray-900">02,November 2023</td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach ($history_pengeluaran as $item): ?>
+                                <tr class="hover:bg-gray-100 ">
+                                    <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
+                                        <?= $no ?>
+                                    </td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp <?= number_format($item['jumlah']) ?></td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= $item['tanggal'] ?></td>
+                                </tr>
+                                <?php $no++; ?>
+                            <?php endforeach; ?>
                         </table>
                     </div>
                 </div>

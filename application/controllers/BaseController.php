@@ -52,10 +52,12 @@ class BaseController extends CI_Controller
         $data['icon'] = 'bx bx-file-find';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['report'] = $this->Report_model->get();
-        $data['total_pemasukan'] = $this->Report_model->getPemasukan();
-        $data['total_pengeluaran'] = $this->Report_model->getPengeluaran();
+        $data['total_pemasukan'] = $this->Report_model->getTotalPemasukan();
+        $data['total_pengeluaran'] = $this->Report_model->getTotalPengeluaran();
+        $data['history_pemasukan'] = $this->Report_model->getHistoryPemasukan();
+        $data['history_pengeluaran'] = $this->Report_model->getHistoryPengeluaran();
         $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/report');
+        $this->load->view('dashboard/report', $data);
         $this->load->view('layout/footer');
     }
 
