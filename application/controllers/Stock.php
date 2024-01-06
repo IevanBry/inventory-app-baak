@@ -32,7 +32,7 @@ class Stock extends CI_Controller
         $data['title'] = 'Stock';
         $data['icon'] = 'bx bx-package';
         $data['Stock'] = $this->Stock_model->getById($id);
-        $this->load->view('layout/header', $data);
+        $this->load->view('layout/header');
         $this->load->view('stock/edit');
         $this->load->view('layout/footer');
     }
@@ -64,7 +64,7 @@ class Stock extends CI_Controller
         $id = $this->input->post('id');
         $this->Stock_model->update(['id_barang' => $id], $data);
         $this->session->set_flashdata('status', 'Update barang berhasil');
-        redirect('stock');
+        redirect('Stock');
     }
 
     public function insertStock()
@@ -97,7 +97,7 @@ class Stock extends CI_Controller
 
         $this->Stock_model->insert($barang);
         $this->session->set_flashdata('status', 'Insert barang berhasil');
-        redirect('stock');
+        redirect('Stock');
     }
 
     public function deleteStock()
@@ -109,7 +109,7 @@ class Stock extends CI_Controller
         }
 
         $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
-        redirect('stock');
+        redirect('Stock');
     }
 
     public function deleteAll()
@@ -124,6 +124,6 @@ class Stock extends CI_Controller
             $this->session->set_flashdata('status', 'Select at least any ID');
         }
 
-        redirect('stock');
+        redirect('Stock');
     }
 }

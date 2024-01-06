@@ -160,50 +160,51 @@
 
                 <!-- admin sidebar start -->
 
-                <ul class="space-y-2  " id="list-menu">
+                <ul class="space-y-2" id="list-menu">
                     <li>
-                        <a href="<?= base_url('') ?>"
-                            class="dashboard flex items-center p-2 text-amber-400 group hover:text-amber-300">
+                        <a href="<?= base_url('BaseController') ?>"
+                            class="flex items-center p-2 <?= current_url() == base_url('BaseController') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300">
                             <i class="bx bx-home text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Dashboard</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/stock') ?>"
-                            class="flex items-center p-2 text-gray-500  group hover:text-amber-300">
+                            class="flex items-center p-2 <?= current_url() == base_url('Stock') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300">
                             <i class="bx bx-package text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Stock</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/user') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
+                            class="flex items-center p-2 <?= current_url() == base_url('user') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300">
                             <i class="bx bx-user text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">User</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/report') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
+                            class="flex items-center p-2 <?= current_url() == base_url('report') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300">
                             <i class="bx bx-file-find text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Report</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/request') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300 ">
+                            class="flex items-center p-2 <?= current_url() == base_url('request') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300 ">
                             <i class="bx bx-chat text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Request</span>
                         </a>
                     </li>
                     <li>
                         <a href="<?= base_url('BaseController/notif') ?>"
-                            class="flex items-center p-2 text-gray-500 group hover:text-amber-300">
+                            class="flex items-center p-2 <?= current_url() == base_url('notif') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300">
                             <i class="bx bx-bell text-[24px] "></i>
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Notification</span>
                         </a>
                     </li>
                 </ul>
+
 
                 <ul class="font-medium pb-3">
                     <li>
@@ -216,7 +217,6 @@
                 </ul>
 
                 <!-- admin sidebar end -->
-
             <?php } ?>
         </div>
     </aside>
