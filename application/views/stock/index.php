@@ -73,7 +73,7 @@
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full ">
                     <div class="overflow-hidden  p-4">
-                        <table id="example" class="ui table ">
+                        <table id="example" class="ui table nowrap ">
                             <thead>
                                 <tr>
                                     <th scope="col" class="p-4">
