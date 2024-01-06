@@ -8,13 +8,14 @@ class Request_model extends CI_Model
         parent::__construct();
     }
 
-    function getForUser($id_user)
+    function getRequest()
     {
-        $this->db->select('request.*, barang.nama_barang');
+        $this->db->select('request.*, barang.nama_barang, user.nama_user');
         $this->db->from('request');
-        $this->db->join('barang', 'barang.id_barang = request.id_barang AND request.id_user = ' . $id_user, 'inner');
+        $this->db->join('barang', 'barang.id_barang = request.id_barang', 'inner');
+        $this->db->join('user', 'user.id_user = request.id_user', 'inner');
         $query = $this->db->get();
-
+    
         return $query->result_array();
     }
 
