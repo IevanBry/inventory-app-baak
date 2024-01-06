@@ -1,30 +1,12 @@
-<div class="p-3 ml-12 md:ml-3 w-full">
-    <div class="bg-white rounded border shadow-lg ">
+<div class="bg-white rounded  shadow-md">
         <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
             <div class="w-full mb-1">
                 <div class="items-center justify-between block sm:flex ">
-                    <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="post" autocomplete="off">
-                            <label for="products-search" class="sr-only">Search</label>
-                            <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
-                                <input type="text" name="email" id="products-search"
-                                    class="bg-gray-50 border  text-gray-900 sm:text-sm rounded shadow-md  block w-full p-2.5 border-gray-300 focus:ring-sky-500 focus:border-sky-500"
-                                    placeholder="Cari User..">
-                            </div>
-                        </form>
-                    </div>
                     <div class="flex gap-2">
                         <button id="deleteAlll" type="button" onclick="confirmDeleteAll()"
                             class="bg-red-400 text-white hover:bg-red-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bx-trash'></i>
                             <span>Hapus Semua</span>
-                            <script>
-                                function confirmDeleteAll() {
-                                    if (confirm("Apakah Anda yakin ingin menghapus semua data?")) {
-                                        document.getElementById('deleteAllForm').submit();
-                                    }
-                                }
-                            </script>
                         </button>
                         <button type="button" id="tambahUser" data-modal-target="tambahUserModal"
                             data-modal-toggle="tambahUserModal"
@@ -33,31 +15,47 @@
                             <span> Tambah User Baru</span>
                         </button>
                         <button id="exportDataUser" type="button"
-                            class="bg-sky-400 text-white hover:bg-sky-500 flex items-center shadow-md font-medium rounded text-sm px-3 py-1">
+                            class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bxs-file-export text-md'></i>
-
                             <span>Export</span>
                         </button>
                     </div>
                 </div>
+                <?php if ($this->session->flashdata('status')): ?>
+                    <div class="flex h-16 items-center">
+                        <div class="p-2 mt-4 w-full flex items-center gap-2 text-sm font-medium text-green-800 rounded-lg bg-green-100"
+                            role="alert"><i class="bx bx-check-circle text-xl"></i>
+                            <?= $this->session->flashdata('status'); ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
-
         <div class="flex flex-col">
             <div class="overflow-x-auto">
-                <div class="inline-block w-full align-middle">
-                    <div class="overflow-hidden shadow">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
-                            <thead class="bg-gray-100">
+                <div class="inline-block min-w-full ">
+                    <div class="overflow-hidden  p-4">
+                        <table id="example" class="ui table ">
+                            <thead>
                                 <tr>
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
-                                            <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
-                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50  checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                        
+                                            <script>
+                                                function checkAll() {
+                                                    var checkboxAll = document.getElementById('checkbox-all');
+                                                    var checkboxes = document.querySelectorAll('[name="checkbox_value[]"]');
+
+                                                    for (var i = 0; i < checkboxes.length; i++) {
+                                                        checkboxes[i].checked = checkboxAll.checked;
+                                                    }
+                                                }
+                                            </script>
+
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
-                                    <th scope="col" class="p-4 text-xs font-medium  uppercase">
+                                    <th scope="col" class="p-4 text-xs font-medium text-center  uppercase">
                                         No
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
@@ -69,24 +67,41 @@
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
                                         Role
                                     </th>
-                            
                                     <th scope="col" class="p-4 text-xs font-medium text-center  uppercase">
                                         Actions
                                     </th>
                                 </tr>
                             </thead>
+
                             <?php $no = 1; ?>
                             <?php foreach ($user_list as $item): ?>
                                 <tr class="hover:bg-gray-50">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
-                                            <form id="deleteAllForm" action="<?= base_url('AdminUser/deleteAll'); ?>"
-                                                method="POST">
-                                                <input name="checkbox_value[]" value="<?= $item['id_user'] ?>"
-                                                    aria-describedby="checkbox-1" type="checkbox"
-                                                    class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
-                                                <label for="" class="sr-only">checkbox</label>
-                                            </form>
+                                            <input id="checkbox-<?= $item['id_user'] ?>" name="checkbox_value[]"
+                                                value="<?= $item['id_user'] ?>" type="checkbox"
+                                                class="w-4 h-4 border-gray-300 rounded bg-gray-50 checked:bg-sky-400 focus:ring-sky-400 focus:bg-sky-400">
+                                            <script>
+                                                function confirmDeleteAll() {
+                                                    var checkboxes = document.getElementsByName('checkbox_value[]');
+                                                    var checked_ids = [];
+
+                                                    for (var i = 0; i < checkboxes.length; i++) {
+                                                        if (checkboxes[i].checked) {
+                                                            checked_ids.push(checkboxes[i].value);
+                                                        }
+                                                    }
+
+                                                    var deleteButton = document.getElementById('deleteAlll');
+
+                                                    if (checked_ids.length > 0 && confirm('Apakah Anda yakin ingin menghapus semua?')) {
+                                                        window.location.href = '<?= base_url('AdminUser/deleteAll'); ?>?ids=' + checked_ids.join(',');
+                                                    } else {
+                                                        window.location.href = '<?= base_url('AdminUser/deleteAll'); ?>'
+                                                    }
+                                                }
+                                            </script>
+                                            <label for="" class="sr-only">checkbox</label>
                                         </div>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-center text-gray-900">
@@ -101,7 +116,6 @@
                                     <td class="p-2 text-sm font-medium text-gray-900">
                                         <?= $item['role'] ?>
                                     </td>
-                
 
                                     <td scope="" class="p-4 space-x-2 text-center">
                                         <button id="updateUserButton" type="button"
@@ -124,7 +138,7 @@
                                 </tr>
                                 <!-- update user modal -->
                                 <div id="updateUserModal<?= $no ?>" tabindex="-1" aria-hidden="true"
-                                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                    class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full ">
                                     <div class="relative p-4 w-full max-w-2xl max-h-full">
                                         <!-- Modal content -->
                                         <div class="relative bg-white rounded shadow pb-1">
@@ -146,8 +160,8 @@
                                                 </button>
                                             </div>
                                             <!-- Modal body -->
-                                            <form action="<?= base_url('AdminUser/updateUser'); ?>" method="post"
-                                                enctype="multipart/form-data" class="p-4 md:p-5">
+                                            <form action="<?= base_url('AdminUser/updateUser'); ?>" method="POST"
+                                                class="p-4 md:p-5" enctype="multipart/form-data">
                                                 <input type="hidden" name="id" value="<?= $item['id_user']; ?>">
                                                 <div class="grid gap-4 mb-4 ms-4 me-4 grid-cols-2">
                                                     <div class="col-span-2 sm:col-span-1">
@@ -188,15 +202,16 @@
                                                     </div>
                                                 </div>
                                                 <div class="text-end me-4 mb-4">
-                                                    <button data-modal-toggle="updateUserModal<?= $no ?>" type="button"
+                                                    <button type="button" data-modal-hide="updateUserModal<?= $no ?>"
                                                         class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
                                                         Batal
                                                     </button>
                                                     <button type="submit"
                                                         class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
-                                                        Tambah User
+                                                        Update User
                                                     </button>
                                                 </div>
+
                                             </form>
                                         </div>
                                     </div>
@@ -254,64 +269,38 @@
                         </table>
                     </div>
                 </div>
-
-                <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
-                    <div class="flex items-center mb-4 sm:mb-0">
-                        <a href="#" class="inline-flex justify-center p-1  rounded cursor-pointer">
-
-                        </a>
-                        <a href="#" class="inline-flex justify-center p-1 mr-2  rounded cursor-pointer">
-
-                        </a>
-                        <span class="text-sm font-normal ">Showing <span class="font-semibold text-gray">1-5</span>
-                            of <span class="font-semibold text-gray">100</span></span>
-                    </div>
-                    <div class="flex items-center space-x-3">
-                        <a href="#"
-                            class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium  rounded bg-white shadow-md border hover:bg-gray-100  text-gray-700">
-                            Previous
-                        </a>
-                        <a href="#"
-                            class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium  rounded bg-white shadow-md border hover:bg-gray-100  text-gray-700">
-                            Next
-
-                        </a>
-                    </div>
-                </div>
             </div>
         </div>
 
 
+    <!-- tambah user modal -->
+    <div id="tambahUserModal" tabindex="-1" aria-hidden="true"
+        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+        <div class="relative p-4 w-full max-w-2xl max-h-full">
+            <!-- Modal content -->
+            <div class="relative bg-white rounded shadow">
 
-
-        <!-- tambah user modal -->
-        <div id="tambahUserModal" tabindex="-1" aria-hidden="true"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-2xl max-h-full">
-                <!-- Modal content -->
-                <div class="relative bg-white rounded shadow">
-
-                    <!-- Modal header -->
-                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                        <h3 class="text-lg font-semibold text-gray-900 ">
-                            Tambah User Baru
-                        </h3>
-                        <button type="button"
-                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                            data-modal-toggle="tambahUserModal">
-                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                viewBox="0 0 14 14">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                            </svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                    </div>
-                    <!-- Modal body -->
-                    <form action="<?= base_url('AdminUser/insertUser'); ?>" method="post" enctype="multipart/form-data"
-                        class="p-4 md:p-5">
-                        <div class="grid gap-4 mb-4 grid-cols-2">
-                            <div class="col-span-2 sm:col-span-1">
+                <!-- Modal header -->
+                <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                    <h3 class="text-lg font-semibold text-gray-900 ">
+                        Tambah User Baru
+                    </h3>
+                    <button type="button"
+                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                        data-modal-toggle="tambahUserModal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- Modal body -->
+                <form action="<?= base_url('AdminUser/insertUser'); ?>" method="post" enctype="multipart/form-data"
+                    class="p-4 md:p-5">
+                    <div class="grid gap-4 mb-4 grid-cols-2">
+                        <div class="col-span-2 sm:col-span-1">
                                 <label for="name" class="block mb-2 text-sm font-medium text-gray-900 ">Nama
                                     User</label>
                                 <input type="text" name="name" id="name"
@@ -341,18 +330,18 @@
                                     placeholder="*****" required="">
                             </div>
                         </div>
-                        <div class="text-end">
-                            <button data-modal-hide="tambahUserModal" type="button"
-                                class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
-                                Batal
-                            </button>
-                            <button type="submit"
-                                class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
-                                Tambah User
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                    <div class="text-end">
+                        <button data-modal-hide="tambahUserModal" type="button"
+                            class="text-end bg-white shadow-md hover:bg-gray-100 border text-gray-500 font-medium rounded text-sm px-3 py-2">
+                            Batal
+                        </button>
+                        <button type="submit"
+                            class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
+                            Tambah User
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
