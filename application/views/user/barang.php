@@ -107,8 +107,8 @@
     </div>
 
     <form action="">
-        <div class="h-[600px] px-3 pb-4 flex flex-col justify-between">
-            <div class="text-sm ">
+        <div class="h-screen flex flex-col justify-between ">
+            <div class="text-md">
                 <table class="w-full">
                     <?php $keranjang = $this->cart->contents();
                     foreach ($keranjang as $key => $value) {
@@ -126,7 +126,7 @@
                                         </a>
                                     </span>
                                 </td>
-                                <td class="px-6 py-4"><img alt="" class="w-36"></td>
+                                <!-- <td class="px-6 py-4"><img alt="" class="w-36"></td> -->
                                 <td class="px-4 py-4">
                                     <?= $value['name'] ?>
                                 </td>
@@ -140,10 +140,13 @@
                     </tbody>
                 </table>
             </div>
-            <button class="w-full p-2 bg-amber-400 font-medium text-sm rounded text-white">Minta Barang</button>
-            <a href="<?= base_url('keranjang/deleteAll') ?>"
-                class="text-center w-full p-2 bg-amber-400 font-medium text-sm rounded text-white">Clear All</a>
-            </body>
+
+            <div class="w-full pb-28">
+                <button class=" bg-amber-400 font-medium p-2 w-full text-md rounded hover:bg-amber-500 text-white mb-2">Minta Barang</button>
+                <button  class="bg-red-500 font-medium p-2 hover:bg-red-600 w-full text-md rounded text-white">
+                <a href="<?= base_url('keranjang/deleteAll') ?>" class="hover:text-white">Clear All</a>
+                </button>
+            </div>
         </div>
     </form>
 </div>
