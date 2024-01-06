@@ -35,4 +35,11 @@ class Kategori_model extends CI_Model
         $this->db->delete($this->table);
         return $this->db->affected_rows();
     }
+    public function getTotalKategori()
+    {
+        $this->db->select('COUNT(*) as total_kategori');
+        $this->db->from('kategori');
+        $query = $this->db->get();
+        return $query->row()->total_kategori;
+    }
 }

@@ -68,4 +68,20 @@ class Stock_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->total_barang;
     }
+    public function getJumlahBarangHabis()
+    {
+        $this->db->select('COUNT(*) as barang_habis');
+        $this->db->from('barang');
+        $this->db->where('stok = 0');
+        $query = $this->db->get();
+        return $query->row()->barang_habis;
+    }
+    public function getTotalBarangTersedia()
+    {
+        $this->db->select('COUNT(*) as barang_tersedia');
+        $this->db->from('barang');
+        $this->db->where('stok <> 0');
+        $query = $this->db->get();
+        return $query->row()->barang_tersedia;
+    }
 }
