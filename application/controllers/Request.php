@@ -5,9 +5,10 @@ class Request extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Stock_model');
-        $this->load->model('kategori_model');
         $this->load->model('User_model');
-        
+        $this->load->model('Request_model');
+
+
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
@@ -22,8 +23,21 @@ class Request extends CI_Controller
         $this->load->view('layout/footer');
     }
 
-    public function verifikasi()
+    public function insertRequest()
     {
-
+        $qtyArray = $this->input->post('qty');
+        $idBarangArray = $this->input->post('id_barang');
+        $id = $this->input->post('id_user');
+        for ($i = 0; $i < count($qtyArray); $i++) {
+            $data = array(
+                'jumlah' => $qtyArray[$i],
+                'id_barang' => $idBarangArray[$i],
+                'id_user' => $id,
+                'status' => 'Proses',
+            );
+            $this->Request_model->insert($data);
+        }
+        $this->cart->destroy();
+        redirect('User/Barang');
     }
 }

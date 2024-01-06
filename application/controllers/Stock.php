@@ -123,7 +123,6 @@ class Stock extends CI_Controller
         } else {
             $this->session->set_flashdata('status', 'Select at least any ID');
         }
-
         redirect('Stock');
     }
 }

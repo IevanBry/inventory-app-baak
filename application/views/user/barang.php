@@ -60,27 +60,6 @@
                 </div>
             <?php endforeach ?>
         </div>
-        <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
-            <div class="flex items-center mb-4 sm:mb-0">
-                <a href="#" class="inline-flex justify-center p-1  rounded cursor-pointer">
-
-                </a>
-                <a href="#" class="inline-flex justify-center p-1 mr-2  rounded cursor-pointer">
-
-                </a>
-                <span class="text-sm font-normal ">Showing <span class="font-semibold text-gray">1-5</span>
-                    of <span class="font-semibold text-gray">100</span></span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium  rounded-lg bg-white shadow-md border hover:bg-gray-100  text-gray-700">
-                    Previous
-                </a>
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium  rounded-lg bg-white shadow-md border hover:bg-gray-100  text-gray-700">
-                    Next</a>
-            </div>
-        </div>
     </div>
 </div>
 
@@ -106,7 +85,8 @@
         </button>
     </div>
 
-    <form action="">
+    <form action="<?= base_url('request/insertRequest') ?>" method="POST">
+    <input type="hidden" value="<?= $user['id_user'] ?>" name="id_user">
         <div class="h-[600px] px-3 pb-4 flex flex-col justify-between">
             <div class="text-sm ">
                 <table class="w-full">
@@ -117,7 +97,6 @@
                     ?>
                     <tbody>
                         <?php foreach ($keranjang as $key => $value) { ?>
-
                             <tr class="border-b product">
                                 <td class="px-2 py-4">
                                     <span class=" w-8 h-8 rounded">
@@ -130,11 +109,12 @@
                                 <td class="px-4 py-4">
                                     <?= $value['name'] ?>
                                 </td>
-                                <td><input type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400"
-                                        value="0"></td>
+                                <td><input name="qty[]" type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400"
+                                        value="1" min="1"></td>
                                 <td class="px-3 py-4">Rp.
                                     <?= $value['price'] ?>
                                 </td>
+                                <input type="hidden" name="id_barang[]" value="<?= $value['id'] ?>">
                             </tr>
                         <?php } ?>
                     </tbody>
