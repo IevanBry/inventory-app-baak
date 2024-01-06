@@ -28,7 +28,7 @@
                     echo form_open('Keranjang/add');
                     echo form_hidden('id', $item['id_barang']);
                     echo form_hidden('qty', 1);
-                    echo form_hidden('harga', $item['stok']);
+                    echo form_hidden('harga', $item['harga']);
                     echo form_hidden('name', $item['nama_barang']);
                     echo form_hidden('redirect_page', str_replace('index.php/', '', current_url()));
                     ?>
@@ -81,15 +81,13 @@
                     Next</a>
             </div>
         </div>
-
     </div>
-
 </div>
 
 
 
 <!-- pop up keranjang barang -->
-<?php $jml_item = 0; ?>
+<?php $jml_item = 1; ?>
 <div id="keranjang"
     class="fixed top-0 right-0 z-40 h-screen p-4 overflow-y-auto transition-transform translate-x-full bg-white w-[500px] duration-500"
     tabindex="-1" aria-labelledby="keranjang-label">
@@ -97,7 +95,6 @@
     <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
         <h3 class="text-lg font-semibold text-gray-90">
             Keranjang
-            <?= $jml_item ?>
         </h3>
         <button type="button" data-drawer-hide="keranjang"
             class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center">
@@ -120,25 +117,33 @@
                     ?>
                     <tbody>
                         <?php foreach ($keranjang as $key => $value) { ?>
+
                             <tr class="border-b product">
-                                <td class="delete-button px-2 py-4"><span class=" w-8 h-8 rounded"><i
-                                            class="bx bx-x text-2xl text-gray-500"></i></span></td>
+                                <td class="px-2 py-4">
+                                    <span class=" w-8 h-8 rounded">
+                                        <a href="<?= base_url('keranjang/delete/' . $value['rowid']) ?>">
+                                            <i class="bx bx-x text-2xl text-gray-500"></i>
+                                        </a>
+                                    </span>
+                                </td>
                                 <td class="px-6 py-4"><img alt="" class="w-36"></td>
                                 <td class="px-4 py-4">
                                     <?= $value['name'] ?>
                                 </td>
                                 <td><input type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400"
                                         value="0"></td>
-                                <td class="px-3 py-4"><?= $value['price'] ?></td>
+                                <td class="px-3 py-4">Rp.
+                                    <?= $value['price'] ?>
+                                </td>
                             </tr>
                         <?php } ?>
                     </tbody>
                 </table>
             </div>
-
             <button class="w-full p-2 bg-amber-400 font-medium text-sm rounded text-white">Minta Barang</button>
-
+            <a href="<?= base_url('keranjang/deleteAll') ?>"
+                class="text-center w-full p-2 bg-amber-400 font-medium text-sm rounded text-white">Clear All</a>
+            </body>
         </div>
     </form>
-</div>
 </div>

@@ -27,9 +27,17 @@ class Keranjang extends CI_Controller
             'name' => $name,
         );
         $this->cart->insert($data);
-        // $this->session->sess_destroy();
-        $this->session->unset_userdata('cart');
-        redirect($redirect_page,'refresh');
-
+        redirect($redirect_page, 'refresh');
+    }
+    public function delete($rowid)
+    {
+        print_r($this->session->userdata());
+        $this->cart->remove($rowid);
+        redirect('user/barang',);
+    }
+    public function deleteAll()
+    {
+        $this->cart->destroy();
+        redirect('user/barang');
     }
 }
