@@ -47,13 +47,24 @@ class AdminUser extends CI_Controller
     }
     public function insertUser()
     {
+        $this->form_validation->set_rules('nama', 'name', 'required|trim', [
+            'required' => 'Nama Wajib Di Isi'
+        ]);
+        $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email|is_unique[user.email]', [
+            'is_unique' => '<span class="text-red-500">Email Ini Sudah Terdaftar</span>',
+            'valid_email' => '<span class="text-red-500">Email Harus Valid</span>',
+            'required' => '<span class="text-red-500">Email Wajib Di Isi</span>'
+        ]);
+        $this->form_validation->set_rules('password', 'password', 'required|trim|min_length[5]', [
+            'min_length' => '<span class="text-red-500">Password Terlalu Pendek</span>',
+            'required' => '<span class="text-red-500">Password Wajib Di Isi</span>'
+        ]);
         $data = [
-            'nama' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'role' => $this->input->post('role'),
-            'password' => $this->input->post('password')
+            'nama' => htmlspecialchars($this->input->post('name', true)),
+            'email' => htmlspecialchars($this->input->post('email', true)),
+            'role' => "User",
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
         ];
-
         $this->User_model->insert($data);
         redirect('AdminUser');
     }

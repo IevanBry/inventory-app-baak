@@ -33,4 +33,20 @@ class User_model extends CI_Model {
         $this->db->where_in($this->id, $chcked_id);
         return $this->db->delete($this->table);
     }
+    public function getTotalStaff()
+    {
+        $this->db->select('COUNT(*) as total_staff');
+        $this->db->from('user');
+        $this->db->where('role = "Admin"');
+        $query = $this->db->get();
+        return $query->row()->total_staff;
+    }
+    public function getTotalUser()
+    {
+        $this->db->select('COUNT(*) as total_user');
+        $this->db->from('user');
+        $this->db->where('role = "User"');
+        $query = $this->db->get();
+        return $query->row()->total_user;
+    }
 }

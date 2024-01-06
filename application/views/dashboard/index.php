@@ -84,7 +84,7 @@
                 <div class="p-3 bg-gray-100 rounded lg">
                     <i class='bx bxs-package text-4xl text-green-500'></i>
                     <p>Barang Tersedia</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">112</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $barang_tersedia; ?></h1>
                 </div>
                 <div class="p-3 bg-gray-100 rounded lg">
                     <i class='bx bxs-group text-4xl text-sky-500'></i>
@@ -102,7 +102,7 @@
                             <i class='bx bxs-hourglass-bottom'></i>
                             <span class="text-sm sm:text-base">Stock Barang Sedikit</span>
                         </div>
-                        <h1 class="font-semibold text-sm xl:text-2xl">2</h1>
+                        <h1 class="font-semibold text-sm xl:text-2xl"><?= $stok_rendah; ?></h1>
                     </div>
                 </div>
                 <div class="p2">
@@ -111,7 +111,7 @@
                             <i class='bx bx-category-alt'></i>
                             <span class="text-sm sm:text-base">Kategori Barang</span>
                         </div>
-                        <h1  class="font-semibold text-sm xl:text-2xl" >7</h1>
+                        <h1  class="font-semibold text-sm xl:text-2xl" ><?= $total_kategori; ?></h1>
                     </div>
                 </div>
                 <div class="p2">
@@ -121,7 +121,7 @@
                             <span class="text-sm sm:text-base">Barang Habis</span>
                         </div>
 
-                        <h1  class="font-semibold text-sm xl:text-2xl">0</h1>
+                        <h1  class="font-semibold text-sm xl:text-2xl"><?= $barang_habis; ?></h1>
                     </div>
                 </div>
             </div>
@@ -134,12 +134,12 @@
                 <div class="p-3 bg-gray-100 rounded lg">
                     <i class='bx bxs-group text-4xl text-green-500'></i>
                     <p>Total User</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">112</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $total_user; ?></h1>
                 </div>
                 <div class="p-3 bg-gray-100 rounded lg">
                     <i class='bx bxs-group text-4xl text-sky-500'></i>
                     <p>Total Staff</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">11</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $total_staff; ?></h1>
                 </div>
             </div>
         </div>
@@ -149,7 +149,7 @@
         <div class="mb-6 flex justify-between items-center">
             <h1 class="font-semibold ">Pengeluaran Bulanan</h1>
             <a href="<?=base_url('baseController/report') ?>" class="flex items-center  text-sm hover:bg-gray-200 rounded-lg p-1 ">
-               Lihat Detail
+                Lihat Detail
             <i class='bx bx-chevron-right'></i>
             </a>
         </div>

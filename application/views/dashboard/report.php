@@ -26,21 +26,21 @@
                     <i class='bx bx-wallet text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Kas</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp 1.200.000</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp <?= $total_pemasukan - $total_pengeluaran; ?></h1>
                     </div>
                 </div>
                 <div class=" p-4 bg-white shadow-md rounded border flex items-center gap-2 ">
                     <i class='bx bx-money text-3xl w-12 bg-green-100 text-green-500 p-2 rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pemasukan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp 3.000.000</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp <?= $total_pemasukan; ?></h1>
                     </div>
                 </div>
                 <div class=" p-4 bg-white shadow-md rounded border flex items-center gap-2">
                     <i class='bx bx-money text-3xl  bg-red-100 text-red-500 p-2  rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pengeluaran</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp 1.800.000</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp <?= $total_pengeluaran; ?></h1>
                     </div>
                 </div>
             </div>

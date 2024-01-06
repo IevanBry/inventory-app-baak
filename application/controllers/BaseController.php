@@ -13,6 +13,7 @@ class BaseController extends CI_Controller
         $this->load->model('Stock_model');
         $this->load->model('Kategori_model');
         $this->load->model('User_model');
+        $this->load->model('Report_model');
     }
 
     function index()
@@ -22,6 +23,12 @@ class BaseController extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['barang'] = $this->Stock_model->get();
         $data['stok_barang'] = $this->Stock_model->getTotalBarang();
+        $data['stok_rendah'] = $this->Stock_model->getJumlahBarangTerendah();
+        $data['total_kategori'] = $this->Kategori_model->getTotalKategori();
+        $data['barang_habis'] = $this->Stock_model->getJumlahBarangHabis();
+        $data['total_staff'] = $this->User_model->getTotalStaff();
+        $data['total_user'] = $this->User_model->getTotalUser();
+        $data['barang_tersedia'] = $this->Stock_model->getTotalBarangTersedia();
         $data['icon'] = 'bx bx-home';
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/index');
@@ -44,6 +51,9 @@ class BaseController extends CI_Controller
         $data['title'] = 'Report';
         $data['icon'] = 'bx bx-file-find';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['report'] = $this->Report_model->get();
+        $data['total_pemasukan'] = $this->Report_model->getPemasukan();
+        $data['total_pengeluaran'] = $this->Report_model->getPengeluaran();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/report');
         $this->load->view('layout/footer');
