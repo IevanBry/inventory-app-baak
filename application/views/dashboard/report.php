@@ -26,21 +26,30 @@
                     <i class='bx bx-wallet text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Kas</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp <?= $total_pemasukan - $total_pengeluaran; ?></h1>
+                        <?php
+                        $kas = $total_pemasukan - $total_pengeluaran;
+                        ?>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
+                            <?= number_format($kas); ?>
+                        </h1>
                     </div>
                 </div>
                 <div class=" p-4 bg-white shadow-md rounded border flex items-center gap-2 ">
                     <i class='bx bx-money text-3xl w-12 bg-green-100 text-green-500 p-2 rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pemasukan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp <?= $total_pemasukan; ?></h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
+                            <?= number_format($total_pemasukan); ?>
+                        </h1>
                     </div>
                 </div>
                 <div class=" p-4 bg-white shadow-md rounded border flex items-center gap-2">
                     <i class='bx bx-money text-3xl  bg-red-100 text-red-500 p-2  rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pengeluaran</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp <?= $total_pengeluaran; ?></h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
+                            <?= number_format($total_pengeluaran); ?>
+                        </h1>
                     </div>
                 </div>
             </div>
@@ -83,20 +92,17 @@
 
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php for ($i = 1; $i < 6; $i++) { ?>
-                                    <tr class="hover:bg-gray-100 ">
-
-                                        <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
-                                            <?= $i ?>
-                                        </td>
-                                        <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp. 500.000</td>
-                                        <td scope="col" class="p-4 text-sm font-medium text-gray-900">02,November 2023</td>
-
-                                    </tr>
-                                <?php } ?>
-
-                            </tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach ($report as $item): ?>
+                                <tr class="hover:bg-gray-100 ">
+                                    <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
+                                        <?= $no ?>
+                                    </td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= number_format($item['jumlah']) ?></td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= $item['tanggal'] ?></td>
+                                </tr>
+                                <?php $no++; ?>
+                            <?php endforeach; ?>
                         </table>
                     </div>
                 </div>
@@ -209,7 +215,8 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="description" class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
+                            <label for="description"
+                                class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
                             <textarea id="description" rows="4"
                                 class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
                                 placeholder="Tulis catatan"></textarea>
@@ -220,7 +227,7 @@
                         <div class="col-span-1">
                             <button type="submit"
                                 class="text-center w-full bg-amber-300 hover:bg-amber-400 shadow-md text-white font-medium rounded-lg text-sm px-3 py-2"
-                                data-modal-toggle="tambah-pemasukan" >
+                                data-modal-toggle="tambah-pemasukan">
                                 Tambah Pemasukan
                             </button>
                         </div>

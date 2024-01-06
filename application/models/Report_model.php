@@ -28,22 +28,6 @@ class Report_model extends CI_Model
         $this->db->insert($this->table, $data);
         return $this->db->insert_id();
     }
-    public function getPemasukanHistory()
-    {
-        $this->db->select('jumlah, tanggal');
-        $this->db->from('transaksi');
-        $this->db->where('jenis = "pemasukan"');
-        $query = $this->db->get();
-        return $query->row();
-    }
-    public function getPengeluaranHistory()
-    {
-        $this->db->select('jumlah, tanggal');
-        $this->db->from('transaksi');
-        $this->db->where('jenis = "pengeluaran"');
-        $query = $this->db->get();
-        return $query->row();
-    }
     public function getPemasukan()
     {
         $this->db->select('sum(jumlah) as total_pemasukan');
