@@ -38,8 +38,14 @@
                     <i class='bx bx-money text-3xl w-12 bg-green-100 text-green-500 p-2 rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pemasukan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
-                            <?= number_format($total_pemasukan); ?>
+                        <h1 class="text-sm xl:text-2xl font-semibold">
+                            <?php
+                            if ($total_pemasukan !== null) {
+                                echo number_format($total_pemasukan);
+                            } else {
+                                echo 'Rp 0';
+                            }
+                            ?>
                         </h1>
                     </div>
                 </div>
@@ -47,9 +53,14 @@
                     <i class='bx bx-money text-3xl  bg-red-100 text-red-500 p-2  rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pengeluaran</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
-                            <?= number_format($total_pengeluaran); ?>
-                        </h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">
+                            <?php
+                            if ($total_pengeluaran !== null) {
+                                echo number_format($total_pengeluaran);
+                            } else {
+                                echo 'Rp 0';
+                            }
+                            ?>
                     </div>
                 </div>
             </div>

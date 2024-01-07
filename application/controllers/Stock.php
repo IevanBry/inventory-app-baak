@@ -6,6 +6,7 @@ class Stock extends CI_Controller
         parent::__construct();
         $this->load->model('Stock_model');
         $this->load->model('kategori_model');
+        $this->load->model('Report_model');
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
@@ -35,6 +36,26 @@ class Stock extends CI_Controller
         $this->load->view('layout/header');
         $this->load->view('stock/edit');
         $this->load->view('layout/footer');
+    }
+    public function tambahStock()
+    {
+        $id = $this->input->post('id');
+        $tambahStok = $this->input->post('amount');
+        $jumlahStok = $this->Stock_model->getStokBarangById($id);
+        $hasilTambah = $jumlahStok + $tambahStok;
+        $this->Stock_model->updateJumlahStokById($id, $hasilTambah);
+
+        $harga = $this->Stock_model->getHargaBarangById($id);
+        $pengeluaran = $harga * $tambahStok;
+        $data = [
+            'tanggal' => $this->input->post('tanggal'),
+            'jenis' => "pengeluaran",
+            'jumlah' => $pengeluaran
+        ];
+        $this->Report_model->insertPengeluaran($data);
+
+        $this->session->set_flashdata('status', 'Tambah stock berhasil');
+        redirect('Stock');
     }
 
     function editStock()
