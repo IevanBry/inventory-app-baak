@@ -7,7 +7,6 @@ class Report_model extends CI_Model
     {
         parent::__construct();
     }
-    // Stock_model.php
 
     function get()
     {
