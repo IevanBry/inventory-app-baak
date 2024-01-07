@@ -14,6 +14,7 @@ class BaseController extends CI_Controller
         $this->load->model('Kategori_model');
         $this->load->model('User_model');
         $this->load->model('Report_model');
+        $this->load->model('Request_model');
     }
 
     function index()
@@ -66,8 +67,9 @@ class BaseController extends CI_Controller
         $data['title'] = 'Request';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['request'] = $this->Request_model->getRequest();
         $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/request');
+        $this->load->view('dashboard/request', $data);
         $this->load->view('layout/footer');
     }
 
@@ -94,5 +96,4 @@ class BaseController extends CI_Controller
         $this->load->view('stock/index', $data);
         $this->load->view('layout/footer');
     }
-
 }

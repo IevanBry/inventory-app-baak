@@ -15,7 +15,7 @@ class Request extends CI_Controller
     }
     public function index()
     {
-        $data['title'] = 'Pengajuan';
+        $data['title'] = 'Request';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['request'] = $this->Request_model->getRequest();

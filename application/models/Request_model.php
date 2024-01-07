@@ -10,12 +10,26 @@ class Request_model extends CI_Model
 
     function getRequest()
     {
-        $this->db->select('request.*, barang.nama_barang, user.nama_user');
+        $this->db->select('request.*, barang.nama_barang, user.nama');
         $this->db->from('request');
         $this->db->join('barang', 'barang.id_barang = request.id_barang', 'inner');
         $this->db->join('user', 'user.id_user = request.id_user', 'inner');
+        $this->db->where('user.role', 'user');
         $query = $this->db->get();
-    
+
+        if (!$query) {
+            echo $this->db->error()['message'];
+            die; // Hentikan eksekusi skrip jika terjadi kesalahan
+        }
+
+        return $query->result_array();
+    }
+    function getForUser($id_user)
+    {
+        $this->db->select('request.*, barang.nama_barang');
+        $this->db->from('request');
+        $this->db->join('barang', 'barang.id_barang = request.id_barang AND request.id_user = ' . $id_user, 'inner');
+        $query = $this->db->get();
         return $query->result_array();
     }
 

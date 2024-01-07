@@ -103,12 +103,15 @@ class Stock extends CI_Controller
     public function deleteStock()
     {
         $id_barang = $this->input->post('id_barang');
-
         if (!empty($id_barang)) {
             $this->Stock_model->delete($id_barang);
+            $error = $this->db->error();
+            if ($error['code'] != 0) {
+                $this->session->set_flashdata('status', 'Cancel request client terlebih dahulu');
+            } else {
+                $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
+            }
         }
-
-        $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
         redirect('Stock');
     }
 
@@ -119,7 +122,12 @@ class Stock extends CI_Controller
         if (!empty($checked_ids)) {
             $checked_id_array = explode(',', $checked_ids);
             $this->Stock_model->deleteSelected($checked_id_array);
-            $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
+            $error = $this->db->error();
+            if ($error['code'] != 0) {
+                $this->session->set_flashdata('status', 'Cancel request client terlebih dahulu');
+            } else {
+                $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
+            }
         } else {
             $this->session->set_flashdata('status', 'Select at least any ID');
         }
