@@ -87,7 +87,7 @@
 
     <form action="<?= base_url('request/insertRequest') ?>" method="POST">
     <input type="hidden" value="<?= $user['id_user'] ?>" name="id_user">
-        <div class="h-[600px] px-3 pb-4 flex flex-col justify-between">
+        <div class="h-[600px] px-3  flex flex-col justify-between">
             <div class="text-sm ">
                 <table class="w-full">
                     <?php $keranjang = $this->cart->contents();
@@ -120,7 +120,7 @@
                     </tbody>
                 </table>
             </div>
-            <div class="w-full pb-28">
+            <div class="w-full">
                 <button class=" bg-amber-400 font-medium p-2 w-full text-md rounded hover:bg-amber-500 text-white mb-2">Minta Barang</button>
                 <button  class="bg-red-500 font-medium p-2 hover:bg-red-600 w-full text-md rounded text-white">
                 <a href="<?= base_url('keranjang/deleteAll') ?>" class="hover:text-white">Clear All</a>

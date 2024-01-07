@@ -1,5 +1,5 @@
-<div class="bg-white rounded  shadow-md">
-    <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
+<div class="bg-white rounded  shadow-md mt-3 ms-5">
+    <div class="px-10 pt-10 pb-3  block sm:flex items-center justify-between border-b border-gray-200 ">
         <div class="w-full mb-1">
             <div class="items-center justify-between block sm:flex ">
                 <div class="flex gap-2">
@@ -31,11 +31,11 @@
             <?php endif; ?>
         </div>
     </div>
-    <div class="flex flex-col">
+    <div class="flex flex-col bg-white">
         <div class="overflow-x-auto">
             <div class="inline-block min-w-full ">
-                <div class="overflow-hidden  p-4">
-                    <table id="example" class="ui table ">
+                <div class="overflow-hidden  p-10">
+                    <table id="example" class="ui table nowrap">
                         <thead>
                             <tr>
                                 <th scope="col" class="p-4">
@@ -117,7 +117,7 @@
                                     <?= $item['role'] ?>
                                 </td>
 
-                                <td scope="" class="p-4 space-x-2 text-center">
+                                <td scope="" class="p-4 r">
                                     <button id="updateUserButton" type="button"
                                         data-modal-target="updateUserModal<?= $no ?>"
                                         data-modal-toggle="updateUserModal<?= $no ?>"
@@ -129,7 +129,7 @@
                                     <button type="button" id="deleteUserButton" data-modal-target="hapusUserModal<?= $no ?>"
                                         data-modal-toggle="hapusUserModal<?= $no ?>"
                                         aria-controls="drawer-delete-product-default"
-                                        class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-red-400 text-white border hover:bg-red-500">
+                                        class="inline-flex items-center px-3 py-1 text-sm font-medium rounded shadow-md bg-red-500 text-white border hover:bg-red-600">
                                         <i class="bx bx-trash"></i>
                                         Delete
                                     </button>

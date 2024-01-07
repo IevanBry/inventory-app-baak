@@ -72,7 +72,7 @@
         <div class="flex flex-col">
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full ">
-                    <div class="overflow-hidden  p-4">
+                    <div class="overflow-hidden  p-8">
                         <table id="example" class="ui table nowrap ">
                             <thead>
                                 <tr>
