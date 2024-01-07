@@ -557,7 +557,7 @@
                             </button>
                             <button type="submit"
                                 class="text-end bg-amber-400 shadow-md text-white font-medium rounded text-sm px-3 py-2">
-                                Tambah Stock
+                                Tambah Stock Barang
                             </button>
                         </div>
                     </form>
