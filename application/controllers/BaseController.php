@@ -75,11 +75,12 @@ class BaseController extends CI_Controller
 
     function notif()
     {
-        $data['title'] = 'Notification';
-        $data['icon'] = 'bx bx-bell';
+        $data['title'] = 'Request';
+        $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['request'] = $this->Request_model->getRequest();
         $this->load->view('layout/header', $data);
-        $this->load->view('dashboard/notif');
+        $this->load->view('dashboard/notif', $data);
         $this->load->view('layout/footer');
     }
 
@@ -92,7 +93,7 @@ class BaseController extends CI_Controller
         $data['kategori'] = $this->Kategori_model->get();
         $data['stok_rendah'] = $this->Stock_model->getJumlahBarangTerendah();
         $data['total'] = $this->Stock_model->getTotalBarang();
-        $this->load->view('layout/header',$data);
+        $this->load->view('layout/header', $data);
         $this->load->view('stock/index', $data);
         $this->load->view('layout/footer');
     }

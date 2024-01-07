@@ -52,10 +52,10 @@
                             <i class='bx bx-plus'></i>
                             <span> Tambah Barang Baru</span>
                         </button>
-                        <button id="exportDataUser" type="button"
+                        <button id="TambahStock" type="button"
                             class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
                             <i class='bx bxs-file-export text-md'></i>
-                            <span>Export</span>
+                            <span>Tambah Stock</span>
                         </button>
                     </div>
                 </div>
@@ -494,3 +494,4 @@
             </div>
         </div>
     </div>
+</div>
