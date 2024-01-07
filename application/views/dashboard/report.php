@@ -4,6 +4,15 @@
             <div class="div grid grid-cols-1 mb-3">
                 <div class=" p-4 bg-white shadow-md rounded border flex items-center gap-2">
                     <div class="flex gap-2 items-center">
+                        <div>
+                            <select id="countries"
+                                class="bg-gray-50  border-gray-300 shadow-md text-gray-900 text-sm rounded border focus:ring-sky-400 focus:border-sky-400 block w-full px-3 py-1">
+                                <option selected>Perbulan</option>
+                                <option value="minggu">Perminggu</option>
+                                <option value="bulan">Pertahun</option>
+                            </select>
+                        </div>
+
                         <button type="button" id="tambahPemasukan" data-modal-target="tambah-pemasukan"
                             data-modal-toggle="tambah-pemasukan"
                             class="bg-amber-300 text-white hover:bg-amber-500 flex items-center shadow-md font-medium rounded border text-sm px-3 py-1">
@@ -29,14 +38,8 @@
                     <i class='bx bx-money text-3xl w-12 bg-green-100 text-green-500 p-2 rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pemasukan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">
-                            <?php
-                            if ($total_pemasukan !== null) {
-                                echo number_format($total_pemasukan);
-                            } else {
-                                echo 'Rp 0';
-                            }
-                            ?>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
+                            <?= number_format($total_pemasukan); ?>
                         </h1>
                     </div>
                 </div>
@@ -44,14 +47,8 @@
                     <i class='bx bx-money text-3xl  bg-red-100 text-red-500 p-2  rounded border'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Pengeluaran</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">
-                            <?php
-                            if ($total_pengeluaran !== null) {
-                                echo number_format($total_pengeluaran);
-                            } else {
-                                echo 'Rp 0';
-                            }
-                            ?>
+                        <h1 class="text-sm xl:text-2xl font-semibold">Rp
+                            <?= number_format($total_pengeluaran); ?>
                         </h1>
                     </div>
                 </div>

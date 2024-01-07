@@ -112,7 +112,7 @@
                                             <!-- <span class="bg-green-400 text-white shadow-md p-1 px-3 rounded">Disetujui</span> -->
                                         </td>
                                         <td class="p-4 space-x-2 text-center">
-                                            <button  type="button" data-modal-target="verifikasi"
+                                            <button type="button" data-modal-target="verifikasi"
                                                 data-modal-toggle="verifikasi"
                                                 class="inline-flex items-center px-3 py-1 text-sm font-medium  rounded shadow-md bg-white border">
                                                 <i class="bx bx-edit"></i>
@@ -121,70 +121,74 @@
                                         </td>
                                     </tr>
                                     <!-- Verifikasi -->
-                                   
-                                        <div id="verifikasi" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen max-h-full">
-                                            <div class="relative p-4 w-full max-w-2xl max-h-full">
-                                                <!-- Modal content -->
-                                                <div class="relative bg-white rounded-lg shadow">
-                                                    <!-- Modal header -->
-                                                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
-                                                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
-                                                            Verifikasi
-                                                        </h3>
-                                                        <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  " data-modal-hide="verifikasi">
-                                                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
-                                                            </svg>
-                                                            <span class="sr-only">Close modal</span>
-                                                        </button>
-                                                    </div>
-                                                    <!-- Modal body -->
-                                                    <div class="p-4 md:p-5 space-y-4">
+
+                                    <div id="verifikasi" tabindex="-1" aria-hidden="true"
+                                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen max-h-full">
+                                        <div class="relative p-4 w-full max-w-2xl max-h-full">
+                                            <!-- Modal content -->
+                                            <div class="relative bg-white rounded-lg shadow">
+                                                <!-- Modal header -->
+                                                <div
+                                                    class="flex items-center justify-between p-4 md:p-5 border-b rounded-t">
+                                                    <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                                                        Verifikasi
+                                                    </h3>
+                                                    <button type="button"
+                                                        class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  "
+                                                        data-modal-hide="verifikasi">
+                                                        <svg class="w-3 h-3" aria-hidden="true"
+                                                            xmlns="http://www.w3.org/2000/svg" fill="none"
+                                                            viewBox="0 0 14 14">
+                                                            <path stroke="currentColor" stroke-linecap="round"
+                                                                stroke-linejoin="round" stroke-width="2"
+                                                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                        </svg>
+                                                        <span class="sr-only">Close modal</span>
+                                                    </button>
+                                                </div>
+                                                <!-- Modal body -->
+                                                <div class="p-4 md:p-5 space-y-4">
                                                     <form action="">
 
                                                         <ul class="flex justify-between px-10">
                                                             <li>User</li>
-                                                            <li>Ridho Hidayat</li>
+                                                            <li><?= $r['nama'] ?></li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Jenis Request</li>
-                                                            <li>Permintaan barang</li>
+                                                            <li>Permintaan Barang</li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Tanggal</li>
-                                                            <li>11 november 2023</li>
+                                                            <li><?= date('d F Y H:i:s', strtotime($r['tanggal'])); ?></li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Barang</li>
-                                                            <li>Spidol</li>
-                                                        </ul>
-                                                        <ul class="flex justify-between px-10">
-                                                            <li>Detail</li>
-                                                            <li>Spidol hitam</li>
+                                                            <li><?= $r['nama_barang'] ?></li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Jumlah Permintaan</li>
-                                                            <li>20</li>
+                                                            <li><?= $r['jumlah'] ?></li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Gambar</li>
-                                                            <li><img class="w-36 h-36" src="<?= base_url('dist/Logo_PCR.png') ?>" alt=""></li>
+                                                            <li><img class="w-36"
+                                                                    src="<?= base_url('dist/Logo_PCR.png') ?>" alt=""></li>
                                                         </ul>
-                                                    
                                                     </form>
-                                                    </div>
-                                                    <!-- Modal footer -->
-                                                    <div class="grid grid-cols-2 gap-4 border-t p-4">
-                                                                                            <button class="px-3 py-1  border bg-white shadow-md rounded"
-                                                                                                data-modal-toggle="tolak-verifikasi"
-                                                                                                data-modal-target="tolak-verifikasi"
-                                                                                                data-modal-hide="verifikasi">Tolak</button>
-                                                                                            <button class="px-3 py-1 text-white  bg-amber-300 shadow-md rounded"
-                                                                                                data-modal-toggle="verifikasi">Terima</button>
-                                                                                        </div>
+                                                </div>
+                                                <!-- Modal footer -->
+                                                <div class="grid grid-cols-2 gap-4 border-t p-4">
+                                                    <button class="px-3 py-1  border bg-white shadow-md rounded"
+                                                        data-modal-toggle="tolak-verifikasi"
+                                                        data-modal-target="tolak-verifikasi"
+                                                        data-modal-hide="verifikasi">Tolak</button>
+                                                    <button class="px-3 py-1 text-white  bg-amber-300 shadow-md rounded"
+                                                        data-modal-toggle="verifikasi">Terima</button>
                                                 </div>
                                             </div>
                                         </div>
+                                    </div>
                                     <?php $no++; ?>
                                 <?php endforeach; ?>
                             </tbody>
@@ -228,3 +232,4 @@
             </div>
         </div>
     </div>
+</div>

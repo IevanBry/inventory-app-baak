@@ -36,10 +36,10 @@ class AdminUser extends CI_Controller
     function editUser()
     {
         $data = [
-            'nama' => $this->input->post('name'),
-            'email' => $this->input->post('email'),
-            'role' => $this->input->post('role'),
-            'password' => $this->input->post('password')
+            'nama' => htmlspecialchars($this->input->post('name', true)),
+            'email' => htmlspecialchars($this->input->post('email', true)),
+            'role' => "User",
+            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
         ];
         $id = $this->input->post('id');
         $this->User_model->update(['id_user' => $id], $data);

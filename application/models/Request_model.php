@@ -15,15 +15,17 @@ class Request_model extends CI_Model
         $this->db->join('barang', 'barang.id_barang = request.id_barang', 'inner');
         $this->db->join('user', 'user.id_user = request.id_user', 'inner');
         $this->db->where('user.role', 'user');
+        $this->db->order_by('request.tanggal', 'DESC');
         $query = $this->db->get();
 
         if (!$query) {
             echo $this->db->error()['message'];
-            die; // Hentikan eksekusi skrip jika terjadi kesalahan
+            die;
         }
 
         return $query->result_array();
     }
+
     function getForUser($id_user)
     {
         $this->db->select('request.*, barang.nama_barang');
