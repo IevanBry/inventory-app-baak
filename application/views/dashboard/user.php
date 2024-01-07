@@ -14,11 +14,6 @@
                         <i class='bx bx-plus'></i>
                         <span> Tambah User Baru</span>
                     </button>
-                    <button id="exportDataUser" type="button"
-                        class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
-                        <i class='bx bxs-file-export text-md'></i>
-                        <span>Export</span>
-                    </button>
                 </div>
             </div>
             <?php if ($this->session->flashdata('status')): ?>
