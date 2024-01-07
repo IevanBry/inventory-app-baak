@@ -52,9 +52,34 @@
                                 <button type="submit"
                                     class="tambah-barang px-3 w-full mb-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white">Tambah
                                     ke keranjang</button>
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function () {
+                                        const addToCartButtons = document.querySelectorAll('.tambah-barang');
+
+                                        addToCartButtons.forEach(button => {
+                                            button.addEventListener('click', function (event) {
+                                                event.preventDefault();
+
+                                                Swal.fire({
+                                                    title: 'Tambah ke Keranjang',
+                                                    text: 'Apakah Anda ingin menambahkan item ini ke keranjang?',
+                                                    icon: 'question',
+                                                    showCancelButton: true,
+                                                    confirmButtonText: 'Ya, tambahkan!',
+                                                    cancelButtonText: 'Batal',
+                                                }).then((result) => {
+                                                    if (result.isConfirmed) {
+                                                        // If the user clicks "Ya", submit the form
+                                                        const form = button.closest('form');
+                                                        form.submit();
+                                                    }
+                                                });
+                                            });
+                                        });
+                                    });
+                                </script>
                             </div>
                         </div>
-
                     </div>
                     <?php echo form_close(); ?>
                 </div>
@@ -86,7 +111,7 @@
     </div>
 
     <form action="<?= base_url('request/insertRequest') ?>" method="POST">
-    <input type="hidden" value="<?= $user['id_user'] ?>" name="id_user">
+        <input type="hidden" value="<?= $user['id_user'] ?>" name="id_user">
         <div class="h-[600px] px-3 pb-4 flex flex-col justify-between">
             <div class="text-sm ">
                 <table class="w-full">
@@ -109,8 +134,9 @@
                                 <td class="px-4 py-4">
                                     <?= $value['name'] ?>
                                 </td>
-                                <td><input name="qty[]" type="number" class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400"
-                                        value="1" min="1"></td>
+                                <td><input name="qty[]" type="number"
+                                        class="w-20 p-1 rounded focus:ring-sky-400 focus:border-sky-400" value="1" min="1">
+                                </td>
                                 <td class="px-3 py-4">Rp.
                                     <?= $value['price'] ?>
                                 </td>
@@ -121,10 +147,56 @@
                 </table>
             </div>
             <div class="w-full pb-28">
-                <button class=" bg-amber-400 font-medium p-2 w-full text-md rounded hover:bg-amber-500 text-white mb-2">Minta Barang</button>
-                <button  class="bg-red-500 font-medium p-2 hover:bg-red-600 w-full text-md rounded text-white">
-                <a href="<?= base_url('keranjang/deleteAll') ?>" class="hover:text-white">Clear All</a>
+                <button
+                    class=" bg-amber-400 font-medium p-2 w-full text-md rounded hover:bg-amber-500 text-white mb-2 keranjang-cart-btn">Minta
+                    Barang</button>
+                <button
+                    class="bg-red-500 font-medium p-2 hover:bg-red-600 w-full text-md rounded text-white clear-cart-btn">
+                    <a href="<?= base_url('keranjang/deleteAll') ?>" class="hover:text-white">Clear All</a>
                 </button>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelector('.clear-cart-btn').addEventListener('click', function (event) {
+                            event.preventDefault();
+
+                            Swal.fire({
+                                title: 'Clear Cart',
+                                text: 'Apakah Anda yakin ingin menghapus semua barang dari keranjang?',
+                                icon: 'question',
+                                showCancelButton: true,
+                                confirmButtonText: 'Ya, hapus semua!',
+                                cancelButtonText: 'Batal',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    // If the user clicks "Ya", navigate to the clearAll URL
+                                    window.location.href = '<?= base_url("keranjang/deleteAll") ?>';
+                                }
+                            });
+                        });
+                    });
+                </script>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        document.querySelector('.keranjang-cart-btn').addEventListener('click', function (event) {
+                            event.preventDefault();
+
+                            Swal.fire({
+                                title: 'Clear Cart',
+                                text: 'Apakah Anda ingin membuat request?',
+                                icon: 'question',
+                                showCancelButton: true,
+                                confirmButtonText: 'Ya, Tambahkan!',
+                                cancelButtonText: 'Batal',
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    <input type="hidden" name="id_barang[]" value="<?= $value['id'] ?>">
+                                    // If the user clicks "Ya", navigate to the clearAll URL
+                                    window.location.href = '<?= base_url('request/insertRequest') ?>';
+                                }
+                            });
+                        });
+                    });
+                </script>
             </div>
         </div>
     </form>

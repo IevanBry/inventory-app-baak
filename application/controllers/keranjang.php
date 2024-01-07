@@ -27,7 +27,7 @@ class Keranjang extends CI_Controller
             'name' => $name,
         );
         $this->cart->insert($data);
-        redirect($redirect_page, 'refresh');
+        redirect($redirect_page);
     }
     public function delete($rowid)
     {
