@@ -98,8 +98,12 @@
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
-                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp <?= number_format($item['jumlah']) ?></td>
-                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= $item['tanggal'] ?></td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp
+                                        <?= number_format($item['jumlah']) ?>
+                                    </td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">
+                                        <?= $item['tanggal'] ?>
+                                    </td>
                                 </tr>
                                 <?php $no++; ?>
                             <?php endforeach; ?>
@@ -145,8 +149,12 @@
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
-                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp <?= number_format($item['jumlah']) ?></td>
-                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900"><?= $item['tanggal'] ?></td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">Rp
+                                        <?= number_format($item['jumlah']) ?>
+                                    </td>
+                                    <td scope="col" class="p-4 text-sm font-medium text-gray-900">
+                                        <?= $item['tanggal'] ?>
+                                    </td>
                                 </tr>
                                 <?php $no++; ?>
                             <?php endforeach; ?>
@@ -196,34 +204,27 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form action="#" class="p-4 md:p-5">
+            <form action="<?= base_url('Report/insertPemasukan'); ?>" method="post" class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-col-1">
                     <div class="grid-cols-">
                         <div class="mb-3">
-                            <label for=" name" class="block mb-2 text-sm font-medium text-gray-90">Tanggal</label>
-                            <?php $tanggal_sekarang = date("Y-m-d"); ?>
-                            <input type="text" name="name" id="name"
+                            <label for="tanggal" class="block mb-2 text-sm font-medium text-gray-90">Tanggal</label>
+                            <?php
+                            date_default_timezone_set('Asia/Jakarta');
+                            $timestamp_sekarang = time();
+                            ?>
+                            <input type="text" name="tanggal" id="tanggal"
                                 class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded-lg  block w-full p-2.5 "
-                                placeholder="" required="" value="<?= $tanggal_sekarang ?>" readonly>
+                                placeholder="" value="<?= date('Y-m-d H:i:s', $timestamp_sekarang) ?>" required=""
+                                readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="price" class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah
+                            <label for="jumlah" class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah
                                 Pemasukan</label>
-                            <input type="number" name="price" id="price"
+                            <input type="number" name="jumlah" id="jumlah"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
                                 placeholder="Rp.0">
                         </div>
-
-                        <div class="mb-3">
-                            <label for="description"
-                                class="block mb-2 text-sm font-medium text-gray-900 ">Catatan</label>
-                            <textarea id="description" rows="4"
-                                class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-sky-400 focus:border-sky-400"
-                                placeholder="Tulis catatan"></textarea>
-
-                        </div>
-
-
                         <div class="col-span-1">
                             <button type="submit"
                                 class="text-center w-full bg-amber-300 hover:bg-amber-400 shadow-md text-white font-medium rounded-lg text-sm px-3 py-2"
@@ -232,10 +233,7 @@
                             </button>
                         </div>
                     </div>
-
                 </div>
-
-
             </form>
         </div>
     </div>
