@@ -52,10 +52,11 @@
                             <i class='bx bx-plus'></i>
                             <span> Tambah Barang Baru</span>
                         </button>
-                        <button id="TambahStock" type="button"
-                            class="bg-sky-400 text-white hover:bg-sky-500 flex  items-center shadow-md font-medium rounded text-sm px-3 py-1">
-                            <i class='bx bxs-file-export text-md'></i>
-                            <span>Tambah Stock</span>
+                        <button type="button" id="tambahStock" data-modal-target="tambahStockModal"
+                            data-modal-toggle="tambahStockModal"
+                            class="bg-blue-400 text-white hover:bg-blue-500 flex items-center shadow-md font-medium rounded text-sm px-3 py-1 ">
+                            <i class='bx bx-plus'></i>
+                            <span> Tambah Stock Barang</span>
                         </button>
                     </div>
                 </div>
@@ -494,4 +495,3 @@
             </div>
         </div>
     </div>
-</div>

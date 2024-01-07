@@ -49,7 +49,8 @@ class Stock_model extends CI_Model
 
         return $query->row()->gambar;
     }
-    public function deleteSelected($checked_id){
+    public function deleteSelected($checked_id)
+    {
         $this->db->where_in($this->id, $checked_id);
         return $this->db->delete($this->table);
     }
@@ -60,7 +61,7 @@ class Stock_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->min_stok;
     }
-    
+
     public function getTotalBarang()
     {
         $this->db->select('COUNT(*) as total_barang');
@@ -83,5 +84,32 @@ class Stock_model extends CI_Model
         $this->db->where('stok <> 0');
         $query = $this->db->get();
         return $query->row()->barang_tersedia;
+    }
+    public function getStokBarangById($id)
+    {
+        $this->db->select('stok');
+        $this->db->from('barang');
+        $this->db->where('id_barang', $id);
+        $query = $this->db->get();
+        return $query->row()->stok;
+    }
+    public function updateJumlahStokById($id_barang, $new_jumlah)
+    {
+        $data = array(
+            'stok' => $new_jumlah
+        );
+
+        $this->db->where('id_barang', $id_barang);
+        $this->db->update("barang", $data);
+
+        return $this->db->affected_rows();
+    }
+    public function getHargaBarangById($id)
+    {
+        $this->db->select('harga');
+        $this->db->from('barang');
+        $this->db->where('id_barang', $id);
+        $query = $this->db->get();
+        return $query->row()->harga;
     }
 }
