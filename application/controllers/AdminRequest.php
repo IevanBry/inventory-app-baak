@@ -52,11 +52,10 @@ class AdminRequest extends CI_Controller
 
         $this->Request_model->updateStatus($requestId, 'Accepted');
         $requestData = $this->Request_model->getBy($requestId);
-        print_r($requestData);
-        // $this->History_model->insert($requestData);
-        // $this->Request_model->delete($requestId);
+        $this->History_model->insert($requestData);
+        $this->Request_model->delete($requestId);
 
-        // redirect('AdminRequest');
+        redirect('AdminRequest');
     }
 
     private function rejectRequest()

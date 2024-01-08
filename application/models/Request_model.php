@@ -26,22 +26,25 @@ class Request_model extends CI_Model
 
         return $query->result_array();
     }
-    
     function getForUser($id_user)
     {
         $this->db->select('request.*, barang.nama_barang');
         $this->db->from('request');
         $this->db->join('barang', 'barang.id_barang = request.id_barang AND request.id_user = ' . $id_user, 'inner');
+        $this->db->where('request.status', 'proses');
         $query = $this->db->get();
         return $query->result_array();
     }
 
+
     public function getBy()
     {
         $this->db->from($this->table);
+        $this->db->order_by('tanggal', 'DESC'); // Mengurutkan berdasarkan tanggal secara descending
         $query = $this->db->get();
         return $query->row_array();
     }
+
     public function update($where, $data)
     {
         $this->db->update($this->table, $data, $where);

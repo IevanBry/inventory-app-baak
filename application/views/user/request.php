@@ -91,7 +91,9 @@
                                                 <?= $r['jumlah'] ?>
                                             </span></td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
-                                            <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">Proses</span>
+                                            <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
+                                                <?= $r['status'] ?>
+                                            </span>
                                         </td>
 
                                         <td class="p-4 space-x-2 text-center">
@@ -132,8 +134,10 @@
                                                                 <?= $r['nama_barang'] ?> -
                                                                 <?= $r['jumlah'] ?>
                                                             </span>?</h3>
-                                                        <form action="<?= base_url('Request/deleteRequest'); ?>" method="post">
-                                                            <input type="hidden" name="id_request" value="<?= $r['id_request'] ?>">
+                                                        <form action="<?= base_url('Request/deleteRequest'); ?>"
+                                                            method="post">
+                                                            <input type="hidden" name="id_request"
+                                                                value="<?= $r['id_request'] ?>">
                                                             <button type="submit"
                                                                 class="bg-amber-400 text-white shadow-md  focus:outline-none  font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
                                                                 Ya, lanjutkan
