@@ -76,11 +76,24 @@
                             <p class=" text-sm sm:text-base">Daftar Pemasukan</p>
                         </div>
                     </div>
-                    <button id="exportDataUser" type="button"
+                    <button id="exportDataUser" type="printTable" onclick="printTablePemasukan()"
                         class=" flex items-center bg-sky-400 text-white hover:bg-sky-500 shadow-md font-medium rounded border text-sm px-3 py-1">
                         <i class='bx bxs-file-export text-md'></i>
 
                         <span>Export</span>
+                        <script>
+                            function printTablePemasukan() {
+                                var printContents = document.getElementById('example_pemasukan').outerHTML;
+                                var originalContents = document.body.innerHTML;
+
+                                var title = '<h1 class="text-center mb-4">Laporan Barang Masuk</h1>';
+                                printContents = title + printContents;
+
+                                document.body.innerHTML = printContents;
+                                window.print();
+                                document.body.innerHTML = originalContents;
+                            }
+                        </script>
                     </button>
                 </div>
 
@@ -131,11 +144,24 @@
                             <p class=" text-sm sm:text-base">Daftar Pengeluaran</p>
                         </div>
                     </div>
-                    <button id="exportDataUser" type="button"
+                    <button id="exportDataUser" type="button" onclick="printTablePengeluaran()"
                         class=" flex items-center bg-sky-400 text-white hover:bg-sky-500 shadow-md font-medium rounded border text-sm px-3 py-1">
                         <i class='bx bxs-file-export text-md'></i>
 
                         <span>Export</span>
+                        <script>
+                            function printTablePengeluaran() {
+                                var printContents = document.getElementById('example_pengeluaran').outerHTML;
+                                var originalContents = document.body.innerHTML;
+
+                                var title = '<h1 class="text-center mb-4">Laporan Barang Masuk</h1>';
+                                printContents = title + printContents;
+
+                                document.body.innerHTML = printContents;
+                                window.print();
+                                document.body.innerHTML = originalContents;
+                            }
+                        </script>
                     </button>
                 </div>
 
@@ -212,6 +238,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
+
             <!-- Modal body -->
             <form action="<?= base_url('Report/insertPemasukan'); ?>" method="post" class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-col-1">
@@ -250,8 +277,6 @@
 
 
 <script>
-    // Data dummy inventaris barang kantor
-    // Data dummy inventaris barang kantor
     const expenseData = {
         months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         amounts: [1200, 800, 1500, 1000, 2000, 1200, 900, 1300, 1100, 1800, 950, 2000],
