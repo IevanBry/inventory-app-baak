@@ -156,31 +156,5 @@
                 </div>
             </div>
         </div>
-
-
-
-        <div class=" bottom-0 right-0 items-center w-full p-4 flex sm:justify-between border-t">
-            <div class="flex items-center mb-4 sm:mb-0">
-                <a href="#" class="inline-flex justify-center p-1  rounded cursor-pointer">
-
-                </a>
-                <a href="#" class="inline-flex justify-center p-1 mr-2  rounded cursor-pointer">
-
-                </a>
-                <span class="text-sm font-normal ">Showing <span class="font-semibold text-gray">1-5</span> of <span
-                        class="font-semibold text-gray">100</span></span>
-            </div>
-            <div class="flex items-center space-x-3">
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium shadow-md  rounded bg-white border ">
-                    Previous
-                </a>
-                <a href="#"
-                    class="inline-flex items-center justify-center flex-1 px-3 py-2 text-sm font-medium shadow-md border rounded bg-white ">
-                    Next
-
-                </a>
-            </div>
-        </div>
     </div>
 </div>

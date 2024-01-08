@@ -40,7 +40,6 @@
                             <tr>
                                 <th scope="col" class="p-4">
                                     <div class="flex items-center">
-
                                         <script>
                                             function checkAll() {
                                                 var checkboxAll = document.getElementById('checkbox-all');

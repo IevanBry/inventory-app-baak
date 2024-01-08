@@ -46,6 +46,17 @@ class Request_model extends CI_Model
         $this->db->update($this->table, $data, $where);
         return $this->db->affected_rows();
     }
+    public function updateStatus($id_request, $status)
+    {
+        $data = array(
+            'status' => $status
+        );
+
+        $this->db->where('id_request', $id_request);
+        $this->db->update("request", $data);
+
+        return $this->db->affected_rows();
+    }
     public function insert($data)
     {
         $this->db->insert($this->table, $data);
@@ -86,6 +97,48 @@ class Request_model extends CI_Model
         $this->db->select('COUNT(*) as total_proses_requests');
         $this->db->from('request');
         $this->db->where('id_user', $id);
+        $this->db->where('status', 'Ditolak');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countPemesan()
+    {
+        $this->db->select('COUNT(DISTINCT id_user) as pemesan');
+        $this->db->from('request');
+        $this->db->where('status', 'Proses');
+        $query = $this->db->get();
+        $result = $query->row();
+        return $result->pemesan;
+    }
+    public function countProses()
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('status', 'Proses');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countSetujuRequest()
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('status', 'Diterima');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countTolakRequest()
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
         $this->db->where('status', 'Ditolak');
 
         $query = $this->db->get();
