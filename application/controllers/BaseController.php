@@ -66,6 +66,7 @@ class BaseController extends CI_Controller
         $data['total_pengeluaran'] = $this->Report_model->getTotalPengeluaran();
         $data['history_pemasukan'] = $this->Report_model->getHistoryPemasukan();
         $data['history_pengeluaran'] = $this->Report_model->getHistoryPengeluaran();
+        $data['totalPengeluaranPerBulan'] = $this->Report_model->getTotalPengeluaranPerBulan(2024);
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/report', $data);
         $this->load->view('layout/footer');
@@ -87,8 +88,8 @@ class BaseController extends CI_Controller
 
     function notif()
     {
-        $data['title'] = 'Request';
-        $data['icon'] = 'bx bx-chat';
+        $data['title'] = 'Notification';
+        $data['icon'] = 'bx bx-bell';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['request'] = $this->Request_model->getRequest();
         $this->load->view('layout/header', $data);

@@ -67,7 +67,7 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-4 mb-4">
-            <div class="overflow-x-auto bg-white shadow-md rounded border p-4">
+            <div class="overflow-x-auto bg-white shadow-md rounded p-4">
                 <div class="flex justify-between items-center">
                     <div class="flex p-2 items-center gap-2 font-semibold">
                         <i class='bx bx-up-arrow-alt  bg-green-100 text-green-500 p-2  rounded border'></i>
@@ -76,21 +76,32 @@
                             <p class=" text-sm sm:text-base">Daftar Pemasukan</p>
                         </div>
                     </div>
-                    <button id="exportDataUser" type="button"
+                    <button id="exportDataUser" type="printTable" onclick="printTablePemasukan()"
                         class=" flex items-center bg-sky-400 text-white hover:bg-sky-500 shadow-md font-medium rounded border text-sm px-3 py-1">
                         <i class='bx bxs-file-export text-md'></i>
 
                         <span>Export</span>
+                        <script>
+                            function printTablePemasukan() {
+                                var printContents = document.getElementById('example_pemasukan').outerHTML;
+                                var originalContents = document.body.innerHTML;
+
+                                var title = '<h1 class="text-center mb-4">Laporan Barang Masuk</h1>';
+                                printContents = title + printContents;
+
+                                document.body.innerHTML = printContents;
+                                window.print();
+                                document.body.innerHTML = originalContents;
+                            }
+                        </script>
                     </button>
                 </div>
 
-
-
                 <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden border">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                    <div class="overflow-hidden p-2">
+                        <table id="example_pemasukan" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray">
-                                <tr>
+                                <tr class="border">
                                     <th scope="col" class="p-4 text-sm font-semibold text-left  uppercase">
                                         No.
                                     </th>
@@ -105,7 +116,7 @@
                             </thead>
                             <?php $no = 1; ?>
                             <?php foreach ($history_pemasukan as $item): ?>
-                                <tr class="hover:bg-gray-100 ">
+                                <tr class="hover:bg-gray-100 border">
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
@@ -123,7 +134,7 @@
                 </div>
             </div>
 
-            <div class="overflow-x-auto bg-white shadow-md rounded border p-4">
+            <div class="overflow-x-auto bg-white shadow-md rounded  p-4">
                 <div class="flex justify-between items-center">
                     <div class="flex p-2 items-center gap-2 font-semibold">
                         <i class='bx bx-down-arrow-alt  bg-red-100 text-red-500 p-2  rounded border'></i>
@@ -131,19 +142,32 @@
                             <p class=" text-sm sm:text-base">Daftar Pengeluaran</p>
                         </div>
                     </div>
-                    <button id="exportDataUser" type="button"
+                    <button id="exportDataUser" type="button" onclick="printTablePengeluaran()"
                         class=" flex items-center bg-sky-400 text-white hover:bg-sky-500 shadow-md font-medium rounded border text-sm px-3 py-1">
                         <i class='bx bxs-file-export text-md'></i>
 
                         <span>Export</span>
+                        <script>
+                            function printTablePengeluaran() {
+                                var printContents = document.getElementById('example_pengeluaran').outerHTML;
+                                var originalContents = document.body.innerHTML;
+
+                                var title = '<h1 class="text-center mb-4">Laporan Barang Masuk</h1>';
+                                printContents = title + printContents;
+
+                                document.body.innerHTML = printContents;
+                                window.print();
+                                document.body.innerHTML = originalContents;
+                            }
+                        </script>
                     </button>
                 </div>
 
                 <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden border">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                    <div class="overflow-hidden  p-2">
+                        <table id="example_pengeluaran" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray ">
-                                <tr>
+                                <tr class="border">
                                     <th scope="col" class="p-4 text-sm font-semibold text-left  uppercase">
                                         No.
                                     </th>
@@ -156,7 +180,7 @@
                             </thead>
                             <?php $no = 1; ?>
                             <?php foreach ($history_pengeluaran as $item): ?>
-                                <tr class="hover:bg-gray-100 ">
+                                <tr class="hover:bg-gray-100 border">
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
@@ -188,8 +212,6 @@
         </div>
 
     </div>
-
-
 </div>
 
 
@@ -214,6 +236,7 @@
                     <span class="sr-only">Close modal</span>
                 </button>
             </div>
+
             <!-- Modal body -->
             <form action="<?= base_url('Report/insertPemasukan'); ?>" method="post" class="p-4 md:p-5">
                 <div class="grid gap-4 mb-4 grid-col-1">
@@ -250,22 +273,27 @@
     </div>
 </div>
 
+<?php
 
-<script>
-    // Data dummy inventaris barang kantor
-    // Data dummy inventaris barang kantor
-    const expenseData = {
-        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        amounts: [1200, 800, 1500, 1000, 2000, 1200, 900, 1300, 1100, 1800, 950, 2000],
-    };
+$amounts = array();
 
-    const barData = {
-        labels: expenseData.months,
-        datasets: [{
-            data: expenseData.amounts,
-            backgroundColor: [
-                'rgba(51, 153, 255, 0.4)', // Biru langit dengan 50% transparansi
-                'rgba(255, 204, 0, 0.4)',  // Amber dengan 50% transparansi
+foreach ($totalPengeluaranPerBulan as $result) {
+    $amounts[] = $result;
+}
+
+$expenseData = array(
+    'months' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    'amounts' => $amounts,
+);
+
+$barData = array(
+    'labels' => $expenseData['months'],
+    'datasets' => [
+        [
+            'data' => $expenseData['amounts'],
+            'backgroundColor' => [
+                'rgba(51, 153, 255, 0.4)',
+                'rgba(255, 204, 0, 0.4)',
                 'rgba(51, 153, 255, 0.4)',
                 'rgba(255, 204, 0, 0.4)',
                 'rgba(51, 153, 255, 0.4)',
@@ -277,11 +305,17 @@
                 'rgba(51, 153, 255, 0.4)',
                 'rgba(255, 204, 0, 0.4)',
             ],
-            borderColor: '#fff',
-            borderWidth: 1,
-        }],
-    };
+            'borderColor' => '#fff',
+            'borderWidth' => 1,
+        ],
+    ],
+);
+?>
 
+<script>
+    // Gunakan data yang diperbarui untuk grafik batang
+    const barData = <?php echo json_encode($barData); ?>;
+    
     const barOptions = {
         responsive: true,
         maintainAspectRatio: false,
@@ -290,12 +324,11 @@
         },
     };
 
-    // Initializing the bar chart
+    // Inisialisasi grafik batang dengan data yang diperbarui
     const barCtx = document.getElementById('barChart').getContext('2d');
     const barChart = new Chart(barCtx, {
         type: 'bar',
         data: barData,
         options: barOptions,
     });
-
 </script>

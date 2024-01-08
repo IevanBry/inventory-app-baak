@@ -12,6 +12,12 @@
 <script src="<?= base_url('dist/event.js') ?>"></script>
 <script>
     $(document).ready(function () {
+        $('#example_pemasukan').DataTable();
+    });
+    $(document).ready(function () {
+        $('#example_pengeluaran').DataTable();
+    });
+    $(document).ready(function () {
         $('#example').DataTable();
     });
 </script>
