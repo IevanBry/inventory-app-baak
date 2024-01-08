@@ -34,9 +34,7 @@
     </div>
     <div class="bg-white rounded shadow-md border">
 
-        <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
-
-        </div>
+    
         <div class="flex flex-col">
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full align-middle">

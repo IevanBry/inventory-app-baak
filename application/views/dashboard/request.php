@@ -50,34 +50,14 @@
 
         </div>
     </div>
-    <div class="bg-white rounded border shadow-md">
-
-        <div class="p-4  block sm:flex items-center justify-between border-b border-gray-200 ">
-            <div class="w-full mb-1">
-
-                <div class="items-center justify-between block sm:flex">
-                    <div class="flex items-center mb-4 sm:mb-0">
-                        <form class="sm:pr-3" action="#" method="post" autocomplete="off">
-                            <label for="products-search" class="sr-only">Search</label>
-                            <div class="relative w-48 mt-1 sm:w-64 xl:w-96">
-                                <input type="text" name="email" id="products-search"
-                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 sm:text-sm  rounded shadow-md  block w-full p-2.5 "
-                                    placeholder="Request...">
-                            </div>
-                        </form>
-
-                    </div>
-
-                </div>
-            </div>
-        </div>
+    <div class="bg-white rounded border shadow-md p-6">
         <div class="flex flex-col">
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed" id="example">
                             <thead class="bg-gray-100">
-                                <tr>
+                                <tr class="border-b">
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-all" aria-describedby="checkbox-1" type="checkbox"
@@ -109,7 +89,7 @@
                             <tbody class="bg-white " id="tableBody">
                                 <?php $no = 1; ?>
                                 <?php foreach ($request as $r): ?>
-                                    <tr class="hover:bg-gray-100 ">
+                                    <tr class="hover:bg-gray-100 border-b">
                                         <td class="w-4 p-4">
                                             <div class="flex items-center">
                                                 <input id="" aria-describedby="checkbox-1" type="checkbox"
