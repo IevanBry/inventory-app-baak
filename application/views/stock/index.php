@@ -165,8 +165,9 @@
                                         <?= $item['deskripsi'] ?>
                                     </td>
                                     <td class="p-2 text-sm font-medium text-gray-900">
-                                        <?= $item['stok'] ?>
+                                        <?= $item['stok'] !== null ? $item['stok'] : 0 ?>
                                     </td>
+
                                     <td class="p-2 text-sm font-medium text-gray-900">
                                         <?= $item['satuan'] ?>
                                     </td>
@@ -236,8 +237,8 @@
                                                         <label for="price"
                                                             class="block mb-2 text-sm font-medium  text-gray-900 ">Jumlah</label>
                                                         <input type="number" name="amount" id="amount"
-                                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
-                                                            placeholder="0" required="" value="<?= $item['stok'] ?>">
+                                                            class="bg-gray-400 border border-gray-300 text-gray-900 text-sm rounded focus:ring-sky-400 focus:border-sky-400 block w-full p-2.5 "
+                                                            placeholder="0" disabled="disabled" value="<?= $item['stok'] ?>">
                                                     </div>
                                                     <div class="col-span-2 sm:col-span-1">
                                                         <label for="category"
@@ -415,8 +416,8 @@
                             </div>
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
-                                <input type="number" name="amount" id="amount"
-                                    class="bg-gray-50 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
+                                <input type="number" disabled="disabled" name="amount" id="amount" value="0"
+                                    class="bg-gray-300 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                     placeholder="0" required="">
                             </div>
                             <div class="col-span-2 sm:col-span-1">
