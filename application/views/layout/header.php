@@ -203,6 +203,13 @@
                             <span class="ms-3 hidden md:inline-block flex-nowrap">Notification</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('BaseController/history') ?>"
+                            class="flex items-center p-2 <?= current_url() == base_url('history') ? 'text-amber-400' : 'text-gray-500' ?> group hover:text-amber-300">
+                            <i class="bx bx-history text-[24px] "></i>
+                            <span class="ms-3 hidden md:inline-block flex-nowrap">History</span>
+                        </a>
+                    </li>   
                 </ul>
 
 
