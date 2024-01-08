@@ -74,7 +74,7 @@
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full ">
                     <div class="overflow-hidden  p-8">
-                        <table id="example" class="ui table nowrap ">
+                        <table id="example" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead>
                                 <tr>
                                     <th scope="col" class="p-4">
@@ -121,10 +121,11 @@
                                     </th>
                                 </tr>
                             </thead>
-
+                            
+                             <tbody class="bg-white " id="tableBody">
                             <?php $no = 1; ?>
                             <?php foreach ($barang as $item): ?>
-                                <tr class="hover:bg-gray-50">
+                                <tr class="hover:bg-gray-50 border-b">
                                     <td class="w-4 p-4">
                                         <div class="flex items-center">
                                             <input id="checkbox-<?= $item['id_barang'] ?>" name="checkbox_value[]"
@@ -373,6 +374,7 @@
                                 <!-- Penutup Hapus Barang -->
                                 <?php $no++; ?>
                             <?php endforeach; ?>
+                            </tbody>
                         </table>
                     </div>
                 </div>
