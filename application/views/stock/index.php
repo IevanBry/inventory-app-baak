@@ -87,16 +87,6 @@
                                 <tr>
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
-                                            <script>
-                                                function checkAll() {
-                                                    var checkboxAll = document.getElementById('checkbox-all');
-                                                    var checkboxes = document.querySelectorAll('[name="checkbox_value[]"]');
-
-                                                    for (var i = 0; i < checkboxes.length; i++) {
-                                                        checkboxes[i].checked = checkboxAll.checked;
-                                                    }
-                                                }
-                                            </script>
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>

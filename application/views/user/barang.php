@@ -1,25 +1,6 @@
-<?php $kategori = ['Alat tulis', 'Elektronik', 'Obat', 'Makanan'] ?>
-
 <div class="p-3 ml-12 md:ml-0 w-full ">
 
     <div class="ml-2">
-        <div class="flex items-center justify-between mb-3 bg-white shadow-md p-3 rounded border">
-
-            <input type="text"
-                class="bg-white shadow-md rounded px-3 py-1 focus:ring-sky-400 focus:border-sky-400 border-gray-300 w-72 "
-                placeholder="Cari barang...">
-
-            <div class="grid grid-cols-4 gap-4">
-
-                <?php foreach ($kategori as $k): ?>
-
-                    <button class=" px-3 py-1 text-sm rounded border hover:bg-sky-400 hover:text-white border-sky-400">
-                        <?= $k ?>
-                    </button>
-                <?php endforeach; ?>
-
-            </div>
-        </div>
 
         <div class="grid grid-cols-3 gap-2">
             <?php foreach ($barang as $item): ?>
@@ -46,9 +27,6 @@
                                 <p class="mb-3">Tersedia <span class="text-green-500 ">
                                         <?= $item['stok'] ?>
                                     </span></p>
-                                <button
-                                    class="px-3 py-2 mb-3 shadow-md rounded w-full bg-white border hover:bg-gray-100">Detail
-                                    barang</button>
                                 <button type="submit"
                                     class="tambah-barang px-3 w-full mb-3 py-2 shadow-md rounded  bg-amber-300 hover:bg-amber-400 text-white">Tambah
                                     ke keranjang</button>
