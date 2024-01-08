@@ -20,8 +20,8 @@ class AdminRequest extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['request'] = $this->Request_model->getRequest();
         $data['total_proses'] = $this->Request_model->countProses();
-        $data['total_setuju'] = $this->Request_model->countSetujuRequest();
-        $data['total_tolak'] = $this->Request_model->countTolakRequest();
+        $data['total_setuju'] = $this->History_model->getTotalAccepted();
+        $data['total_tolak'] = $this->History_model->getTotalRejected();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/request', $data);
         $this->load->view('layout/footer');

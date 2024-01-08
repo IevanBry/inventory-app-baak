@@ -10,7 +10,7 @@
                     <h1 class="text-2xl">Selamat datang di <span class="text-amber-400 font-medium">Inventaris
                             BAAK</span>
                     </h1>
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id, aliquid.</p>
+                    <p>Silahkan ajukan barang yang anda inginkan</p>
                 </div>
             </div>
 
@@ -21,17 +21,23 @@
                 <div class="bg-white shadow-md p-2 rounded border mt-2 flex flex-col items-center justify-evenly">
                     <i class='bx bx-check-circle text-6xl'></i>
                     <p>Permintaan diterima</p>
-                    <span class="text-3xl">4</span>
+                    <span class="text-3xl">
+                        <?= $terima ?>
+                    </span>
                 </div>
                 <div class="bg-white shadow-md p-2 rounded border mt-2 flex flex-col items-center justify-evenly">
                     <i class='bx bxs-truck text-6xl'></i>
                     <p>Permintaan dalam proses</p>
-                    <span class="text-3xl">5</span>
+                    <span class="text-3xl">
+                        <?= $proses ?>
+                    </span>
                 </div>
                 <div class="bg-white shadow-md p-2 rounded border mt-2  flex flex-col items-center justify-evenly">
                     <i class='bx bx-x-circle text-6xl'></i>
                     <p>Permintaan ditolak</p>
-                    <span class="text-3xl">3</span>
+                    <span class="text-3xl">
+                        <?= $tolak ?>
+                    </span>
                 </div>
             </div>
 
@@ -39,7 +45,8 @@
 
         <div class=" col-span-2">
             <div class="grid grid-cols-1 gap-4">
-                <?php for ($i = 0; $i < 4; $i++) { ?>
+                <?php $no = 1; ?>
+                <?php foreach ($history as $h): ?>
                     <div class="notif-card bg-white shadow-md p-2 rounded border">
 
                         <div class="flex text-sm justify-between items-center">
@@ -47,15 +54,29 @@
                                 <i class='bx bx-history'></i>
                                 <div>
                                     <h1 class="text-base font-semibold">Permintaan barang</h1>
-                                    <p>Permintaan spidol, 4 buah</p>
+                                    <p>Permintaan
+                                        <?= $h['nama_barang'] ?>
+                                        <?= $h['jumlah'] ?>
+                                    </p>
                                 </div>
 
                             </div>
-                            <div class="p-3 py-1 bg-green-400 text-white rounded">Diterima</div>
-                            <div class="w-48">20 November 2023</div>
+                            <?php if ($h['status'] == 'Accepted') { ?>
+                                <div class="p-3 py-1 bg-green-400 text-white rounded">
+                                    <?= $h['status'] ?>
+                                </div>
+                            <?php } else { ?>
+                                <div class="p-3 py-1 bg-red-400 text-white rounded">
+                                    <?= $h['status'] ?>
+                                </div>
+                            <?php } ?>
+                            <div class="w-48">
+                                <?= date('d F Y H:i:s', strtotime($h['tanggal'])); ?>
+                            </div>
                         </div>
                     </div>
-                <?php } ?>
+                    <?php $no++; ?>
+                <?php endforeach; ?>
             </div>
         </div>
 

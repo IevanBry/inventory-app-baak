@@ -10,21 +10,23 @@
                     <i class='bx bx-line-chart text-3xl bg-sky-200 w-12 text-sky-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Barang Masuk</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">899</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold"><?= $jumlah_stok->total_stok; ?></h1>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
                     <i class='bx bx-line-chart-down text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Barang Keluar</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">899</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold"><?= $barang_keluar; ?></h1>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
                     <i class='bx bx-message-check text-3xl w-12 bg-orange-100 text-orange-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Permintaan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">
+                            <?= $total_request; ?>
+                        </h1>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
@@ -74,8 +76,9 @@
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
                     <i class='bx bx-message-x text-3xl w-12 bg-red-100 text-red-500 p-2 rounded-lg'></i>
                     <div>
-                        <p class="text-gray-500 text-sm sm:text-base">Batal Permintaan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">19</h1>
+                        <p class="text-gray-500 text-sm sm:text-base">Total Reject</p>
+                        <h1 class="text-sm xl:text-2xl font-semibold">
+                            <?= $total_reject; ?>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
@@ -209,20 +212,27 @@
     </div>
 </div>
 
-<script>
-    // Data dummy inventaris barang kantor
-    const expenseData = {
-        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        amounts: [1200, 800, 1500, 1000, 2000, 1200, 900, 1300, 1100, 1800, 950, 3000],
-    };
+<?php
 
-    const barData = {
-        labels: expenseData.months,
-        datasets: [{
-            data: expenseData.amounts,
-            backgroundColor: [
-                'rgba(51, 153, 255, 0.4)', // Biru langit dengan 50% transparansi
-                'rgba(255, 204, 0, 0.4)',  // Amber dengan 50% transparansi
+$amounts = array();
+
+foreach ($totalPengeluaranPerBulan as $result) {
+    $amounts[] = $result;
+}
+
+$expenseData = array(
+    'months' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    'amounts' => $amounts,
+);
+
+$barData = array(
+    'labels' => $expenseData['months'],
+    'datasets' => [
+        [
+            'data' => $expenseData['amounts'],
+            'backgroundColor' => [
+                'rgba(51, 153, 255, 0.4)',
+                'rgba(255, 204, 0, 0.4)',
                 'rgba(51, 153, 255, 0.4)',
                 'rgba(255, 204, 0, 0.4)',
                 'rgba(51, 153, 255, 0.4)',
@@ -234,11 +244,17 @@
                 'rgba(51, 153, 255, 0.4)',
                 'rgba(255, 204, 0, 0.4)',
             ],
-            borderColor: '#fff',
-            borderWidth: 1,
-        }],
-    };
+            'borderColor' => '#fff',
+            'borderWidth' => 1,
+        ],
+    ],
+);
+?>
 
+<script>
+    // Gunakan data yang diperbarui untuk grafik batang
+    const barData = <?php echo json_encode($barData); ?>;
+    
     const barOptions = {
         responsive: true,
         maintainAspectRatio: false,
@@ -247,12 +263,11 @@
         },
     };
 
-    // Initializing the bar chart
+    // Inisialisasi grafik batang dengan data yang diperbarui
     const barCtx = document.getElementById('barChart').getContext('2d');
     const barChart = new Chart(barCtx, {
         type: 'bar',
         data: barData,
         options: barOptions,
     });
-
 </script>

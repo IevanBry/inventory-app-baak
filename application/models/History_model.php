@@ -66,4 +66,48 @@ class History_model extends CI_Model
 
         return $query->result_array();
     }
+    function getTotalRejected()
+    {
+        $this->db->select('count(*) as total_rejected');
+        $this->db->from('history');
+        $this->db->where('status', 'rejected');
+        $query = $this->db->get();
+        return $query->row()->total_rejected;
+    }
+    function getTotalAccepted()
+    {
+        $this->db->select('count(*) as total_accepted');
+        $this->db->from('history');
+        $this->db->where('status', 'accepted');
+        $query = $this->db->get();
+        return $query->row()->total_accepted;
+    }
+    function getBarangKeluar()
+    {
+        $this->db->select('count(*) as barang_keluar');
+        $this->db->from('history');
+        $this->db->where('status', 'accepted');
+        $query = $this->db->get();
+        return $query->row()->barang_keluar;
+    }
+    function getTotalRejectedById($id)
+    {
+        $this->db->select('count(*) as total_rejected');
+        $this->db->from('history');
+        $this->db->where('status', 'rejected');
+        $this->db->where('id_user', $id);
+        $this->db->order_by('history.tanggal', 'DESC');
+        $query = $this->db->get();
+        return $query->row()->total_rejected;
+    }
+    function getTotalAcceptedById($id)
+    {
+        $this->db->select('count(*) as total_accepted');
+        $this->db->from('history');
+        $this->db->where('status', 'accepted');
+        $this->db->where('id_user', $id);
+        $this->db->order_by('history.tanggal', 'DESC');
+        $query = $this->db->get();
+        return $query->row()->total_accepted;
+    }
 }

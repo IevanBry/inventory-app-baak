@@ -97,8 +97,6 @@
                     </button>
                 </div>
 
-
-
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden p-2">
                         <table id="example_pemasukan" class="min-w-full divide-y divide-gray-200 table-fixed">
@@ -275,20 +273,27 @@
     </div>
 </div>
 
+<?php
 
-<script>
-    const expenseData = {
-        months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-        amounts: [1200, 800, 1500, 1000, 2000, 1200, 900, 1300, 1100, 1800, 950, 2000],
-    };
+$amounts = array();
 
-    const barData = {
-        labels: expenseData.months,
-        datasets: [{
-            data: expenseData.amounts,
-            backgroundColor: [
-                'rgba(51, 153, 255, 0.4)', // Biru langit dengan 50% transparansi
-                'rgba(255, 204, 0, 0.4)',  // Amber dengan 50% transparansi
+foreach ($totalPengeluaranPerBulan as $result) {
+    $amounts[] = $result;
+}
+
+$expenseData = array(
+    'months' => ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    'amounts' => $amounts,
+);
+
+$barData = array(
+    'labels' => $expenseData['months'],
+    'datasets' => [
+        [
+            'data' => $expenseData['amounts'],
+            'backgroundColor' => [
+                'rgba(51, 153, 255, 0.4)',
+                'rgba(255, 204, 0, 0.4)',
                 'rgba(51, 153, 255, 0.4)',
                 'rgba(255, 204, 0, 0.4)',
                 'rgba(51, 153, 255, 0.4)',
@@ -300,11 +305,17 @@
                 'rgba(51, 153, 255, 0.4)',
                 'rgba(255, 204, 0, 0.4)',
             ],
-            borderColor: '#fff',
-            borderWidth: 1,
-        }],
-    };
+            'borderColor' => '#fff',
+            'borderWidth' => 1,
+        ],
+    ],
+);
+?>
 
+<script>
+    // Gunakan data yang diperbarui untuk grafik batang
+    const barData = <?php echo json_encode($barData); ?>;
+    
     const barOptions = {
         responsive: true,
         maintainAspectRatio: false,
@@ -313,12 +324,11 @@
         },
     };
 
-    // Initializing the bar chart
+    // Inisialisasi grafik batang dengan data yang diperbarui
     const barCtx = document.getElementById('barChart').getContext('2d');
     const barChart = new Chart(barCtx, {
         type: 'bar',
         data: barData,
         options: barOptions,
     });
-
 </script>

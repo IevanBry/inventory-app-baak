@@ -79,23 +79,17 @@ class AdminUser extends CI_Controller
 
         redirect('AdminUser');
     }
-
     public function deleteAll()
     {
-        if (!empty($this->input->post('checkbox_value'))) {
-            $checkedUser = $this->input->post('checkbox_value');
-            $checked_id = [];
-            foreach ($checkedUser as $row) {
-                array_push($checked_id, $row);
-            }
-            $this->User_model->deleteSelected($checked_id);
+        $checked_ids = $this->input->get('ids');
+
+        if (!empty($checked_ids)) {
+            $checked_id_array = explode(',', $checked_ids);
+            $this->User_model->deleteSelected($checked_id_array);
             $this->session->set_flashdata('status', 'User Selected Data Deleted');
-            redirect('AdminUser');
-
         } else {
-            $this->session->set_flashdata('status', 'Select atleast any ID');
-            redirect('AdminUser');
+            $this->session->set_flashdata('status', 'Select at least any ID');
         }
+        redirect('AdminUser');
     }
-
 }

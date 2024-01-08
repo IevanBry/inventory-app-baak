@@ -28,6 +28,7 @@ class BaseController extends CI_Controller
         $data['stok_rendah'] = $this->Stock_model->getJumlahBarangTerendah();
         $data['total_kategori'] = $this->Kategori_model->getTotalKategori();
         $data['barang_habis'] = $this->Stock_model->getJumlahBarangHabis();
+        $data['jumlah_stok'] = $this->Stock_model->getJumlahStok();
         $data['total_staff'] = $this->User_model->getTotalStaff();
         $data['total_user'] = $this->User_model->getTotalUser();
         $data['barang_tersedia'] = $this->Stock_model->getTotalBarangTersedia();
@@ -35,6 +36,10 @@ class BaseController extends CI_Controller
         $data['total_pengeluaran'] = $this->Report_model->getTotalPengeluaran();
         $data['total_transaksi'] = $this->Report_model->getTotalTransaksi();
         $data['pemesan'] = $this->Request_model->countPemesan();
+        $data['total_request'] = $this->Request_model->countRequest();
+        $data['barang_keluar'] = $this->History_model->getBarangKeluar();
+        $data['total_reject'] = $this->History_model->getTotalRejected();
+        $data['totalPengeluaranPerBulan'] = $this->Report_model->getTotalPengeluaranPerBulan(2024);
         $data['icon'] = 'bx bx-home';
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/index');
@@ -62,6 +67,7 @@ class BaseController extends CI_Controller
         $data['total_pengeluaran'] = $this->Report_model->getTotalPengeluaran();
         $data['history_pemasukan'] = $this->Report_model->getHistoryPemasukan();
         $data['history_pengeluaran'] = $this->Report_model->getHistoryPengeluaran();
+        $data['totalPengeluaranPerBulan'] = $this->Report_model->getTotalPengeluaranPerBulan(2024);
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/report', $data);
         $this->load->view('layout/footer');
@@ -74,8 +80,8 @@ class BaseController extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['request'] = $this->Request_model->getRequest();
         $data['total_proses'] = $this->Request_model->countProses();
-        $data['total_setuju'] = $this->Request_model->countSetujuRequest();
-        $data['total_tolak'] = $this->Request_model->countTolakRequest();
+        $data['total_setuju'] = $this->History_model->getTotalAccepted();
+        $data['total_tolak'] = $this->History_model->getTotalRejected();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/request', $data);
         $this->load->view('layout/footer');
@@ -100,6 +106,8 @@ class BaseController extends CI_Controller
         $data['barang'] = $this->Stock_model->get();
         $data['kategori'] = $this->Kategori_model->get();
         $data['stok_rendah'] = $this->Stock_model->getJumlahBarangTerendah();
+        $data['jumlah_stok'] = $this->Stock_model->getJumlahStok();
+        $data['barang_keluar'] = $this->History_model->getBarangKeluar();
         $data['total'] = $this->Stock_model->getTotalBarang();
         $this->load->view('layout/header', $data);
         $this->load->view('stock/index', $data);

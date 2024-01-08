@@ -112,4 +112,12 @@ class Stock_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->harga;
     }
+    public function getJumlahStok()
+    {
+        $this->db->select('SUM(stok) as total_stok');
+        $this->db->from('barang');
+        $query = $this->db->get();
+        return $query->row();
+    }
+
 }

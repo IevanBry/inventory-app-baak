@@ -6,6 +6,7 @@ class Request_model extends CI_Model
     public function __construct()
     {
         parent::__construct();
+        
     }
 
     function getRequest()
@@ -86,7 +87,7 @@ class Request_model extends CI_Model
     }
     public function countSetuju($id)
     {
-        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->select('COUNT(*) as total_setuju_requests');
         $this->db->from('request');
         $this->db->where('id_user', $id);
         $this->db->where('status', 'Diterima');
@@ -94,11 +95,11 @@ class Request_model extends CI_Model
         $query = $this->db->get();
         $result = $query->row();
 
-        return $result->total_proses_requests;
+        return $result->total_setuju_requests;
     }
     public function countTolak($id)
     {
-        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->select('COUNT(*) as total_tolak_requests');
         $this->db->from('request');
         $this->db->where('id_user', $id);
         $this->db->where('status', 'Ditolak');
@@ -106,7 +107,7 @@ class Request_model extends CI_Model
         $query = $this->db->get();
         $result = $query->row();
 
-        return $result->total_proses_requests;
+        return $result->total_tolak_requests;
     }
     public function countPemesan()
     {
@@ -128,26 +129,14 @@ class Request_model extends CI_Model
 
         return $result->total_proses_requests;
     }
-    public function countSetujuRequest()
+    public function countRequest()
     {
-        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->select('COUNT(*) as total_requests');
         $this->db->from('request');
-        $this->db->where('status', 'Diterima');
 
         $query = $this->db->get();
         $result = $query->row();
 
-        return $result->total_proses_requests;
-    }
-    public function countTolakRequest()
-    {
-        $this->db->select('COUNT(*) as total_proses_requests');
-        $this->db->from('request');
-        $this->db->where('status', 'Ditolak');
-
-        $query = $this->db->get();
-        $result = $query->row();
-
-        return $result->total_proses_requests;
+        return $result->total_requests;
     }
 }

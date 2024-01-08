@@ -5,14 +5,14 @@
                 <i class='bx bx-line-chart text-3xl bg-sky-200 w-12 text-sky-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Barang masuk</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">50</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $jumlah_stok->total_stok; ?></h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bx-line-chart-down text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Barang Keluar</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">30</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold"><?= $barang_keluar; ?></h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
@@ -67,7 +67,15 @@
                             <?= $this->session->flashdata('status'); ?>
                         </div>
                     </div>
+                <?php elseif ($this->session->flashdata('stat')): ?>
+                    <div class="flex h-16 items-center">
+                        <div class="p-2 mt-4 w-full flex items-center gap-2 text-sm font-medium text-red-800 rounded-lg bg-red-100"
+                            role="alert"><i class="bx bx-x-circle text-xl"></i>
+                            <?= $this->session->flashdata('stat'); ?>
+                        </div>
+                    </div>
                 <?php endif; ?>
+                
             </div>
         </div>
         <div class="flex flex-col">
@@ -79,16 +87,6 @@
                                 <tr>
                                     <th scope="col" class="p-4">
                                         <div class="flex items-center">
-                                            <script>
-                                                function checkAll() {
-                                                    var checkboxAll = document.getElementById('checkbox-all');
-                                                    var checkboxes = document.querySelectorAll('[name="checkbox_value[]"]');
-
-                                                    for (var i = 0; i < checkboxes.length; i++) {
-                                                        checkboxes[i].checked = checkboxAll.checked;
-                                                    }
-                                                }
-                                            </script>
                                             <label for="checkbox-all" class="sr-only">checkbox</label>
                                         </div>
                                     </th>
@@ -122,7 +120,7 @@
                                 </tr>
                             </thead>
                             
-                             <tbody class="bg-white " id="tableBody">
+                            <tbody class="bg-white " id="tableBody">
                             <?php $no = 1; ?>
                             <?php foreach ($barang as $item): ?>
                                 <tr class="hover:bg-gray-50 border-b">
@@ -418,7 +416,7 @@
                             </div>
                             <div class="col-span-2 sm:col-span-1">
                                 <label for="price" class="block mb-2 text-sm font-medium text-gray-900 ">Jumlah</label>
-                                <input type="number" disabled="disabled" name="amount" id="amount" value="0"
+                                <input type="number" disabled="disabled" name="amount" id="amount" value=0
                                     class="bg-gray-300 border border-gray-300 focus:ring-sky-400 focus:border-sky-400 text-gray-900 text-sm rounded focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 "
                                     placeholder="0" required="">
                             </div>
