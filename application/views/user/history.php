@@ -16,11 +16,12 @@
     </div>
     <div class="grid grid-cols-1 gap-2 p-2">
 
-        <?php for ($i = 0; $i < 10; $i++) { ?>
+        <?php $no = 1; ?>
+        <?php foreach ($history as $h): ?>
             <div class="notif-card bg-white shadow-md p-4 rounded border max-w-[80%]">
                 <div class="flex text-sm justify-between items-center">
                     <div class="flex gap-4 items-center">
-                        <?php if ($i % 2 == 0) { ?>
+                        <?php if ($h['status'] == 'Accepted') { ?>
                             <div class="bg-green-100 p-1 flex items-center rounded">
                                 <i class='bx bx-check-circle text-green-500'></i>
                             </div>
@@ -30,16 +31,17 @@
                             </div>
                         <?php } ?>
                         <div>
-                            <h1 class="text-base font-medium">Permintaan barang : Permintaan 4 buah spidol</h1>
+                            <h1 class="text-base font-medium">Permintaan barang : Permintaan <?= $h['nama_barang'] ?></h1>
                             <div class="flex items-center gap-2 text-sm text-gray-500">
                                 <i class='bx bx-calendar '></i>
-                                <span>20 November 2023</span>
+                                <span><?= date('d F Y H:i:s', strtotime($h['tanggal'])); ?></span>
                             </div>
                         </div>
                     </div>
-                    <i class='bx bx-dots-vertical-rounded' ></i>
+                    <i class='bx bx-dots-vertical-rounded'></i>
                 </div>
             </div>
-        <?php } ?>
+            <?php $no++; ?>
+        <?php endforeach; ?>
     </div>
 </div>

@@ -11,6 +11,7 @@ class User extends CI_Controller
         }
         $this->load->model('Stock_model');
         $this->load->model('Request_model');
+        $this->load->model('History_model');
     }
 
     public function index()
@@ -50,10 +51,12 @@ class User extends CI_Controller
     public function history()
     {
         $data['title'] = 'History';
-        $data['icon'] = 'bx bx-history';
+        $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $this->load->view("layout/header", $data);
-        $this->load->view("user/history");
-        $this->load->view("layout/footer");
+        $user_id = $data['user']['id_user'];
+        $data['history'] = $this->History_model->getHistoryRequestUser($user_id);
+        $this->load->view('layout/header', $data);
+        $this->load->view('user/history', $data);
+        $this->load->view('layout/footer');
     }
 }

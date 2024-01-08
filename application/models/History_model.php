@@ -50,4 +50,20 @@ class History_model extends CI_Model
 
         return $query->result_array();
     }
+    function getHistoryRequestUser($id_user)
+    {
+        $this->db->select('history.*, barang.nama_barang, user.nama');
+        $this->db->from('history');
+        $this->db->join('barang', 'barang.id_barang = history.id_barang', 'inner');
+        $this->db->join('user', 'user.id_user = history.id_user', 'inner');
+        $this->db->where('user.role', 'user');
+        $this->db->where('history.id_user', $id_user);
+        $this->db->where('history.status', 'accepted');
+        $this->db->or_where('history.status', 'rejected');
+        $this->db->order_by('history.tanggal', 'DESC');
+
+        $query = $this->db->get();
+
+        return $query->result_array();
+    }
 }
