@@ -21,6 +21,7 @@ class Report extends CI_Controller
         $data['total_pengeluaran'] = $this->Report_model->getTotalPengeluaran();
         $data['history_pemasukan'] = $this->Report_model->getHistoryPemasukan();
         $data['history_pengeluaran'] = $this->Report_model->getHistoryPengeluaran();
+        $data['totalPengeluaranPerBulan'] = $this->Report_model->getTotalPengeluaranPerBulan(2024);
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/report', $data);
         $this->load->view('layout/footer');

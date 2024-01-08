@@ -71,4 +71,21 @@ class Report_model extends CI_Model
         $query = $this->db->get();
         return $query->row()->total_transaksi;
     }
+    public function getTotalPengeluaranPerBulan($year)
+    {
+        $totalPengeluaranPerBulan = array();
+
+        for ($month = 1; $month <= 12; $month++) {
+            $this->db->select('sum(jumlah) as total_pengeluaran_bulanan');
+            $this->db->from('transaksi');
+            $this->db->where('jenis', 'pengeluaran');
+            $this->db->where('YEAR(tanggal)', $year);
+            $this->db->where('MONTH(tanggal)', $month);
+            $query = $this->db->get();
+
+            $totalPengeluaranPerBulan[$month] = $query->row()->total_pengeluaran_bulanan;
+        }
+
+        return $totalPengeluaranPerBulan;
+    }
 }
