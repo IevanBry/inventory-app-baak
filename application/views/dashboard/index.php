@@ -10,21 +10,23 @@
                     <i class='bx bx-line-chart text-3xl bg-sky-200 w-12 text-sky-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Barang Masuk</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">899</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold"><?= $jumlah_stok->total_stok; ?></h1>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
                     <i class='bx bx-line-chart-down text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Barang Keluar</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">899</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold"><?= $barang_keluar; ?></h1>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
                     <i class='bx bx-message-check text-3xl w-12 bg-orange-100 text-orange-500 p-2 rounded-lg'></i>
                     <div>
                         <p class="text-gray-500 text-sm sm:text-base">Permintaan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">3</h1>
+                        <h1 class="text-sm xl:text-2xl font-semibold">
+                            <?= $total_request; ?>
+                        </h1>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
@@ -74,8 +76,9 @@
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">
                     <i class='bx bx-message-x text-3xl w-12 bg-red-100 text-red-500 p-2 rounded-lg'></i>
                     <div>
-                        <p class="text-gray-500 text-sm sm:text-base">Batal Permintaan</p>
-                        <h1 class="text-sm xl:text-2xl font-semibold">19</h1>
+                        <p class="text-gray-500 text-sm sm:text-base">Total Reject</p>
+                        <h1 class="text-sm xl:text-2xl font-semibold">
+                            <?= $total_reject; ?>
                     </div>
                 </div>
                 <div class="shadow-md p-4 rounded flex items-center gap-2 border ">

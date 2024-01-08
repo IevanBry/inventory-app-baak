@@ -43,8 +43,7 @@ class Stock extends CI_Controller
         $tambahStok = $this->input->post('amount');
         $jumlahStok = $this->Stock_model->getStokBarangById($id);
         $hasilTambah = $jumlahStok + $tambahStok;
-        $this->Stock_model->updateJumlahStokById($id, $hasilTambah);
-
+        
         $harga = $this->Stock_model->getHargaBarangById($id);
         $pengeluaran = $harga * $tambahStok;
         $data = [
@@ -52,9 +51,16 @@ class Stock extends CI_Controller
             'jenis' => "pengeluaran",
             'jumlah' => $pengeluaran
         ];
-        $this->Report_model->insertPengeluaran($data);
-
-        $this->session->set_flashdata('status', 'Tambah stock berhasil');
+        $pemasukan = $this->Report_model->getTotalPemasukan();
+        $pengeluaran_all = $this->Report_model->getTotalPengeluaran();
+        $kas = $pemasukan - $pengeluaran_all;
+        if ($kas > $pengeluaran) {
+            $this->Stock_model->updateJumlahStokById($id, $hasilTambah);
+            $this->Report_model->insertPengeluaran($data);
+            $this->session->set_flashdata('status', 'Tambah stock berhasil');
+        } else {
+            $this->session->set_flashdata('stat', 'Uang Kas Tidak Cukup');
+        }
         redirect('Stock');
     }
 

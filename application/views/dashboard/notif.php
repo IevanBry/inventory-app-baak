@@ -29,7 +29,7 @@
                                     </h1>
                                     <h1 class="text-gray-900 font-semibold ms-1">Request Barang : </h1>
                                 </div>
-                                <p class="text-gray-500">Ievan melakukan request
+                                <p class="text-gray-500"><?= $r['nama'] ?> melakukan request
                                     <?= $r['nama_barang'] ?> sebanyak
                                     <?= $r['jumlah'] ?>
                                 </p>
