@@ -97,4 +97,13 @@ class BaseController extends CI_Controller
         $this->load->view('stock/index', $data);
         $this->load->view('layout/footer');
     }
+
+    function history(){
+        $data['title'] = 'History';
+        $data['icon'] = 'bx bx-history';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('layout/header', $data);
+        $this->load->view('dashboard/history', $data);
+        $this->load->view('layout/footer');
+    }
 }
