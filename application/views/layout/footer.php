@@ -17,6 +17,9 @@
     $(document).ready(function () {
         $('#example_pengeluaran').DataTable();
     });
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
 </script>
 </body>
 
