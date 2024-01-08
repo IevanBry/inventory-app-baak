@@ -38,7 +38,7 @@ class BaseController extends CI_Controller
         $data['pemesan'] = $this->Request_model->countPemesan();
         $data['total_request'] = $this->Request_model->countRequest();
         $data['barang_keluar'] = $this->History_model->getBarangKeluar();
-        $data['total_reject'] = $this->History_model->getTotalRejected()['total_rejected'];
+        $data['total_reject'] = $this->History_model->getTotalRejected();
         $data['icon'] = 'bx bx-home';
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/index');
