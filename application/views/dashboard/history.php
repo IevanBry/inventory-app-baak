@@ -19,11 +19,11 @@
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden shadow">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                        <table class="min-w-full divide-y divide-gray-200 table-fixed" id="example">
                             <thead class="bg-gray-100">
                                 <tr>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
-                                       No
+                                        No
                                     </th>
                                     <th scope="col" class="p-4 text-xs font-medium text-left  uppercase">
                                         User
@@ -46,29 +46,43 @@
                             </thead>
                             <tbody class="bg-white " id="tableBody">
                                 <tr class="border-b ">
-                                    <td class="p-2 text-sm font-medium pl-6 text-gray-900">
-                                      1
-                                    </td>
-                                    <td class="p-2 text-sm font-medium text-gray-900">
-                                        Ridho Hidayat
-                                    </td>
-                                    <td class="p-2 text-sm font-medium text-gray-900">
-                                       2 Januari 2024
-                                    </td>
-                                    <td class="p-2 text-sm pl-4 font-medium text-gray-900">
-                                      Sendok
-                                    </td>
-                                    <td class="p-2 pl-10 text-sm font-medium text-gray-900">
-                                        9
-                                    </td>
-
-                                    <td class="p-2 text-sm font-medium text-gray-900">
-                                        <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
-                                            proses
-                                        </span>
-                                    </td>
-                                </tr>
-                              
+                                    <?php $no = 1; ?>
+                                    <?php foreach ($request as $r): ?>
+                                        <td class="p-2 text-sm font-medium pl-6 text-gray-900">
+                                            <?= $no ?>
+                                        </td>
+                                        <td class="p-2 text-sm font-medium text-gray-900">
+                                            <?= $r['nama'] ?>
+                                        </td>
+                                        <td class="p-2 text-sm font-medium text-gray-900">
+                                            <?= date('d F Y H:i:s', strtotime($r['tanggal'])); ?>
+                                        </td>
+                                        <td class="p-2 text-sm pl-4 font-medium text-gray-900">
+                                            <?= $r['nama_barang'] ?>
+                                        </td>
+                                        <td class="p-2 pl-10 text-sm font-medium text-gray-900">
+                                            <?= $r['jumlah'] ?>
+                                        </td>
+                                        <td class="p-2 text-sm font-medium text-gray-900">
+                                            <?php
+                                            $status = strtolower($r['status']);
+                                            if (strcasecmp($status, 'proses') == 0): ?>
+                                                <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
+                                                    <?= $r['status'] ?>
+                                                </span>
+                                            <?php elseif (strcasecmp($status, 'accepted') == 0): ?>
+                                                <span class="bg-green-400 text-white shadow-md p-1 px-3 rounded">
+                                                    <?= $r['status'] ?>
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="bg-red-400 text-white shadow-md p-1 px-3 rounded">
+                                                    <?= $r['status'] ?>
+                                                </span>
+                                            <?php endif; ?>
+                                        </td>
+                                    </tr>
+                                    <?php $no++; ?>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                     </div>

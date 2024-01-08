@@ -13,12 +13,15 @@ class AdminRequest extends CI_Controller
             redirect('auth');
         }
     }
-    public function index()
+    function index()
     {
         $data['title'] = 'Request';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['request'] = $this->Request_model->getRequest();
+        $data['total_proses'] = $this->Request_model->countProses();
+        $data['total_setuju'] = $this->Request_model->countSetujuRequest();
+        $data['total_tolak'] = $this->Request_model->countTolakRequest();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/request', $data);
         $this->load->view('layout/footer');
