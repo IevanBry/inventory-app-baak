@@ -99,7 +99,7 @@ class Stock_model extends CI_Model
             'stok' => $new_jumlah
         );
 
-        $this->db->where('id_barang', $id_barang);
+        $this->db->where('id_barang]', $id_barang);
         $this->db->update("barang", $data);
 
         return $this->db->affected_rows();

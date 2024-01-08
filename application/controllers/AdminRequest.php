@@ -1,5 +1,5 @@
 <?php
-class Request extends CI_Controller
+class AdminRequest extends CI_Controller
 {
     public function __construct()
     {
@@ -33,5 +33,31 @@ class Request extends CI_Controller
 
         $this->session->set_flashdata('status', 'Barang Selected Data Deleted');
         redirect('User/Request');
+    }
+    public function verifRequest()
+    {
+        if ($this->input->post('terima')) {
+            $this->acceptRequest();
+        } else {
+            $this->rejectRequest();
+        }
+    }
+
+    private function acceptRequest()
+    {
+        $requestId = $this->input->post('request_id');
+        $this->Request_model->updateStatus($requestId, 'Accepted');
+
+        redirect('AdminRequest');
+    }
+
+    private function rejectRequest()
+    {
+
+        $requestId = $this->input->post('request_id');
+        $this->Request_model->updateStatus($requestId, 'Rejected');
+
+
+        redirect('AdminRequest');
     }
 }

@@ -46,6 +46,17 @@ class Request_model extends CI_Model
         $this->db->update($this->table, $data, $where);
         return $this->db->affected_rows();
     }
+    public function updateStatus($id_request, $status)
+    {
+        $data = array(
+            'status' => $status
+        );
+
+        $this->db->where('id_request', $id_request);
+        $this->db->update("request", $data);
+
+        return $this->db->affected_rows();
+    }
     public function insert($data)
     {
         $this->db->insert($this->table, $data);

@@ -106,14 +106,26 @@
                                                 <?= $r['jumlah'] ?>
                                             </span></td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
-                                            <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
-                                                <?= $r['status'] ?>
-                                            </span>
-                                            <!-- <span class="bg-green-400 text-white shadow-md p-1 px-3 rounded">Disetujui</span> -->
+                                            <?php
+                                            $status = strtolower($r['status']); // Convert to lowercase for case-insensitive comparison
+                                            if (strcasecmp($status, 'proses') == 0): ?>
+                                                <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
+                                                    <?= $r['status'] ?>
+                                                </span>
+                                            <?php elseif (strcasecmp($status, 'accepted') == 0): ?>
+                                                <span class="bg-green-400 text-white shadow-md p-1 px-3 rounded">
+                                                    <?= $r['status'] ?>
+                                                </span>
+                                            <?php else: ?>
+                                                <span class="bg-red-400 text-white shadow-md p-1 px-3 rounded">
+                                                    <?= $r['status'] ?>
+                                                </span>
+                                            <?php endif; ?>
+
                                         </td>
                                         <td class="p-4 space-x-2 text-center">
-                                            <button type="button" data-modal-target="verifikasi"
-                                                data-modal-toggle="verifikasi"
+                                            <button type="button" data-modal-target="verifikasi<?= $no ?>"
+                                                data-modal-toggle="verifikasi<?= $no ?>"
                                                 class="inline-flex items-center px-3 py-1 text-sm font-medium  rounded shadow-md bg-white border">
                                                 <i class="bx bx-edit"></i>
                                                 Verifikasi
@@ -121,8 +133,7 @@
                                         </td>
                                     </tr>
                                     <!-- Verifikasi -->
-
-                                    <div id="verifikasi" tabindex="-1" aria-hidden="true"
+                                    <div id="verifikasi<?= $no ?>" tabindex="-1" aria-hidden="true"
                                         class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-screen max-h-full">
                                         <div class="relative p-4 w-full max-w-2xl max-h-full">
                                             <!-- Modal content -->
@@ -135,7 +146,7 @@
                                                     </h3>
                                                     <button type="button"
                                                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center  "
-                                                        data-modal-hide="verifikasi">
+                                                        data-modal-hide="verifikasi<?= $no ?>">
                                                         <svg class="w-3 h-3" aria-hidden="true"
                                                             xmlns="http://www.w3.org/2000/svg" fill="none"
                                                             viewBox="0 0 14 14">
@@ -149,10 +160,11 @@
                                                 <!-- Modal body -->
                                                 <div class="p-4 md:p-5 space-y-4">
                                                     <form action="">
-
                                                         <ul class="flex justify-between px-10">
                                                             <li>User</li>
-                                                            <li><?= $r['nama'] ?></li>
+                                                            <li>
+                                                                <?= $r['nama'] ?>
+                                                            </li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Jenis Request</li>
@@ -160,31 +172,83 @@
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Tanggal</li>
-                                                            <li><?= date('d F Y H:i:s', strtotime($r['tanggal'])); ?></li>
+                                                            <li>
+                                                                <?= date('d F Y H:i:s', strtotime($r['tanggal'])); ?>
+                                                            </li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Barang</li>
-                                                            <li><?= $r['nama_barang'] ?></li>
+                                                            <li>
+                                                                <?= $r['nama_barang'] ?>
+                                                            </li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Jumlah Permintaan</li>
-                                                            <li><?= $r['jumlah'] ?></li>
+                                                            <li>
+                                                                <?= $r['jumlah'] ?>
+                                                            </li>
                                                         </ul>
                                                         <ul class="flex justify-between px-10">
                                                             <li>Gambar</li>
-                                                            <li><img class="w-36"
-                                                                    src="<?= base_url('dist/Logo_PCR.png') ?>" alt=""></li>
+                                                            <li><img class="w-36" src="<?= base_url('dist/Logo_PCR.png') ?>"
+                                                                    alt=""></li>
                                                         </ul>
                                                     </form>
                                                 </div>
                                                 <!-- Modal footer -->
                                                 <div class="grid grid-cols-2 gap-4 border-t p-4">
                                                     <button class="px-3 py-1  border bg-white shadow-md rounded"
-                                                        data-modal-toggle="tolak-verifikasi"
-                                                        data-modal-target="tolak-verifikasi"
-                                                        data-modal-hide="verifikasi">Tolak</button>
-                                                    <button class="px-3 py-1 text-white  bg-amber-300 shadow-md rounded"
-                                                        data-modal-toggle="verifikasi">Terima</button>
+                                                        data-modal-toggle="tolak-verifikasi<?= $no ?>"
+                                                        data-modal-target="tolak-verifikasi<?= $no ?>"
+                                                        data-modal-hide="verifikasi<?= $no ?>">Tolak</button>
+                                                    <form action="<?= base_url('AdminRequest/verifRequest'); ?>"
+                                                        method="post">
+                                                        <input type="hidden" name="request_id"
+                                                            value="<?= $r['id_request'] ?>">
+                                                        <input type="hidden" name="terima" value="1">
+                                                        <button class="px-3 py-1 text-white bg-amber-300 shadow-md rounded"
+                                                            data-modal-toggle="verifikasi<?= $no ?>">Terima
+                                                        </button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tolak-verifikasi<?= $no ?>" tabindex="-1"
+                                        class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+                                        <div class="relative p-4 w-full max-w-md max-h-full">
+                                            <div class="relative bg-white rounded shadow ">
+                                                <button type="button"
+                                                    class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
+                                                    data-modal-hide="tolak-verifikasi<?= $no ?>">
+                                                    <svg class="w-3 h-3" aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    </svg>
+                                                    <span class="sr-only">Close modal</span>
+                                                </button>
+                                                <div class="p-4 md:p-5 text-center">
+                                                    <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true"
+                                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                                        <path stroke="currentColor" stroke-linecap="round"
+                                                            stroke-linejoin="round" stroke-width="2"
+                                                            d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                    </svg>
+                                                    <h3 class="mb-5 text-lg font-normal text-gray-500 ">Tolak request ?</h3>
+                                                    <form action="<?= base_url('AdminRequest/verifRequest'); ?>"
+                                                        method="post">
+                                                        <input type="hidden" name="request_id"
+                                                            value="<?= $r['id_request'] ?>">
+                                                        <button type="submit"
+                                                            class="text-white bg-amber-300 hover:bg-amber-400 font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
+                                                            Ya, lanjutkan
+                                                        </button>
+                                                    </form>
+                                                    <button data-modal-hide="tolak-verifikasi<?= $no ?>" type="button"
+                                                        class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded border border-gray-200 text-sm font-medium px-5 py-2.5 ">Tidak,
+                                                        batal</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -193,40 +257,6 @@
                                 <?php endforeach; ?>
                             </tbody>
                         </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
-        <div id="tolak-verifikasi" tabindex="-1"
-            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
-            <div class="relative p-4 w-full max-w-md max-h-full">
-                <div class="relative bg-white rounded shadow ">
-                    <button type="button"
-                        class="absolute top-3 end-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded text-sm w-8 h-8 ms-auto inline-flex justify-center items-center"
-                        data-modal-hide="tolak-verifikasi">
-                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                            viewBox="0 0 14 14">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                    <div class="p-4 md:p-5 text-center">
-                        <svg class="mx-auto mb-4 text-gray-400 w-12 h-12 " aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                        </svg>
-                        <h3 class="mb-5 text-lg font-normal text-gray-500 ">Tolak request ?</h3>
-                        <button data-modal-hide="tolak-verifikasi" type="button"
-                            class="text-white bg-amber-300 hover:bg-amber-400 font-medium rounded text-sm inline-flex items-center px-5 py-2.5 text-center me-2">
-                            Ya, lanjutkan
-                        </button>
-                        <button data-modal-hide="tolak-verifikasi" type="button"
-                            class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded border border-gray-200 text-sm font-medium px-5 py-2.5 ">Tidak,
-                            batal</button>
                     </div>
                 </div>
             </div>
