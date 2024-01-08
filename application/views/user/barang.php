@@ -146,14 +146,22 @@
                     </tbody>
                 </table>
             </div>
-            <div class="w-full pb-28">
+            <div class="w-full pb-10">
+
+            <?php  if($keranjang) { ?>
                 <button
-                    class=" bg-amber-400 font-medium p-2 w-full text-md rounded hover:bg-amber-500 text-white mb-2 keranjang-cart-btn">Minta
+                    class="hi bg-amber-400 font-medium p-2 w-full text-md rounded hover:bg-amber-500 text-white mb-2 keranjang-cart-btn">Minta
                     Barang</button>
                 <button
                     class="bg-red-500 font-medium p-2 hover:bg-red-600 w-full text-md rounded text-white clear-cart-btn">
                     <a href="<?= base_url('keranjang/deleteAll') ?>" class="hover:text-white">Clear All</a>
                 </button>
+           
+                <?php } else { ?>
+                   <h1 class="text-center text-2xl font-bold">Keranjang anda masih kosong!</h1>
+               <?php  } ?>
+            </div>
+            
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
                         document.querySelector('.clear-cart-btn').addEventListener('click', function (event) {

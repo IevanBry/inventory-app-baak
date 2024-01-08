@@ -18,7 +18,7 @@
         <div class="flex flex-col">
             <div class="overflow-x-auto">
                 <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden shadow">
+                    <div class="overflow-hidden p-6 shadow">
                         <table class="min-w-full divide-y divide-gray-200 table-fixed" id="example">
                             <thead class="bg-gray-100">
                                 <tr>
@@ -45,10 +45,11 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white " id="tableBody">
-                                <tr class="border-b ">
+                              
                                     <?php $no = 1; ?>
                                     <?php foreach ($history as $h): ?>
-                                        <td class="p-2 text-sm font-medium pl-6 text-gray-900">
+                                <tr class="border-b ">
+                                        <td class="p-2 py-6 text-sm font-medium pl-6 text-gray-900">
                                             <?= $no ?>
                                         </td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
