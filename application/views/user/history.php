@@ -38,7 +38,6 @@
                             </div>
                         </div>
                     </div>
-                    <i class='bx bx-dots-vertical-rounded'></i>
                 </div>
             </div>
             <?php $no++; ?>

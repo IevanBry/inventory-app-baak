@@ -88,7 +88,7 @@
 
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden border">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                        <table id="example_pemasukan" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray">
                                 <tr>
                                     <th scope="col" class="p-4 text-sm font-semibold text-left  uppercase">
@@ -141,7 +141,7 @@
 
                 <div class="inline-block min-w-full align-middle">
                     <div class="overflow-hidden border">
-                        <table class="min-w-full divide-y divide-gray-200 table-fixed">
+                        <table id="example_pengeluaran" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray ">
                                 <tr>
                                     <th scope="col" class="p-4 text-sm font-semibold text-left  uppercase">
@@ -188,8 +188,6 @@
         </div>
 
     </div>
-
-
 </div>
 
 
