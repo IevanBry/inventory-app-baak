@@ -30,6 +30,10 @@ class BaseController extends CI_Controller
         $data['total_staff'] = $this->User_model->getTotalStaff();
         $data['total_user'] = $this->User_model->getTotalUser();
         $data['barang_tersedia'] = $this->Stock_model->getTotalBarangTersedia();
+        $data['total_pemasukan'] = $this->Report_model->getTotalPemasukan();
+        $data['total_pengeluaran'] = $this->Report_model->getTotalPengeluaran();
+        $data['total_transaksi'] = $this->Report_model->getTotalTransaksi();
+        $data['pemesan'] = $this->Request_model->countPemesan();
         $data['icon'] = 'bx bx-home';
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/index');
@@ -68,6 +72,9 @@ class BaseController extends CI_Controller
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
         $data['request'] = $this->Request_model->getRequest();
+        $data['total_proses'] = $this->Request_model->countProses();
+        $data['total_setuju'] = $this->Request_model->countSetujuRequest();
+        $data['total_tolak'] = $this->Request_model->countTolakRequest();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/request', $data);
         $this->load->view('layout/footer');
@@ -95,6 +102,15 @@ class BaseController extends CI_Controller
         $data['total'] = $this->Stock_model->getTotalBarang();
         $this->load->view('layout/header', $data);
         $this->load->view('stock/index', $data);
+        $this->load->view('layout/footer');
+    }
+
+    function history(){
+        $data['title'] = 'History';
+        $data['icon'] = 'bx bx-history';
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+        $this->load->view('layout/header', $data);
+        $this->load->view('dashboard/history', $data);
         $this->load->view('layout/footer');
     }
 }

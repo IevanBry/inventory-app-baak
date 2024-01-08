@@ -64,5 +64,11 @@ class Report_model extends CI_Model
     {
         return $this->db->insert('transaksi', $data);
     }
-
+    public function getTotalTransaksi()
+    {
+        $this->db->select('count(*) as total_transaksi');
+        $this->db->from('transaksi');
+        $query = $this->db->get();
+        return $query->row()->total_transaksi;
+    }
 }

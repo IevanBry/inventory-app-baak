@@ -104,4 +104,46 @@ class Request_model extends CI_Model
 
         return $result->total_proses_requests;
     }
+    public function countPemesan()
+    {
+        $this->db->select('COUNT(DISTINCT id_user) as pemesan');
+        $this->db->from('request');
+        $this->db->where('status', 'Proses');
+        $query = $this->db->get();
+        $result = $query->row();
+        return $result->pemesan;
+    }
+    public function countProses()
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('status', 'Proses');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countSetujuRequest()
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('status', 'Diterima');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
+    public function countTolakRequest()
+    {
+        $this->db->select('COUNT(*) as total_proses_requests');
+        $this->db->from('request');
+        $this->db->where('status', 'Ditolak');
+
+        $query = $this->db->get();
+        $result = $query->row();
+
+        return $result->total_proses_requests;
+    }
 }

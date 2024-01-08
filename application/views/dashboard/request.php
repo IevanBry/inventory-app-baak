@@ -5,21 +5,45 @@
                 <i class='bx bx-checkbox-checked text-3xl w-12 bg-green-100 text-green-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Di Setujui</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">50</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold">
+                    <?php
+                            if ($total_setuju !== null) {
+                                echo number_format($total_setuju);
+                            } else {
+                                echo 'Rp 0';
+                            }
+                            ?>
+                    </h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bx-loader text-3xl bg-yellow-100 w-12 text-yellow-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Proses</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">30</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold">
+                    <?php
+                            if ($total_proses !== null) {
+                                echo number_format($total_proses);
+                            } else {
+                                echo 'Rp 0';
+                            }
+                            ?>
+                    </h1>
                 </div>
             </div>
             <div class="shadow-md p-4 bg-white rounded flex items-center gap-2 border ">
                 <i class='bx bxs-x-square text-3xl w-12 bg-red-100 text-red-500 p-2 rounded'></i>
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Ditolak</p>
-                    <h1 class="text-sm xl:text-2xl font-semibold">190</h1>
+                    <h1 class="text-sm xl:text-2xl font-semibold">
+                    <?php
+                            if ($total_tolak !== null) {
+                                echo number_format($total_tolak);
+                            } else {
+                                echo 'Rp 0';
+                            }
+                            ?>
+                    </h1>
                 </div>
             </div>
 
