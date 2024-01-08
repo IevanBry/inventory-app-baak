@@ -26,29 +26,7 @@ class Request_model extends CI_Model
 
         return $query->result_array();
     }
-    function getHistoryRequest()
-    {
-        $this->db->select('request.*, barang.nama_barang, user.nama');
-        $this->db->from('request');
-        $this->db->join('barang', 'barang.id_barang = request.id_barang', 'inner');
-        $this->db->join('user', 'user.id_user = request.id_user', 'inner');
-        $this->db->where('user.role', 'user');
-        $this->db->where('request.status', 'accepted');
-        $this->db->or_where('request.status', 'rejected');
-        $this->db->order_by('request.tanggal', 'DESC');
-        $query = $this->db->get();
-
-        if (!$query) {
-            echo $this->db->error()['message'];
-            die;
-        }
-
-        return $query->result_array();
-    }
-
-
-
-
+    
     function getForUser($id_user)
     {
         $this->db->select('request.*, barang.nama_barang');

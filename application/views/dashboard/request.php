@@ -131,17 +131,9 @@
                                             </span></td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
                                             <?php
-                                            $status = strtolower($r['status']); // Convert to lowercase for case-insensitive comparison
+                                            $status = strtolower($r['status']); 
                                             if (strcasecmp($status, 'proses') == 0): ?>
                                                 <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
-                                                    <?= $r['status'] ?>
-                                                </span>
-                                            <?php elseif (strcasecmp($status, 'accepted') == 0): ?>
-                                                <span class="bg-green-400 text-white shadow-md p-1 px-3 rounded">
-                                                    <?= $r['status'] ?>
-                                                </span>
-                                            <?php else: ?>
-                                                <span class="bg-red-400 text-white shadow-md p-1 px-3 rounded">
                                                     <?= $r['status'] ?>
                                                 </span>
                                             <?php endif; ?>

@@ -47,36 +47,36 @@
                             <tbody class="bg-white " id="tableBody">
                                 <tr class="border-b ">
                                     <?php $no = 1; ?>
-                                    <?php foreach ($request as $r): ?>
+                                    <?php foreach ($history as $h): ?>
                                         <td class="p-2 text-sm font-medium pl-6 text-gray-900">
                                             <?= $no ?>
                                         </td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
-                                            <?= $r['nama'] ?>
+                                            <?= $h['nama'] ?>
                                         </td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
-                                            <?= date('d F Y H:i:s', strtotime($r['tanggal'])); ?>
+                                            <?= date('d F Y H:i:s', strtotime($h['tanggal'])); ?>
                                         </td>
                                         <td class="p-2 text-sm pl-4 font-medium text-gray-900">
-                                            <?= $r['nama_barang'] ?>
+                                            <?= $h['nama_barang'] ?>
                                         </td>
                                         <td class="p-2 pl-10 text-sm font-medium text-gray-900">
-                                            <?= $r['jumlah'] ?>
+                                            <?= $h['jumlah'] ?>
                                         </td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
                                             <?php
-                                            $status = strtolower($r['status']);
+                                            $status = strtolower($h['status']);
                                             if (strcasecmp($status, 'proses') == 0): ?>
                                                 <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
-                                                    <?= $r['status'] ?>
+                                                    <?= $h['status'] ?>
                                                 </span>
                                             <?php elseif (strcasecmp($status, 'accepted') == 0): ?>
                                                 <span class="bg-green-400 text-white shadow-md p-1 px-3 rounded">
-                                                    <?= $r['status'] ?>
+                                                    <?= $h['status'] ?>
                                                 </span>
                                             <?php else: ?>
                                                 <span class="bg-red-400 text-white shadow-md p-1 px-3 rounded">
-                                                    <?= $r['status'] ?>
+                                                    <?= $h['status'] ?>
                                                 </span>
                                             <?php endif; ?>
                                         </td>
