@@ -15,6 +15,7 @@ class BaseController extends CI_Controller
         $this->load->model('User_model');
         $this->load->model('Report_model');
         $this->load->model('Request_model');
+        $this->load->model('History_model');
     }
 
     function index()
@@ -109,7 +110,7 @@ class BaseController extends CI_Controller
         $data['title'] = 'History';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['request'] = $this->Request_model->getHistoryRequest();
+        $data['history'] = $this->History_model->getHistoryRequest();
         $this->load->view('layout/header', $data);
         $this->load->view('dashboard/history', $data);
         $this->load->view('layout/footer');

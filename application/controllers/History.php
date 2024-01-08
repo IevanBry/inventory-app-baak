@@ -1,5 +1,5 @@
 <?php
-class AdminRequest extends CI_Controller
+class History extends CI_Controller
 {
     public function __construct()
     {
@@ -7,7 +7,7 @@ class AdminRequest extends CI_Controller
         $this->load->model('Stock_model');
         $this->load->model('User_model');
         $this->load->model('Request_model');
-
+        $this->load->model('History_model');
 
         if (!$this->session->userdata('email')) {
             redirect('auth');
@@ -18,9 +18,9 @@ class AdminRequest extends CI_Controller
         $data['title'] = 'History';
         $data['icon'] = 'bx bx-chat';
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
-        $data['request'] = $this->Request_model->getHistoryRequest();
+        $data['history'] = $this->History_model->getHistoryRequest();
         $this->load->view('layout/header', $data);
-        $this->load->view('history/request', $data);
+        $this->load->view('dashboard/history', $data);
         $this->load->view('layout/footer');
     }
     public function deleteRequest()

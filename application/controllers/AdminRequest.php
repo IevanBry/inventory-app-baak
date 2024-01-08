@@ -7,7 +7,7 @@ class AdminRequest extends CI_Controller
         $this->load->model('Stock_model');
         $this->load->model('User_model');
         $this->load->model('Request_model');
-
+        $this->load->model('History_model');
 
         if (!$this->session->userdata('email')) {
             redirect('auth');
@@ -49,7 +49,11 @@ class AdminRequest extends CI_Controller
     private function acceptRequest()
     {
         $requestId = $this->input->post('request_id');
+
         $this->Request_model->updateStatus($requestId, 'Accepted');
+        $requestData = $this->Request_model->getBy($requestId);
+        $this->History_model->insert($requestData);
+        $this->Request_model->delete($requestId);
 
         redirect('AdminRequest');
     }
@@ -58,7 +62,7 @@ class AdminRequest extends CI_Controller
     {
 
         $requestId = $this->input->post('request_id');
-        $this->Request_model->updateStatus($requestId, 'Rejected');
+        // $this->Request_model->updateStatus($requestId, 'Rejected');
 
 
         redirect('AdminRequest');
