@@ -67,7 +67,7 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-4 mb-4">
-            <div class="overflow-x-auto bg-white shadow-md rounded border p-4">
+            <div class="overflow-x-auto bg-white shadow-md rounded p-4">
                 <div class="flex justify-between items-center">
                     <div class="flex p-2 items-center gap-2 font-semibold">
                         <i class='bx bx-up-arrow-alt  bg-green-100 text-green-500 p-2  rounded border'></i>
@@ -87,10 +87,10 @@
 
 
                 <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden border">
+                    <div class="overflow-hidden p-2">
                         <table id="example_pemasukan" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray">
-                                <tr>
+                                <tr class="border">
                                     <th scope="col" class="p-4 text-sm font-semibold text-left  uppercase">
                                         No.
                                     </th>
@@ -105,7 +105,7 @@
                             </thead>
                             <?php $no = 1; ?>
                             <?php foreach ($history_pemasukan as $item): ?>
-                                <tr class="hover:bg-gray-100 ">
+                                <tr class="hover:bg-gray-100 border">
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
@@ -123,7 +123,7 @@
                 </div>
             </div>
 
-            <div class="overflow-x-auto bg-white shadow-md rounded border p-4">
+            <div class="overflow-x-auto bg-white shadow-md rounded  p-4">
                 <div class="flex justify-between items-center">
                     <div class="flex p-2 items-center gap-2 font-semibold">
                         <i class='bx bx-down-arrow-alt  bg-red-100 text-red-500 p-2  rounded border'></i>
@@ -140,10 +140,10 @@
                 </div>
 
                 <div class="inline-block min-w-full align-middle">
-                    <div class="overflow-hidden border">
+                    <div class="overflow-hidden  p-2">
                         <table id="example_pengeluaran" class="min-w-full divide-y divide-gray-200 table-fixed">
                             <thead class="bg-gray ">
-                                <tr>
+                                <tr class="border">
                                     <th scope="col" class="p-4 text-sm font-semibold text-left  uppercase">
                                         No.
                                     </th>
@@ -156,7 +156,7 @@
                             </thead>
                             <?php $no = 1; ?>
                             <?php foreach ($history_pengeluaran as $item): ?>
-                                <tr class="hover:bg-gray-100 ">
+                                <tr class="hover:bg-gray-100 border">
                                     <td scope="col" class="p-4 border-r text-sm  font-medium text-gray-900">
                                         <?= $no ?>
                                     </td>
