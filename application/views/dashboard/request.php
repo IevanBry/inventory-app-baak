@@ -6,13 +6,13 @@
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Di Setujui</p>
                     <h1 class="text-sm xl:text-2xl font-semibold">
-                    <?php
-                            if ($total_setuju !== null) {
-                                echo number_format($total_setuju);
-                            } else {
-                                echo 'Rp 0';
-                            }
-                            ?>
+                        <?php
+                        if ($total_setuju !== null) {
+                            echo number_format($total_setuju);
+                        } else {
+                            echo 'Rp 0';
+                        }
+                        ?>
                     </h1>
                 </div>
             </div>
@@ -21,13 +21,13 @@
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Proses</p>
                     <h1 class="text-sm xl:text-2xl font-semibold">
-                    <?php
-                            if ($total_proses !== null) {
-                                echo number_format($total_proses);
-                            } else {
-                                echo 'Rp 0';
-                            }
-                            ?>
+                        <?php
+                        if ($total_proses !== null) {
+                            echo number_format($total_proses);
+                        } else {
+                            echo 'Rp 0';
+                        }
+                        ?>
                     </h1>
                 </div>
             </div>
@@ -36,13 +36,13 @@
                 <div>
                     <p class="text-gray-500 text-sm sm:text-base">Ditolak</p>
                     <h1 class="text-sm xl:text-2xl font-semibold">
-                    <?php
-                            if ($total_tolak !== null) {
-                                echo number_format($total_tolak);
-                            } else {
-                                echo 'Rp 0';
-                            }
-                            ?>
+                        <?php
+                        if ($total_tolak !== null) {
+                            echo number_format($total_tolak);
+                        } else {
+                            echo 'Rp 0';
+                        }
+                        ?>
                     </h1>
                 </div>
             </div>
@@ -111,7 +111,7 @@
                                             </span></td>
                                         <td class="p-2 text-sm font-medium text-gray-900">
                                             <?php
-                                            $status = strtolower($r['status']); 
+                                            $status = strtolower($r['status']);
                                             if (strcasecmp($status, 'proses') == 0): ?>
                                                 <span class="bg-amber-300 text-white shadow-md p-1 px-3 rounded">
                                                     <?= $r['status'] ?>
@@ -199,7 +199,9 @@
                                                         data-modal-hide="verifikasi<?= $no ?>">Tolak</button>
                                                     <form action="<?= base_url('AdminRequest/verifRequest'); ?>"
                                                         method="post">
-                                                        <input type="hidden" name="request_id"
+                                                        <input type="hidden" name="qty" value="<?= $r['jumlah']?>">
+                                                        <input type="hidden" name="barang_id" value=<?= $r['id_barang']; ?>>
+                                                            <input type="hidden" name="request_id"
                                                             value="<?= $r['id_request'] ?>">
                                                         <input type="hidden" name="terima" value="1">
                                                         <button class="px-3 py-1 text-white bg-amber-300 shadow-md rounded"

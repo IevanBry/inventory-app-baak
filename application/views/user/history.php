@@ -1,4 +1,4 @@
-<div class="w-full ml-12 sm:ml-0 p-3 bg-white ">
+<div class="w-full ml-12 sm:ml-0 p-3 ">
     <div class="w-full  mb-3  p-2 rounded">
         <div class="items-center justify-between block sm:flex ">
             <div class="flex items-center mb-4 sm:mb-0">

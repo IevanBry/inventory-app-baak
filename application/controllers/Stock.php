@@ -7,6 +7,7 @@ class Stock extends CI_Controller
         $this->load->model('Stock_model');
         $this->load->model('kategori_model');
         $this->load->model('Report_model');
+        $this->load->model('History_model');
         if (!$this->session->userdata('email')) {
             redirect('auth');
         }
@@ -21,9 +22,11 @@ class Stock extends CI_Controller
         $data['barang'] = $this->Stock_model->get();
         $data['kategori'] = $this->kategori_model->get();
         $data['stok_rendah'] = $this->Stock_model->getJumlahBarangTerendah();
+        $data['jumlah_stok'] = $this->Stock_model->getJumlahStok();
+        $data['barang_keluar'] = $this->History_model->getBarangKeluar();
         $data['total'] = $this->Stock_model->getTotalBarang();
         $this->load->view('layout/header', $data);
-        $this->load->view('stock//index', $data);
+        $this->load->view('stock/index', $data);
         $this->load->view('layout/footer');
     }
 

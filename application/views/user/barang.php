@@ -2,7 +2,7 @@
 
     <div class="ml-2">
 
-        <div class="grid grid-cols-3 gap-2">
+        <div class="grid grid-cols-2 gap-1">
             <?php foreach ($barang as $item): ?>
                 <div class="bg-white shadow-md rounded border">
                     <?php

@@ -62,11 +62,11 @@
 
                             </div>
                             <?php if ($h['status'] == 'Accepted') { ?>
-                                <div class="p-3 py-1 bg-green-400 text-white rounded">
+                                <div class="p-3 py-1 bg-blue-500 text-white rounded">
                                     <?= $h['status'] ?>
                                 </div>
                             <?php } else { ?>
-                                <div class="p-3 py-1 bg-red-400 text-white rounded">
+                                <div class="p-3 py-1 bg-gray-600 text-white rounded">
                                     <?= $h['status'] ?>
                                 </div>
                             <?php } ?>

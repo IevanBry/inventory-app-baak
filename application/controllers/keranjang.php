@@ -15,33 +15,20 @@ class Keranjang extends CI_Controller
     }
     public function add()
     {
-        $error = $this->db->error();
-        if ($error['code'] != 0) {
-            // Handle database error if needed
-        } else {
-            $redirect_page = $this->input->post('redirect_page');
-            $id = $this->input->post('id');
-            $qty = $this->input->post('qty');
-            $price = $this->input->post('harga');
-            $name = $this->input->post('name');
-
-            // Check if cart is empty
-            if ($this->cart->total_items() > 0) {
-                $data = array(
-                    'id' => $id,
-                    'qty' => $qty,
-                    'price' => $price,
-                    'name' => $name,
-                );
-                $this->cart->insert($data);
-            } else {
-                // Cart is empty, redirect with a flash message
-                $this->session->set_flashdata('error', 'Keranjang harus diisi.');
-            }
-        }
+        $redirect_page = $this->input->post('redirect_page');
+        $id = $this->input->post('id');
+        $qty = $this->input->post('qty');
+        $price = $this->input->post('harga');
+        $name = $this->input->post('name');
+        $data = array(
+            'id' => $id,
+            'qty' => $qty,
+            'price' => $price,
+            'name' => $name,
+        );
+        $this->cart->insert($data);
         redirect($redirect_page);
     }
-
 
     public function delete($rowid)
     {

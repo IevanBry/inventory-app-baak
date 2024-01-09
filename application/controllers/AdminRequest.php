@@ -49,7 +49,12 @@ class AdminRequest extends CI_Controller
     private function acceptRequest()
     {
         $requestId = $this->input->post('request_id');
+        $qty = $this->input->post('qty');
+        $barang_id = $this->input->post('barang_id');
+        $stockLama = $this->Stock_model->getStokBarangById($barang_id);
 
+        $stockBaru = $stockLama-$qty;
+        $this->Stock_model->updateJumlahStokById($barang_id,$stockBaru);
         $this->Request_model->updateStatus($requestId, 'Accepted');
         $requestData = $this->Request_model->getBy($requestId);
         $this->History_model->insert($requestData);
